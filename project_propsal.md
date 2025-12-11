@@ -1,4 +1,4 @@
-<ins>**Project Proposal:**</ins>\
+<ins>**Project Proposal:**</ins>
 
 **Team:** Johannah, Aditi, Atticus
 

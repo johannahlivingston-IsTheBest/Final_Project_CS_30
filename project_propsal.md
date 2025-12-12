@@ -31,4 +31,4 @@ This game is going to be an otome style game. There will be three main character
 **Target audience:**\
 -Young people\
 -People who like beating games and strategy, challenges\
--People who like connections with charcters
+-People who like connections with characters

@@ -13,9 +13,6 @@ characters, objects, or just anything.'''
 # Imports and Global Variables------------------------------------------------- 
 # make a dictionary and class for the three main characters
 
-
-
-
 # make a dictionary and class for npc's 
 
 # make a dictionary and class for player

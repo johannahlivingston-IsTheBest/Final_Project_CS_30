@@ -19,6 +19,7 @@ rid_list = [
 """ I have wings but I do not fly like a bird,I breathe fire and guard gold unheard. What am I?""",
 """I wear a robe and carry a staff,I cast spells but never laugh. Who am I?"""
 ]
+
 # Classes ---------------------------------------------------------------------------------------------------------
 class Puzzles:
    def __init__(self):
@@ -54,10 +55,15 @@ class Puzzles:
          print("\nYou failed" )     
       print(f"\nYou got {correct_answers_count} out of 3 right ")
 
-
-   
    def scramble(self):
-      pass
+    '''DHISEL → SHEILD
+
+      BRO → ORB
+
+      FTASF → STAFF
+
+      LAEMR → REALM'''
+
    def multi_choice(self):
       pass
 puzzles = Puzzles()  

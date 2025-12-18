@@ -1,12 +1,16 @@
 <ins>**changelog:**</ins>
 
-Date: MM/DD/YYYY
+Date: 12/18/2025
 
 Changelog:
 
-Version #:
+Version 1:
 
-Added - 
+Added - Johannah: Puzzle class - finised the riddle game and started on scramble game
+        
+        Atticus:
+        
+        Aditi:
 
 Changed - 
 

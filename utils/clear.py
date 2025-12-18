@@ -7,13 +7,10 @@
 # Imports and Global Variables -----------------------------------------------
 import os
 import subprocess
+from exceptions import ClearError
 
 
 # Functions and Classes ------------------------------------------------------
-class ClearError(Exception):
-    """Error when terminal fails to clear."""
-
-
 def clear():
     """Clear the terminal."""
     if os.name == "nt":

@@ -2,7 +2,7 @@
 # Title: clear
 # Date: 12/17/2025
 ##############################################################################
-"""Module that allows the terminal to be cleared."""
+"""Module that contains all custom exceptions."""
 ##############################################################################
 # Imports and Global Variables -----------------------------------------------
 

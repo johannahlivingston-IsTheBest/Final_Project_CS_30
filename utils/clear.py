@@ -12,8 +12,6 @@ import subprocess
 # Functions and Classes ------------------------------------------------------
 class ClearError(Exception):
     """Error when terminal fails to clear."""
-    def __init__(self, message):
-        super().__init__(message)
 
 
 def clear():

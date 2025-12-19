@@ -11,7 +11,7 @@ from exceptions import ImageError
 
 def display_image(image_name):
     try:
-        img = mpimg.imread(image_name)
+        img = mpimg.imread(f"images\\{image_name}")
     except FileNotFoundError:
         raise ImageError(f"Failed to generate image '{image_name}'")
     else:
@@ -19,4 +19,5 @@ def display_image(image_name):
         plt.axis("off")
         plt.show()
 
-display_image("silly-cat-photo.jpg")
+if __name__ == "__main__":
+    display_image("silly-cat-photo.jpg")

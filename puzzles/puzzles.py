@@ -22,12 +22,34 @@ rid_list = [
 
 scram_list = ['DHISEL', 'BRO', 'FTASF', 'LAEMR']
 
+hand_list = ["rock","paper","scissors"]
+
 # Classes ---------------------------------------------------------------------------------------------------------
 class Puzzles:
    def __init__(self):
       pass
-   def rock_paper_scissors(self):
-      pass
+   def rock_paper_scissors(self,list_):
+      hand_des = """Talk about how to play the game and stuff that gooes with story, som cool thing about this bieng important."""
+      print(hand_des)
+      print("Are you ready?")
+      action = input("Please choose: rock, paper, or scissors")
+      opp_action = random.choice(list_)
+      wins = 0
+      if ((opp_action == "rock") and (action == "paper")):
+         print("You win")
+         wins += 1
+      elif ((opp_action == "rock") and (action == "scissors")):
+         print("You lose")
+      
+      elif ((opp_action == "rock") and (action == "rock")):
+         print("You tie")
+      elif ((opp_action == "paper") and (action == "scissors")):
+         print("You lose")
+         wins += 1
+      elif ((opp_action == "paper") and (action == "paper")):
+         print("You win")
+         wins += 1
+         
    def match_des(self):
       pass
    def riddle(self,rid_list):

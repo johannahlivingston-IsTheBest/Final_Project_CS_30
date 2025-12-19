@@ -1,6 +1,6 @@
 ##############################################################################
 # Title: photos
-# Date: 12/17/2025
+# Date: 12/19/2025
 ##############################################################################
 """Image-handling module that displays photos to the user."""
 ##############################################################################
@@ -10,8 +10,13 @@ from exceptions import ImageError
 
 
 def display_image(image_name):
+    """Display an image on the screen.
+    
+    Parameters:
+        image_name (str): name of image without file path
+    """
     try:
-        img = mpimg.imread(image_name)
+        img = mpimg.imread(f"images\\{image_name}")
     except FileNotFoundError:
         raise ImageError(f"Failed to generate image '{image_name}'")
     else:
@@ -19,4 +24,6 @@ def display_image(image_name):
         plt.axis("off")
         plt.show()
 
-display_image("silly-cat-photo.jpg")
+
+if __name__ == "__main__":
+    display_image("silly-cat-photo.jpg")

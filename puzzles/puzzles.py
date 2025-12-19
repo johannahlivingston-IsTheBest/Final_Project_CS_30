@@ -20,6 +20,8 @@ rid_list = [
 """I wear a robe and carry a staff,I cast spells but never laugh. Who am I?"""
 ]
 
+scram_list = ['DHISEL', 'BRO', 'FTASF', 'LAEMR']
+
 # Classes ---------------------------------------------------------------------------------------------------------
 class Puzzles:
    def __init__(self):
@@ -37,35 +39,74 @@ class Puzzles:
       answer_one = input("\n What is the answer to the first riddle? ").lower()
       answer_two = input("\n What is the answer to the second riddle? ").lower()
       answer_three = input("\n What is the answer to the third riddle? ").lower()
-      correct_answers_count = 0
+      correct_answers_riddle = 0
       if answer_one == "sword":
-         correct_answers_count += 1
+         correct_answers_riddle += 1
       if answer_two == "dragon":
-         correct_answers_count += 1
+         correct_answers_riddle += 1
       if answer_three == "wizard":
-         correct_answers_count += 1
-      print(correct_answers_count)
-      if correct_answers_count == 3:
+         correct_answers_riddle += 1
+      print(correct_answers_riddle)
+      if correct_answers_riddle == 3:
          print("\nYou got 100%")
-      elif correct_answers_count == 2:
+      elif correct_answers_riddle == 2:
          print("\nYou got 67%" )    
-      elif correct_answers_count == 1:
+      elif correct_answers_riddle == 1:
          print("\nYou got 33%" )   
-      elif correct_answers_count == 0:
+      elif correct_answers_riddle == 0:
          print("\nYou failed" )     
-      print(f"\nYou got {correct_answers_count} out of 3 right ")
+      print(f"\nYou got {correct_answers_riddle} out of 3 right ")
 
-   def scramble(self):
-    '''DHISEL → SHEILD
+   def scramble(self,scram_list):
+      # exam gisgdi
+      scram_des = """put something here about what this exam is about and how to play fvhdivuhivuh"""
+      print(scram_des)
+      play = input("Are you ready?").lower()
+      if ((play == "yes") or (play == "y")):
+         print("Your time starts now.")
+      else:
+         print("To bad! Your times starts now!")
 
-      BRO → ORB
+      for word in range(4):
+         print(str(word + 1) + ". " + scram_list[word])
+         print("\n")
+      answer_one = input("What is the answer to the first scrambled word?").lower()
+      answer_two = input("\nWhat is the answer to the second scrambled word?").lower()
+      answer_three = input("\nWhat is the answer to the third scrambled word?").lower()
+      answer_four = input("\nWhat is the answer to the fourth scrambled word?").lower()
+      correct_answers_scram = 0
+      if answer_one == "shield":
+         correct_answers_scram += 1
 
-      FTASF → STAFF
+      if answer_two == "orb":
+         correct_answers_scram += 1
 
-      LAEMR → REALM'''
+      if answer_three == "staff":
+         correct_answers_scram += 1
 
+      if answer_four == "realm":
+         correct_answers_scram += 1  
+
+      if correct_answers_scram == 4:
+         print("\nYou got 100%")
+
+      elif correct_answers_scram == 3:
+         print("\nYou got 75%" )   
+
+      elif correct_answers_scram == 2:
+         print("\nYou got 50%" ) 
+
+      elif correct_answers_scram == 1:
+         print("\nYou got 25%" ) 
+
+      elif correct_answers_scram == 0:
+         print("\nYou failed" )  
+
+      print(f"\nYou got {correct_answers_scram} out of 4 right ")
+      
+    
    def multi_choice(self):
       pass
 puzzles = Puzzles()  
 # Main --------------------------------------------------------------------------------------------------------------
-puzzles.riddle(rid_list)
+puzzles.scramble(scram_list)

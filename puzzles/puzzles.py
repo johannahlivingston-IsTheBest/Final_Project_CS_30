@@ -120,33 +120,36 @@ class Puzzles:
       print("\n ___ ___ ___ ___ ___")
       for attempt in range(attempts):
          guess = input(f"\nAttempt {attempt + 1}: Enter your 5-letter guess: ").lower()
-         if guess[0] == wordle_answer[0]:#f
-            print("The first letter is correct.")
-            letter1 = "F"
-            print(f"\n {letter1} ___ ___ ___ ___")
-         if guess[1] == wordle_answer[1]:#l
-            print("The second letter is correct.")
-            letter2 = "L"
-            print(f"\n {letter1} {letter2} ___ ___ ___")
-         if guess[2] == wordle_answer[2]:#a
-            print("The third letter is correct.")
-            letter3 = "A"
-            print(f"\n {letter1} {letter2} {letter3} ___ ___")
-         if guess[3] == wordle_answer[3]:#m
-            print("The fourth letter is correct.")
-            letter4 = "M"
-            print(f"\n {letter1} {letter2} {letter3} {letter4} ___")
-         if guess[4] == wordle_answer[4]:#e
-            print("The fifth letter is correct.")
-            letter5 = "E"
-            print(f"\n {letter1} {letter2} {letter3} {letter4} {letter5}")
          if guess == "help" and not hint_used:
             hint_used = True
             print("Hint: It's something that burns and gives light.")
+            attempt -= 1  # Do not count this as an attempt
             continue
          if len(guess) != 5:
             print("Please enter a 5-letter word.")
             continue
+         if guess[0] == wordle_answer[0]:#f
+            print("The first letter is correct.")
+            letter1 = guess[0].upper()
+            print(f"\n {letter1} ___ ___ ___ ___")
+
+         if guess[1] == wordle_answer[1]:#l
+            print("The second letter is correct.")
+            letter2 = guess[1].upper()
+            print(f"\n {letter1} {letter2} ___ ___ ___")
+         if guess[2] == wordle_answer[2]:#a
+            print("The third letter is correct.")
+            letter3 = guess[2].upper()
+            print(f"\n {letter1} {letter2} {letter3} ___ ___")
+         if guess[3] == wordle_answer[3]:#m
+            print("The fourth letter is correct.")
+            letter4 = guess[3].upper()
+            print(f"\n {letter1} {letter2} {letter3} {letter4} ___")
+         if guess[4] == wordle_answer[4]:#e
+            print("The fifth letter is correct.")
+            letter5 = guess[4].upper()
+            print(f"\n {letter1} {letter2} {letter3} {letter4} {letter5}")
+       
          if guess == wordle_answer:
             print("Congratulations! You've guessed the correct word!")
             break

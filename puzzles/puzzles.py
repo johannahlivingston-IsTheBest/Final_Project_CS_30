@@ -56,16 +56,34 @@ class Puzzles:
       print(f"\nYou got {correct_answers_count} out of 3 right ")
 
    def scramble(self):
-    '''DHISEL → SHEILD
-
-      BRO → ORB
-
-      FTASF → STAFF
-
-      LAEMR → REALM'''
+   # Exam Two
+      riddle_answer_one = input("\n 1. Unscramble this word: DHISEL ").lower()
+      riddle_answer_two = input("\n 2. Unscramble this word: BRO ").lower()
+      riddle_answer_three = input("\n 3. Unscramble this word: FTASF ").lower()
+      riddle_answer_four = input("\n 4. Unscramble this word: LAEMR ").lower()
+      riddle_answers_count = 0
+      if riddle_answer_one == "shield":
+         riddle_answers_count += 1
+      if riddle_answer_two == "orb":
+         riddle_answers_count += 1
+      if riddle_answer_three == "staff":
+         riddle_answers_count += 1
+      if riddle_answer_four == "realm":
+         riddle_answers_count += 1
+      if riddle_answers_count == 4:
+         print("\nYou got 100%")
+      elif riddle_answers_count == 3:
+         print("\nYou got 75%" )    
+      elif riddle_answers_count == 2:
+         print("\nYou got 50%" )    
+      elif riddle_answers_count == 1:
+         print("\nYou got 25%" )   
+      elif riddle_answers_count == 0:
+         print("\nYou failed" )     
+         print(f"\nYou got {riddle_answers_count} out of 4 right ")
 
    def multi_choice(self):
       pass
 puzzles = Puzzles()  
 # Main --------------------------------------------------------------------------------------------------------------
-puzzles.riddle(rid_list)
+puzzles.scramble()

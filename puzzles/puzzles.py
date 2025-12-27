@@ -19,6 +19,10 @@ rid_list = [
 """ I have wings but I do not fly like a bird,I breathe fire and guard gold unheard. What am I?""",
 """I wear a robe and carry a staff,I cast spells but never laugh. Who am I?"""
 ]
+desc_list = ["insert character one description here", 
+             "insert character two description here", 
+             "insert character three description here"]
+
 hand_choices = ['rock', 'paper', 'scissors']
 # Classes ---------------------------------------------------------------------------------------------------------
 class Puzzles:
@@ -47,8 +51,19 @@ class Puzzles:
          else:
             print("You lose! Better luck next time.")
       print(f"You won {wins} out of 3 rounds.")
-   def match_des(self):
-      pass
+   def match_des(self,list_des):
+      print("Welcome to your third exam: Match the character to their description.")
+      print("You will be given three character descriptions.")
+      print("Your task is to match each description to the correct character.")
+      correct_matches = 0
+      for character in list_des:
+         print(f"\n {character}")
+         # switch out the Characetr with the character names
+         options = ['1. Character A', '2. Character B', '3. Character C']
+         for option in options:
+            print(f"\n{option}")
+         user_match = input("\nEnter the number of the character that matches the description: ")
+         
    def riddle(self,rid_list):
      # Exam One
       num = 0

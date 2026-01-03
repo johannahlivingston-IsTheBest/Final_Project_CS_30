@@ -85,7 +85,7 @@ Fixed - nothing
 
 Notes for next time: fill in all of the folders with what I have to do.
 ----------------------------------------------------------------------------------------------------
-----------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------
 Johannah:
 Date: 12/27/2025
 
@@ -124,20 +124,20 @@ Fixed -
 Notes for next time:
 ---------------------------------------------------------------------------------------------------
 Aditi:
-Date: MM/DD/YYYY
+Date: 1/3/2026
 
 Changelog:
 
 Version 1:
 
-Added - 
+Added - more story text, player logic, and tutorial flow, as well as thorouggh world and character descriptions.
 
-Changed - 
+Changed - nothhing
 
-Fixed - 
+Fixed - nothing
 
 
-Notes for next time:
+Notes for next time: make the intro code and tutorial code as well as add the dialogue for the whole story
 ----------------------------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------------------------
 Johannah:

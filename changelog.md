@@ -43,23 +43,63 @@ Changelog:
 Version 1:
 
 Added - 
+====================================
+ Aditis Project – Part 1 (Version-1)
+====================================
+
+This folder contains the core structure for the isekai reincarnation game.
+It includes story text, player logic, and tutorial flow.
+
+------------------------------------
+ Folder Structure
+------------------------------------
+
 Aditis_project_part/
-│
-├── README.txt
-├── text/
-│   ├── character_background.txt
-│   ├── world_description.txt
-│   ├── main_story.txt
-│   └── player_story.txt
-│
-├── player/
-│   ├── __init__.py
-│   └── player_class.py
-│
-└── tutorial/
-    ├── __init__.py
-    └── tutorial_intro.py
-Added all of the above folders
+|
+|-- README.txt
+|
+|-- text/
+|   |-- character_background.txt
+|   |     Past life, death, and reincarnation details
+|   |
+|   |-- world_description.txt
+|   |     World rules, magic system, and setting
+|   |
+|   |-- main_story.txt
+|   |     Main plot and story progression
+|   |
+|   |-- player_story.txt
+|         Player POV and branching narrative
+|
+|-- player/
+|   |-- __init__.py
+|   |     Player module initializer
+|   |
+|   |-- player_class.py
+|         Player stats, skills, and progression
+|
+|-- tutorial/
+    |-- __init__.py
+    |     Tutorial module initializer
+    |
+    |-- tutorial_intro.py
+          Awakening sequence and basic controls
+
+------------------------------------
+ Notes
+------------------------------------
+
+- This folder exists only on the version-1 branch
+- Text files handle lore and narrative
+- Python files handle game logic
+- Structure is designed to be expandable
+
+------------------------------------
+ Status
+------------------------------------
+
+Early development / foundation stage
+
 
 Changed - Nothing
 

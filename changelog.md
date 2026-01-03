@@ -141,21 +141,21 @@ Notes for next time: make the intro code and tutorial code as well as add the di
 ----------------------------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------------------------
 Johannah:
-Date: MM/DD/YYYY
+Date: 01/03/2026
 
 Changelog:
 
 Version 1:
 
-Added - Puzzle class - finised the riddle game and started on scramble game
+Added - The player_class.py, the exam_class.py
         
 
-Changed - 
+Changed - wordle - from the puzzles.py, I just made the attempts loop instead of the adding attempts counting up from 6.
 
 Fixed - 
 
 
-Notes for next time:
+Notes for next time: Get intro and other stuff.
 -------------------------------------------------------------------------------------------------
 Atticus:
 Date: MM/DD/YYYY

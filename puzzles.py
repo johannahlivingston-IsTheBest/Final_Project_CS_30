@@ -28,6 +28,7 @@ hand_choices = ['rock', 'paper', 'scissors']
 class Puzzles:
    def __init__(self):
       self.puzzle_types = ['match_des', 'rock_paper_scissors', 'riddle', 'scramble', 'multi_choice']
+      self.rid_complete = False
    def rock_paper_scissors(self):
       wins = 0
       for round in range(3):
@@ -64,15 +65,18 @@ class Puzzles:
             print(f"\n{option}")
          user_match = input("\nEnter the number of the character that matches the description: ")
          
-   def riddle(self,rid_list):
+   def riddle(self):
+      print("Welcome to your first exam: Riddles!")
+      print("You will be given three riddles to solve.")
+      print("Try to answer correctly to pass the exam.")
      # Exam One
       num = 0
       for i in range(3):
          print("\n")
          print(str(i + 1)+ ". " + rid_list[i])
-      answer_one = input("\n What is the answer to the first riddle? ").lower()
-      answer_two = input("\n What is the answer to the second riddle? ").lower()
-      answer_three = input("\n What is the answer to the third riddle? ").lower()
+      answer_one = input("\nWhat is the answer to the first riddle? ").lower()
+      answer_two = input("\nWhat is the answer to the second riddle? ").lower()
+      answer_three = input("\nWhat is the answer to the third riddle? ").lower()
       correct_answers_count = 0
       if answer_one == "sword":
          correct_answers_count += 1
@@ -83,12 +87,17 @@ class Puzzles:
       print(correct_answers_count)
       if correct_answers_count == 3:
          print("\nYou got 100%")
+         self.rid_complete = True
       elif correct_answers_count == 2:
-         print("\nYou got 67%" )    
+         print("\nYou got 67%" )   
+         self.rid_complete = True 
       elif correct_answers_count == 1:
-         print("\nYou got 33%" )   
+         print("\nYou got 33%" )  
+         self.rid_complete = False 
       elif correct_answers_count == 0:
-         print("\nYou failed" )     
+         print("\nYou got 0%" ) 
+         self.rid_complete = False 
+
       print(f"\nYou got {correct_answers_count} out of 3 right ")
 
    def scramble(self):
@@ -135,15 +144,19 @@ class Puzzles:
       print("\n ___ ___ ___ ___ ___")
       for attempt in range(attempts):
          guess = input(f"\nAttempt {attempt + 1}: Enter your 5-letter guess: ").lower()
+         attempt = 0
+      while attempt < attempts:
+         guess = input(f"\nAttempt {attempt + 1}: ").lower()
+
          if guess == "help" and not hint_used:
             hint_used = True
             print("Hint: It's something that burns and gives light.")
-            attempt -= 1  # Do not count this as an attempt
             continue
+
          if len(guess) != 5:
             print("Please enter a 5-letter word.")
-            attempt -= 1  # Do not count this as an attempt
             continue
+         attempt += 1
          for letter in guess:
             if letter in wordle_answer:
                print(f"The letter {letter} is in the word.")
@@ -176,4 +189,3 @@ class Puzzles:
             print(f"Sorry, you've used all your attempts. The correct word was '{wordle_answer}'.")
 puzzles = Puzzles()  
 # Main --------------------------------------------------------------------------------------------------------------
-puzzles.wordle()

@@ -36,20 +36,37 @@ Fixed -
 Notes for next time:
 ---------------------------------------------------------------------------------------------------
 Aditi:
-Date: 12/18/2025
+Date: 1/2/2026
 
 Changelog:
 
 Version 1:
 
 Added - 
+Aditis_project_part/
+│
+├── README.txt
+├── text/
+│   ├── character_background.txt
+│   ├── world_description.txt
+│   ├── main_story.txt
+│   └── player_story.txt
+│
+├── player/
+│   ├── __init__.py
+│   └── player_class.py
+│
+└── tutorial/
+    ├── __init__.py
+    └── tutorial_intro.py
+Added all of the above folders
 
-Changed - 
+Changed - Nothing
 
-Fixed - 
+Fixed - nothing
 
 
-Notes for next time:
+Notes for next time: fill in all of the folders with what I have to do.
 ----------------------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------------------
 Johannah:

@@ -1,1 +1,30 @@
 Player perspective story and branching choices.
+
+PLAYER CHARACTER
+
+Real World Background:
+The player lived an ordinary life for 30 years and never experienced romantic love. While distracted by reading an otome game synopsis, they were struck by a truck.
+
+System Introduction:
+Upon awakening in a hospital, a system window appears:
+
+“Congratulations, Player! You are dying.
+The good news? Higher beings have chosen you for entertainment.
+The bad news? Your survival depends on Love Points.”
+
+Player Identity:
+If male: Felix
+If female: Amelia
+
+Appearance:
+Curly red hair, forest green eyes, striking features that attract attention despite commoner status.
+
+In-Game Role:
+A struggling commoner with newly awakened healing magic. Admitted to Academia Fortunae on a scholarship for their final year.
+
+Internal Conflict:
+The player must survive in a world where affection equals life, while questioning whether love gained under pressure is real.
+
+Special Trait:
+The player alone can view and influence Love Points directly.
+

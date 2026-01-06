@@ -9,7 +9,7 @@ class Exam:
     def start_exam_one(self):
         print("\nYou are about to take Exam One!")
         ready = input("\nAre you ready to begin the exam? (yes/no) ").lower()
-
+        print("\nIt doesn't matter if your ready or not!")
         print("\nStarting the exam...")
         self.puzzles.riddle()
 

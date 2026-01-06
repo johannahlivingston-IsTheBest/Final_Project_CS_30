@@ -4,28 +4,29 @@ class Player:
     def __init__(self):
         self.name = None
         self.level = 1
-        self.stats = {"title":None, "partner": None, "exams_completed": 0, "deaths":0}
-        self.gender = None
+        self.stats = {"title":None, "partner": None, "exams_completed": 0, "lives":1}
+       
     def pick_gender(self):
         while True:
-            user_gender = input("\nAre you a boy or a girl? ").lower()
-            if user_gender == "boy":
+            user_gender = input("\nDo you want to take on the new name of Felix or Amelia? ").lower()
+            if user_gender == "felix":
                 self.gender = "boy"
                 self.name = "Felix"
+                self.stats["title"] = "Commoner"
                 break
-            elif user_gender == "girl":
+            elif user_gender == "amelia":
                 self.gender = "girl"
                 self.name = "Amelia"
+                self.stats["title"] = "Commoner"
                 break
             else:
                 print("Invalid input. Please enter 'boy' or 'girl'.")
-            self.stats["title"] = "Commoner"
         
     def display_info(self):
         self.pick_gender()
         print("Welcome EXTRA CREDIT — SURVIVE: Edition - You should have been worth more points!")
         print(f"\nLoading Player.... {self.name}")
-        print(f"\nPlayer Info: \nName: {self.name} \nGender: {self.gender.title()} \nTitle: {self.stats['title']}")
+        print(f"\nPlayer Info: \nName: {self.name} \nTitle: {self.stats['title']} \nLives: {self.stats['lives']}")
 
 
     def player_exams(self):

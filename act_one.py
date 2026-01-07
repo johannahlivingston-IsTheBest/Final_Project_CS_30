@@ -1,3 +1,11 @@
+##############################################################################
+# Title: Act_one
+# Date: 1/6/2026
+##############################################################################
+"""This contains all the dialouge and options for ALL OF ACT one."""
+##############################################################################
+# Imports and Global Variables -----------------------------------------------
+
 import utils
 
 # text for the intro
@@ -199,6 +207,7 @@ You’re going to need it.
 The world dissolves into light.
 ━━━━━━━━━━━━━━━━━━━━━━
 '''
+# Functions and Classes ------------------------------------------------------
 def starting_text():
     print("\nTo get to the next dialouge click enter")
     print("\nEach time you click enter, scroll to the top")
@@ -284,5 +293,5 @@ def tutorial():
         utils.clear()
         print(tut_two)
 
-
+# Main -----------------------------------------------------------------------
 starting_text()

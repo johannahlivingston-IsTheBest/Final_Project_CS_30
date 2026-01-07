@@ -176,11 +176,11 @@ def starting_text():
         print(part_three) 
     skip_count += 1
     skip = input("")
-    #if skip_count == 3 and skip == '':
-    #    utils.clear()
-    #    print(part_four)
-   # skip_count += 1
-    #skip = input("")
+    if skip_count == 3 and skip == '':
+        utils.clear()
+        print(part_four)
+    skip_count += 1
+    skip = input("")
     if skip_count == 4 and skip == '':
         utils.clear()
         print("How would you like to respond?")

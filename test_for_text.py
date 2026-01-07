@@ -1,6 +1,6 @@
 import utils
 
-
+# text for the intro
 part_one = '''You were reading an otome game synopsis on your phone.
 
 Ooooh a new version of my favorite otome game!
@@ -11,8 +11,6 @@ Multiple endings.
 
 You are lost in thought when you step off the curb.
 You never saw the truck.'''
-
-#[SCREEN FADES TO BLACK]
 
 part_two = '''AT THE HOSPITAL: “Congratulations! You’re Dying.”
 
@@ -149,7 +147,56 @@ A perfect candidate
 
 “…Candidate?” you whisper.
 '''
+# text for the tutorial
+tut_one = '''
+━━━━━━━━━━━━━━━━━━━━━━
+SYSTEM MESSAGE:
+Yes! A candidate to have a chance to fall in love, 
+have an adventure and survive death!
 
+Don’t worry.
+We’ll explain everything properly.
+
+Including:
+• The rules
+• The stakes
+• And how you can survive
+━━━━━━━━━━━━━━━━━━━━━━
+
+'''
+tutorial_text = '''
+━━━━━━━━━━━━━━━━━━━━━━
+SYSTEM MESSAGE:
+Yes! A candidate to have a chance to fall in love, 
+have an adventure and survive death!
+
+Don’t worry.
+We’ll explain everything properly.
+
+Including:
+• The rules
+• The stakes
+• And how you can survive
+━━━━━━━━━━━━━━━━━━━━━━
+
+'''
+
+second_choices = ['1. Felix','2. Amelia']
+tut_two = '''
+━━━━━━━━━━━━━━━━━━━━━━
+SYSTEM MESSAGE:
+
+Excellent choice!
+
+Preparing transfer…
+Loading world…
+Initializing Love Points…
+
+Good luck, Player.
+You’re going to need it.
+The world dissolves into light.
+━━━━━━━━━━━━━━━━━━━━━━
+'''
 def starting_text():
     print("To get to the next dialouge click enter")
     skip_count = 0
@@ -177,8 +224,9 @@ def starting_text():
     if skip_count == 4 and skip == '':
         utils.clear()
         print("How would you like to respond?")
-        print(first_choices)
-        user_option = input("Enter your choice: ")
+        for option in first_choices:
+            print(option)
+        user_option = input("Enter your choice(number): ")
         if user_option == '1':
             print('\n you picked option 1')
             print(f"\n{reaction_one}")
@@ -194,5 +242,40 @@ def starting_text():
     if skip_count == 6 and skip == '':
         utils.clear()
         print(part_five)
+
+
+def tutorial():
+    utils.clear()
+    print(tutorial_text)
+    tut_count = 0
+    skip = input("")
+    if skip == '' and tut_count == 0:
+        utils.clear()
+        print(tut_one)
+    tut_count += 1
+    skip = input("")
+    if tut_count == 1 and skip == '':
+        utils.clear()
+        print("How would you like to respond?")
+        for option in second_choices:
+            print(option)
+        while True:
+            user_option = input("Enter your choice(number): ")
+            if user_option == '1':
+                print('\n you picked Felix')
+                name = "Felix"
+                break
+            elif user_option == '2':
+                print('\n you picked Amelia')
+                name = "Amelia"
+                break
+            else:
+                print("Invalid input. Please enter '1' or '2'.")
+    tut_count += 1
+    skip = input("")
+    if skip == '' and tut_count == 2:
+        utils.clear()
+        print(tut_two)
+
 
 starting_text()

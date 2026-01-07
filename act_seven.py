@@ -1,8 +1,8 @@
 ##############################################################################
-# Title: Act Three
+# Title: Act Seven
 # Date: 1/7/2026
 ##############################################################################
-"""this contains all dialouge and options for act three"""
+"""this contains all dialouge and options for act seven"""
 ##############################################################################
 # Imports and Global Variables -----------------------------------------------
 import utils

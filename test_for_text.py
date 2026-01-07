@@ -152,6 +152,11 @@ A perfect candidate
 
 def starting_text():
     print("To get to the next dialouge click enter")
+    print("\nEach time you click enter, scroll to the top")
+    print("\nEnjoy!")
+    print("\nEXTRA CREDIT: SURVIVE")
+    print("Edition 1: You Should’ve Been Worth More Love Points")
+
     skip_count = 0
     skip = input("")
     if skip == '' and skip_count == 0:

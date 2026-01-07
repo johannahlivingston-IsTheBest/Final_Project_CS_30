@@ -12,49 +12,56 @@ VOID = "•"
 
 # Functions and Classes ------------------------------------------------------
 class World:
-    """Create a game world the player can move around in.
-    Brainstorming
-    How to organize
-    Need multiple objects on one space
-    Need to be able to move easily
-    Could maybe have a render function.
-    Store positions in objects themselves, world just knows what objects it has.
-    To render, loop through all indices on the grid. Search dictionary. If key
-    matches, display that object. Otherwise, display VOID.
-    Maybe just search through list of entities to grab latest positions?
-    If I move through the entities themselves, map somehow needs to get that updated info.
-
-    I need two things:
-    (1) given entity, find its position;
-    (2) and given position, find entity that is there.
-
-    What I actually need
-    Moving around: check collisions (task 2)
-    
-    """
+    """Create a game world the player can move around in."""
     def __init__(self, size):
         self.rows = size[0]
         self.cols = size[1]
-        # self.map = [[[VOID] for y in range(size[1])] for x in range(size[0])]
-        # Dictionary format: 
-        self.entities = []
+        self.grid = [[[VOID] for y in range(size[1])] for x in range(size[0])]
+        self.entities = set()
 
     def get(self, x, y):
-        return self.map[x][y]
+        return self.grid[x][y]
+    
+    def find(self, entity):
+        return entity.pos
+    
+    def is_solid(self, x, y):
+        return self.grid[x][y][0].is_solid
+    
+    def is_open(self, x, y):
+        return self.grid[x][y][0] == VOID or not self.is_solid(x, y)
+    
+    def add_entity(self, entity):
+        self.place(entity, entity.pos)
+        self.entities.add(entity)
+    
+    def del_entity(self, entity):
+        self.grid[entity.pos[0]][entity.pos[1]].remove(entity)
+        self.entities.remove(entity)
 
     def place(self, entity, target):
-        self.map[target].append(self.map[space])
-        self.map[space].remove(self.)
+        if self.is_open(*target):
+            if entity in self.entities:
+                old_pos = self.find(entity)
+                x_old = old_pos[0]
+                y_old = old_pos[1]
+                self.grid[x_old][y_old].remove(entity)
+            entity.pos = target
+            self.grid[target[0]][target[1]].insert(0, entity)
+        else:
+            print("THAT'S ILLEGAL")
 
-    def move(self, target, direction, count):
-        pass
+    def move(self, entity, direction, count=1):
+        step = np.array(direction) * count
+        target = entity.pos + step
+        self.place(entity, target)
 
     def show(self):
         print("\n")
         for y in range(self.cols):
             print("\n     ", end="")
             for x in range(self.rows):
-                print(f' {self.map[x][y]} ', end="")
+                print(f' {self.grid[x][y][0]} ', end="")
 
 
 class Entity():
@@ -64,9 +71,10 @@ class Entity():
     - pos
     - obstacle (bool)
     """
-    def __init__(self, map, pos, is_obstacle=True):
-        self.map = map
-        self.pos = pos
+    def __init__(self, world, pos, symbol, is_obstacle=True):
+        self.world = world
+        self.pos = np.array(pos)
+        self.symbol = symbol
         self.is_obstacle = is_obstacle
     
     def move(self, x, y):
@@ -75,9 +83,18 @@ class Entity():
         # Check collisions
         if not (target or target.is_obstacle):
             self.pos += move
+    
+    def __str__(self):
+        return self.symbol
 
 
 if __name__ == "__main__":
-    map = World((10, 10))
+    map_ = World((10, 10))
+    player = Entity(map_, np.array([0, 0]), "P")
     # print(map.get(2, 3))
-    map.show()
+    map_.add_entity(player)
+    map_.show()
+    map_.place(player, [2, 3])
+    map_.show()
+    map_.move(player, [3, 0])
+    map_.show()

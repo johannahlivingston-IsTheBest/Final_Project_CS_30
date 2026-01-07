@@ -61,7 +61,7 @@ Good news!
  You have been chosen by beings of higher power!
 ━━━━━━━━━━━━━━━━━━━━━━
 '''
-first_choices = ['1. What is happening right now?','2. “Beings of higher power…?”']
+first_choices = ['1. What is happening right now?','\n2. “Beings of higher power…?”']
 reaction_one = '''
 The system pauses.
 As if thinking...
@@ -75,9 +75,11 @@ In short?
 You are dying.
 
 In long?
-You were hit by a truck, your body is failing, and you have caught the attention of some very bored entities called beings of higher power.
+You were hit by a truck, your body is failing, and you have caught the 
+attention of some very bored entities called beings of higher power.
 
-They have decided that if you manage to survive a game, you can survive the truck accident
+They have decided that if you manage to survive a game, you can survive 
+the truck accident
 ━━━━━━━━━━━━━━━━━━━━━━
 
 '''
@@ -131,9 +133,9 @@ They wanted to watch someone fight for their life using love
 ━━━━━━━━━━━━━━━━━━━━━━
 
 The word “LOVE” sparkles obnoxiously.
-━━━━━━━━━━━━━━━━━━━━━━
 '''
 part_five = '''
+━━━━━━━━━━━━━━━━━━━━━━
 SYSTEM MESSAGE:
 And then they found you.
 
@@ -198,7 +200,12 @@ The world dissolves into light.
 ━━━━━━━━━━━━━━━━━━━━━━
 '''
 def starting_text():
-    print("To get to the next dialouge click enter")
+    print("\nTo get to the next dialouge click enter")
+    print("\nEach time you click enter, scroll to the top")
+    print("\nEnjoy!")
+    print("\nEXTRA CREDIT: SURVIVE")
+    print("Edition 1: You Should’ve Been Worth More Love Points")
+
     skip_count = 0
     skip = input("")
     if skip == '' and skip_count == 0:
@@ -213,7 +220,7 @@ def starting_text():
     skip = input("")
     if skip_count == 2 and skip == '':
         utils.clear()
-        print(part_three)
+        print(part_three) 
     skip_count += 1
     skip = input("")
     if skip_count == 3 and skip == '':

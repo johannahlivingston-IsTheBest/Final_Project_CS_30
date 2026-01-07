@@ -21,20 +21,20 @@ Notes for next time:
 
 
 
+Johannah: 
+Date: 01/07/2026
 
-Date: MM/DD/YYYY
+Version 1 -
 
-Version # -
+Added - test_for_text
 
-Added - 
-
-Changed - 
+Changed - player_class - added the import to the text and changed play
 
 Fixed - 
 
 
 Notes for next time:
-
+finish act 2
 
 
 Date: MM/DD/YYYY

@@ -1,0 +1,297 @@
+##############################################################################
+# Title: Act_one
+# Date: 1/6/2026
+##############################################################################
+"""This contains all the dialouge and options for ALL OF ACT one."""
+##############################################################################
+# Imports and Global Variables -----------------------------------------------
+
+import utils
+
+# text for the intro
+part_one = '''You were reading an otome game synopsis on your phone.
+
+Ooooh a new version of my favorite otome game!
+I should check it out when I get home
+A fantasy academy.
+Love points.
+Multiple endings.
+
+You are lost in thought when you step off the curb.
+You never saw the truck.'''
+
+part_two = '''AT THE HOSPITAL: “Congratulations! You’re Dying.”
+
+Darkness.
+Then—
+
+Beep.
+Beep.
+Beeeeeeep.
+
+Your eyes crack open.
+
+White ceiling.
+Bright lights.
+The distinct smell of disinfectant and regret.
+You try to move.
+Your body does not agree.
+“…Am I… alive?” you mutter.
+
+Before you can process anything, a translucent window snaps open in front of your face.
+
+'''
+part_three = '''
+━━━━━━━━━━━━━━━━━━━━━━
+WELCOME, PLAYER!
+
+Current Location:
+Hospital — Emergency Ward
+Status:
+CRITICALLY INJURED
+
+━━━━━━━━━━━━━━━━━━━━━━
+You blink.
+
+“…Okay,” you say weakly. “This is either a dream or I’m concussed.”
+
+The window cheerfully updates.
+
+
+━━━━━━━━━━━━━━━━━━━━━━
+SYSTEM MESSAGE:
+
+Bad news!
+You were hit by a truck.
+Like, REALLY hit.
+
+Good news!
+ You have been chosen by beings of higher power!
+━━━━━━━━━━━━━━━━━━━━━━
+'''
+first_choices = ['1. What is happening right now?','\n2. “Beings of higher power…?”']
+reaction_one = '''
+The system pauses.
+As if thinking...
+━━━━━━━━━━━━━━━━━━━━━━
+SYSTEM MESSAGE:
+
+Ah.
+Straight to the point.
+
+In short?
+You are dying.
+
+In long?
+You were hit by a truck, your body is failing, and you have caught the 
+attention of some very bored entities called beings of higher power.
+
+They have decided that if you manage to survive a game, you can survive 
+the truck accident
+━━━━━━━━━━━━━━━━━━━━━━
+
+'''
+reaction_two = '''
+The system brightens, almost excited.
+
+━━━━━━━━━━━━━━━━━━━━━━
+SYSTEM MESSAGE:
+
+Yes!
+You noticed that part quickly.
+Excellent.
+
+They are ancient.
+Powerful.
+And extremely, painfully bored.
+
+And you?
+You are interesting.
+Hence they have decided that if you manage to survive a game, you can survive the truck accident
+━━━━━━━━━━━━━━━━━━━━━━
+'''
+part_four = '''
+The window expands, filling more of your vision.
+
+━━━━━━━━━━━━━━━━━━━━━━
+SYSTEM MESSAGE:
+
+Allow us to explain.
+
+The beings observing you exist far beyond your understanding.
+They have watched countless worlds.
+Countless lives.
+
+And frankly?
+They are running out of things to do.
+
+So they made a game, the one you have been playing and the one
+that led you to be distracted and caused the accident with the truck.
+━━━━━━━━━━━━━━━━━━━━━━
+
+You have a bad feeling about this.
+
+━━━━━━━━━━━━━━━━━━━━━━
+SYSTEM MESSAGE:
+They wanted entertainment.
+Drama.
+Romance.
+Desperation.
+They wanted to watch someone fight for their life using love
+━━━━━━━━━━━━━━━━━━━━━━
+
+The word “LOVE” sparkles obnoxiously.
+'''
+part_five = '''
+━━━━━━━━━━━━━━━━━━━━━━
+SYSTEM MESSAGE:
+And then they found you.
+
+• 30 years old
+• Never experienced romantic love
+• Emotionally inexperienced
+• Highly likely to panic
+
+A perfect candidate
+━━━━━━━━━━━━━━━━━━━━━━
+
+“…Candidate?” you whisper.
+'''
+# text for the tutorial
+tut_one = '''
+━━━━━━━━━━━━━━━━━━━━━━
+SYSTEM MESSAGE:
+Yes! A candidate to have a chance to fall in love, 
+have an adventure and survive death!
+
+Don’t worry.
+We’ll explain everything properly.
+
+Including:
+• The rules
+• The stakes
+• And how you can survive
+━━━━━━━━━━━━━━━━━━━━━━
+
+'''
+tutorial_text = '''
+━━━━━━━━━━━━━━━━━━━━━━
+SYSTEM MESSAGE:
+Yes! A candidate to have a chance to fall in love, 
+have an adventure and survive death!
+
+Don’t worry.
+We’ll explain everything properly.
+
+Including:
+• The rules
+• The stakes
+• And how you can survive
+━━━━━━━━━━━━━━━━━━━━━━
+
+'''
+
+second_choices = ['1. Felix','2. Amelia']
+tut_two = '''
+━━━━━━━━━━━━━━━━━━━━━━
+SYSTEM MESSAGE:
+
+Excellent choice!
+
+Preparing transfer…
+Loading world…
+Initializing Love Points…
+
+Good luck, Player.
+You’re going to need it.
+The world dissolves into light.
+━━━━━━━━━━━━━━━━━━━━━━
+'''
+# Functions and Classes ------------------------------------------------------
+def starting_text():
+    print("\nTo get to the next dialouge click enter")
+    print("\nEach time you click enter, scroll to the top")
+    print("\nEnjoy!")
+    print("\nEXTRA CREDIT: SURVIVE")
+    print("Edition 1: You Should’ve Been Worth More Love Points")
+
+    skip_count = 0
+    skip = input("")
+    if skip == '' and skip_count == 0:
+        utils.clear()
+        print(part_one)
+    skip_count += 1
+    skip = input("")
+    if skip == '' and skip_count == 1:
+        utils.clear()
+        print(part_two)
+    skip_count += 1
+    skip = input("")
+    if skip_count == 2 and skip == '':
+        utils.clear()
+        print(part_three) 
+    skip_count += 1
+    skip = input("")
+    if skip_count == 3 and skip == '':
+        utils.clear()
+        print(part_four)
+    skip_count += 1
+    skip = input("")
+    if skip_count == 4 and skip == '':
+        utils.clear()
+        print("How would you like to respond?")
+        for option in first_choices:
+            print(option)
+        user_option = input("Enter your choice(number): ")
+        if user_option == '1':
+            print('\n you picked option 1')
+            print(f"\n{reaction_one}")
+        elif user_option == '2':
+            print('\n you picked option 2')
+    skip_count += 1
+    skip = input("")
+    if skip_count == 5 and skip == '':
+        utils.clear()
+        print(part_four)
+    skip_count += 1
+    skip = input("")
+    if skip_count == 6 and skip == '':
+        utils.clear()
+        print(part_five)
+
+
+def tutorial():
+    utils.clear()
+    print(tutorial_text)
+    tut_count = 0
+    skip = input("")
+    if skip == '' and tut_count == 0:
+        utils.clear()
+        print(tut_one)
+    tut_count += 1
+    skip = input("")
+    if tut_count == 1 and skip == '':
+        utils.clear()
+        print("How would you like to respond?")
+        for option in second_choices:
+            print(option)
+        while True:
+            user_option = input("Enter your choice(number): ")
+            if user_option == '1':
+                print('\n you picked Felix')
+                name = "Felix"
+                break
+            elif user_option == '2':
+                print('\n you picked Amelia')
+                name = "Amelia"
+                break
+            else:
+                print("Invalid input. Please enter '1' or '2'.")
+    tut_count += 1
+    skip = input("")
+    if skip == '' and tut_count == 2:
+        utils.clear()
+        print(tut_two)
+
+# Main -----------------------------------------------------------------------
+starting_text()

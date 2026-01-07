@@ -1,8 +1,8 @@
-import exam_class, test_for_text
+import exam_class, act_one
 
 class Player:
     def __init__(self):
-        self.name = test_for_text.tutorial.name
+        self.name = act_one.tutorial.name
         self.level = 1
         self.stats = {"title":None, "partner": None, "exams_completed": 0, "lives":1}
        
@@ -36,8 +36,8 @@ class Player:
 
 
     def play(self):
-        test_for_text.starting_text()
-        test_for_text.tutorial()
+        act_one.starting_text()
+        act_one.tutorial()
         self.player_exams()
         print(f"\nExams Completed: {self.stats['exams_completed']}")
         print("\nThank you for playing EXTRA CREDIT — SURVIVE: Edition: You should have been worth more points!")

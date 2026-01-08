@@ -11,16 +11,16 @@ import utils
 # text for the intro
 part_one = '''You were reading an otome game synopsis on your phone.
 
-Ooooh a new version of my favorite otome game!
-I should check it out when I get home
+"Ooooh a new version of my favorite otome game!"
+"I should check it out when I get home"
 A fantasy academy.
 Love points.
 Multiple endings.
 
 You are lost in thought when you step off the curb.
-You never saw the truck.'''
+You never saw the TRUCK.'''
 
-part_two = '''AT THE HOSPITAL: “Congratulations! You’re Dying.”
+part_two = '''CHAPTER 1 - At the Hospital: “Congratulations! You’re Dying.”
 
 Darkness.
 Then—
@@ -38,19 +38,22 @@ You try to move.
 Your body does not agree.
 “…Am I… alive?” you mutter.
 
-Before you can process anything, a translucent window snaps open in front of your face.
+Before you can process anything, 
+a translucent window snaps open in front of your face.
 
 '''
 part_three = '''
 ━━━━━━━━━━━━━━━━━━━━━━
+SYSTEM MESSAGE:
+
 WELCOME, PLAYER!
 
 Current Location:
 Hospital — Emergency Ward
 Status:
 CRITICALLY INJURED
-
 ━━━━━━━━━━━━━━━━━━━━━━
+
 You blink.
 
 “…Okay,” you say weakly. “This is either a dream or I’m concussed.”
@@ -86,8 +89,8 @@ In long?
 You were hit by a truck, your body is failing, and you have caught the 
 attention of some very bored entities called beings of higher power.
 
-They have decided that if you manage to survive a game, you can survive 
-the truck accident
+They have decided that if you manage to survive a game, 
+you can survive the truck accident!
 ━━━━━━━━━━━━━━━━━━━━━━
 
 '''
@@ -107,7 +110,8 @@ And extremely, painfully bored.
 
 And you?
 You are interesting.
-Hence they have decided that if you manage to survive a game, you can survive the truck accident
+Hence they have decided that if you manage to survive a game, 
+you can survive the truck accident!
 ━━━━━━━━━━━━━━━━━━━━━━
 '''
 part_four = '''
@@ -232,22 +236,19 @@ def starting_text():
         print(part_three) 
     skip_count += 1
     skip = input("")
+    
     if skip_count == 3 and skip == '':
-        utils.clear()
-        print(part_four)
-    skip_count += 1
-    skip = input("")
-    if skip_count == 4 and skip == '':
-        utils.clear()
+        utils.clear() 
         print("How would you like to respond?")
         for option in first_choices:
             print(option)
         user_option = input("Enter your choice(number): ")
         if user_option == '1':
-            print('\n you picked option 1')
+            print('\nYou picked option 1')
             print(f"\n{reaction_one}")
-        elif user_option == '2':
-            print('\n you picked option 2')
+        elif user_option == '2':    
+            print('\nYou picked option 2')
+            print(f"\n{reaction_two}")
     skip_count += 1
     skip = input("")
     if skip_count == 5 and skip == '':

@@ -23,14 +23,14 @@ Changelog:
 
 Version 1:
 
-Added - 
+Added - World class, Entity class, several utility functions
 
 
 
 
-Changed - 
+Changed - nothing
 
-Fixed - 
+Fixed - nothing
 
 
 Notes for next time:

@@ -30,28 +30,35 @@ class Puzzles:
       self.puzzle_types = ['match_des', 'rock_paper_scissors', 'riddle', 'scramble', 'multi_choice']
       self.rid_complete = False
    def rock_paper_scissors(self):
-      wins = 0
-      for round in range(3):
-         user_choice = input("Please choose rock, paper, or scissors: ").lower()
-         if user_choice not in hand_choices:
-            print("Invalid choice. Please choose rock, paper, or scissors.")
-            continue
-         dragon_choice = random.choice(hand_choices)
-         print(f"The dragon chose: {dragon_choice}")
-         if user_choice == dragon_choice:
-            print("It's a tie!")
-         elif user_choice == 'rock' and dragon_choice == 'scissors':
-            print("You win! Rock crushes scissors.")
-            wins += 1
-         elif user_choice == 'paper' and dragon_choice == 'rock':
-            print("You win! Paper covers rock.")
-            wins += 1
-         elif user_choice == 'scissors' and dragon_choice == 'paper':
-            print("You win! Scissors cut paper.")
-            wins += 1
-         else:
-            print("You lose! Better luck next time.")
-      print(f"You won {wins} out of 3 rounds.")
+    print('''Remeber: If you tie that's zero wins ''')
+    wins = 0
+    
+    for round in range(3):
+        in_vaild_choice = False 
+        while not in_vaild_choice:
+            user_choice = input("Please choose rock, paper, or scissors: ").lower()
+            if user_choice not in hand_choices:
+                print("Invalid choice. Please choose rock, paper, or scissors.") 
+            else:
+                in_vaild_choice = True
+                orb_choice = random.choice(hand_choices)
+                print(f"The Divine Orb chose: {orb_choice}")
+                if user_choice == orb_choice:
+                    print("It's a tie!")
+                elif user_choice == 'rock' and orb_choice == 'scissors':
+                    print("You win! Rock crushes scissors.")
+                    wins += 1
+                elif user_choice == 'paper' and orb_choice == 'rock':
+                    print("You win! Paper covers rock.")
+                    wins += 1
+                elif user_choice == 'scissors' and orb_choice == 'paper':
+                    print("You win! Scissors cut paper.")
+                    wins += 1
+                else:
+                    print("You lose! Better luck next time.")
+    
+    print(f"You won {wins} out of 3 rounds.")
+
    def match_des(self,list_des):
       print("Welcome to your third exam: Match the character to their description.")
       print("You will be given three character descriptions.")
@@ -66,9 +73,7 @@ class Puzzles:
          user_match = input("\nEnter the number of the character that matches the description: ")
          
    def riddle(self):
-      print("Welcome to your first exam: Riddles!")
-      print("You will be given three riddles to solve.")
-      print("Try to answer correctly to pass the exam.")
+      print("\nYou will be given three riddles to solve.")
      # Exam One
       num = 0
       for i in range(3):
@@ -128,11 +133,10 @@ class Puzzles:
       print(f"\nYou got {riddle_answers_count} out of 4 right ")
 
    def wordle(self):
-      print("This is your fifth exam. The wordle exam.")
       print("You have to guess the correct word in 6 tries.")
       print("The word is a five letter word.")
       print("If you need help, type 'help' to get a hint. You can only use the hint once.")
-      wordle_answer = "flame"
+      wordle_answer = "water"
       attempts = 6
       hint_used = False
       # Create the result display
@@ -150,7 +154,7 @@ class Puzzles:
 
          if guess == "help" and not hint_used:
             hint_used = True
-            print("Hint: It's something that burns and gives light.")
+            print("Hint: It's something that is blue and you can drink it")
             continue
 
          if len(guess) != 5:
@@ -189,3 +193,4 @@ class Puzzles:
             print(f"Sorry, you've used all your attempts. The correct word was '{wordle_answer}'.")
 puzzles = Puzzles()  
 # Main --------------------------------------------------------------------------------------------------------------
+puzzles.scramble()

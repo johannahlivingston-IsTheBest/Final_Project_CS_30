@@ -240,21 +240,21 @@ Notes for next time:
 ----------------------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------------------
 Johannah:
-Date: MM/DD/YYYY
+Date: 01/08/2026
 
 Changelog:
 
 Version 1:
 
-Added - Puzzle class - finised the riddle game and started on scramble game
+Added - nothing
 
 
-Changed - 
+Changed - nothing
 
-Fixed - 
+Fixed - the rock_paper_scirssors gaem in puzzles.py - made it loop for invalid answer
 
 
-Notes for next time:
+Notes for next time: nothing
 -------------------------------------------------------------------------------------------------
 Atticus:
 Date: MM/DD/YYYY

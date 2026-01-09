@@ -57,9 +57,9 @@ CRITICALLY INJURED
 You blink.
 
 “…Okay,” you say weakly. “This is either a dream or I’m concussed.”
-
+'''
+part_four = '''
 The window cheerfully updates.
-
 
 ━━━━━━━━━━━━━━━━━━━━━━
 SYSTEM MESSAGE:
@@ -114,7 +114,7 @@ Hence they have decided that if you manage to survive a game,
 you can survive the truck accident!
 ━━━━━━━━━━━━━━━━━━━━━━
 '''
-part_four = '''
+part_five = '''
 The window expands, filling more of your vision.
 
 ━━━━━━━━━━━━━━━━━━━━━━
@@ -132,6 +132,8 @@ They are running out of things to do.
 So they made a game, the one you have been playing and the one
 that led you to be distracted and caused the accident with the truck.
 ━━━━━━━━━━━━━━━━━━━━━━
+'''
+part_six = '''
 
 You have a bad feeling about this.
 
@@ -146,7 +148,7 @@ They wanted to watch someone fight for their life using love
 
 The word “LOVE” sparkles obnoxiously.
 '''
-part_five = '''
+part_six = '''
 ━━━━━━━━━━━━━━━━━━━━━━
 SYSTEM MESSAGE:
 And then they found you.
@@ -177,24 +179,8 @@ Including:
 • And how you can survive
 ━━━━━━━━━━━━━━━━━━━━━━
 
-'''
-tutorial_text = '''
-━━━━━━━━━━━━━━━━━━━━━━
-SYSTEM MESSAGE:
-Yes! A candidate to have a chance to fall in love, 
-have an adventure and survive death!
-
-Don’t worry.
-We’ll explain everything properly.
-
-Including:
-• The rules
-• The stakes
-• And how you can survive
-━━━━━━━━━━━━━━━━━━━━━━
 
 '''
-
 second_choices = ['1. Felix','2. Amelia']
 tut_two = '''
 ━━━━━━━━━━━━━━━━━━━━━━
@@ -236,63 +222,67 @@ def starting_text():
         print(part_three) 
     skip_count += 1
     skip = input("")
-    
     if skip_count == 3 and skip == '':
-        utils.clear() 
-        print("How would you like to respond?")
-        for option in first_choices:
-            print(option)
-        user_option = input("Enter your choice(number): ")
-        if user_option == '1':
-            print('\nYou picked option 1')
-            print(f"\n{reaction_one}")
-        elif user_option == '2':    
-            print('\nYou picked option 2')
-            print(f"\n{reaction_two}")
-    skip_count += 1
-    skip = input("")
-    if skip_count == 5 and skip == '':
         utils.clear()
         print(part_four)
     skip_count += 1
     skip = input("")
-    if skip_count == 6 and skip == '':
+    if skip_count == 4 and skip == '':
+        utils.clear() 
+        print("How would you like to respond?")
+        for option in first_choices:
+            print(option)
+        while True:
+            user_option = input("Enter your choice(number): ")
+            if user_option == '1':
+                print('\nYou picked option 1')
+                print(f"\n{reaction_one}")
+                break
+            elif user_option == '2':    
+                print('\nYou picked option 2')
+                print(f"\n{reaction_two}")
+                break
+            else:
+                print("\nInvalid input. Please enter '1' or '2'.")
+    skip_count += 1
+    skip = input("")
+    if skip_count == 5 and skip == '':
         utils.clear()
         print(part_five)
+    skip_count += 1
+    skip = input("")
+    if skip_count == 6 and skip == '':
+        utils.clear()
+        print(part_six)
 
 
-def tutorial():
+def tutorial_intro():
     utils.clear()
-    print(tutorial_text)
-    tut_count = 0
+    print(tut_one)
     skip = input("")
-    if skip == '' and tut_count == 0:
+    if skip == '':
         utils.clear()
-        print(tut_one)
-    tut_count += 1
-    skip = input("")
-    if tut_count == 1 and skip == '':
-        utils.clear()
-        print("How would you like to respond?")
+        print("For now pick your character identity/name")
         for option in second_choices:
             print(option)
         while True:
             user_option = input("Enter your choice(number): ")
             if user_option == '1':
-                print('\n you picked Felix')
+                print('\nYou picked Felix')
                 name = "Felix"
                 break
             elif user_option == '2':
-                print('\n you picked Amelia')
+                print('\nYou picked Amelia')
                 name = "Amelia"
                 break
             else:
-                print("Invalid input. Please enter '1' or '2'.")
-    tut_count += 1
+                print("\nInvalid input. Please enter '1' or '2'.")
     skip = input("")
-    if skip == '' and tut_count == 2:
+    if skip == '':
         utils.clear()
         print(tut_two)
+    return name
 
 # Main -----------------------------------------------------------------------
 starting_text()
+tutorial_intro()

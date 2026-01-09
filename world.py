@@ -10,6 +10,11 @@ import input_utils as iu
 
 # VOID = "🌳"
 VOID = "•"
+DIRECTIONS = {"up": np.array([-1, 0]),
+              "down": np.array([1, 0]),
+              "left": np.array([0, -1]),
+              "right": np.array([0, 1])
+}
 
 
 class PlacementError(Exception):
@@ -111,6 +116,9 @@ class World:
             entity (Entity): the entity to place
             target (list): the target location
         """
+        if type(entity) == WorldPlayer:
+            direction = iu.menu("Move: ", DIRECTIONS.keys(), keymap="wasd")
+            direction = DIRECTIONS[direction]
         if self.is_open(*target):
             if entity in self.entities:
                 old_pos = self.find(entity)
@@ -133,6 +141,9 @@ class World:
         step = np.array(direction) * count
         target = entity.pos + step
         self.place(entity, target)
+    
+    def player_movement(self):
+        pass
 
     def show(self):
         """Display the world to the user."""
@@ -156,12 +167,12 @@ class Entity():
         self.name = name
         self.is_solid = is_solid
     
-    def move(self, x, y):
-        move = np.array([x, y])
-        target = self.map.get(self.pos + move)
-        # Check collisions
-        if not (target or target.is_obstacle):
-            self.pos += move
+    # def move(self, x, y):
+    #     move = np.array([x, y])
+    #     target = self.map.get(self.pos + move)
+    #     # Check collisions
+    #     if not (target or target.is_obstacle):
+    #         self.pos += move
     
     def __str__(self):
         return self.symbol
@@ -170,20 +181,36 @@ class Entity():
         return f"Entity(pos={self.pos}, symbol={self.symbol}, name={self.name}, is_solid={self.is_solid})"
     
 
-def WorldPlayer(Entity):
+class WorldPlayer(Entity):
     def __init__(self, pos, symbol, name):
         super().__init__(pos, symbol, name)
     
-    def move(self, x, y):
-        
+    def move(self):
+        direction = iu.menu("Move: ", DIRECTIONS.keys(), keymap="wasd")
+        direction = DIRECTIONS[direction]
+        super().move(*direction)
+
+
+def move_player():
+    direction = iu.menu("Move: ", DIRECTIONS.keys(), keymap="wasd")
+    return DIRECTIONS[direction]
 
 
 def game_loop(world):
-    pass
+    while True:
+        direction = iu.menu("Move: ", DIRECTIONS.keys(), keymap="wasd")
+        movement = DIRECTIONS[direction]
+        try:
+            world.move(player, movement)
+            break
+        except PlacementError:
+            print("\n--- INVALID MOVEMENT ---\nThat space is full!")
+    world.show()
+
 
 if __name__ == "__main__":
     map_ = World((10, 10))
-    player = Entity(np.array([0, 0]), "P", "player1")
+    player = WorldPlayer(np.array([0, 0]), "P", "player1")
     player2 = Entity(np.array([4, 1]), "X", "player2")
     # print(map.get(2, 3))
     map_.add_entity(player)
@@ -191,5 +218,7 @@ if __name__ == "__main__":
     map_.show()
     map_.place(player, [2, 3])
     map_.show()
-    map_.move(player, [2, -2])
-    map_.show()
+    # map_.move(player, [2, -2])
+    # map_.show()
+    while True:
+        game_loop(map_)

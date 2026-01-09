@@ -29,6 +29,18 @@ class Puzzles:
    def __init__(self):
       self.puzzle_types = ['match_des', 'rock_paper_scissors', 'riddle', 'scramble', 'multi_choice']
       self.rid_complete = False
+      self.char_des = {'Crown Prince':{'name':'Alexander Aurelion', 
+                                       'nickname': 'Alex',
+                                       'personality':'''Charismatic, playful, impulsive, deeply protective.
+                                       \nHides pressure beneath charm.'''},
+                        'Grand Duke':{'name':'Serene Valemont', 
+                                      'nickname': 'Ren',
+                                      'personality':'''Calm, analytical, reserved, strategic.
+                                       \nSoft humor revealed in private.'''},
+                        'Tower Master':{'name':'Theron Ravenhart ', 
+                                      'nickname': 'Nyx',
+                                      'personality':'''Intelligent, intimidating, secretive.
+                                       \nDeadly competence paired with quiet protectiveness.'''}}
    def rock_paper_scissors(self):
     print('''Remeber: If you tie that's zero wins ''')
     wins = 0
@@ -59,18 +71,47 @@ class Puzzles:
     
     print(f"You won {wins} out of 3 rounds.")
 
-   def match_des(self,list_des):
-      print("Welcome to your third exam: Match the character to their description.")
+   def match_des(self):
       print("You will be given three character descriptions.")
       print("Your task is to match each description to the correct character.")
       correct_matches = 0
-      for character in list_des:
-         print(f"\n {character}")
-         # switch out the Characetr with the character names
-         options = ['1. Character A', '2. Character B', '3. Character C']
-         for option in options:
-            print(f"\n{option}")
-         user_match = input("\nEnter the number of the character that matches the description: ")
+      print('\nWhich character has this personality: ')
+      print(f"\n{self.char_des['Crown Prince']['personality']}")
+      # switch out the Characetr with the character names
+      
+      user_match = int(input("\nEnter the number of the character that matches the description: "))
+      if user_match == 1:
+         correct_matches += 1
+         print('Correct.')
+      else:
+         print("Incrorrect")
+      options = ['1. Crown Prince', '2. Grand Duke', '3. Tower Master']
+      for option in options:
+         print(f"\n{option}")
+      print('\nWhich character has this name: ')
+      print(f"\n{self.char_des['Grand Duke']['name']}")
+      user_match_two = int(input("\nEnter the number of the character that matches the description: "))
+      if user_match_two == 3:
+         correct_matches += 1
+         print("Correct! One more to go!")
+      else:
+         print("Incrorrect")
+      print('True of False?')
+      print(f"{self.char_des['Tower Master']['name']} personality is {self.char_des['Tower Master']['personality']} ")
+      options = ['1.True', '2.False']
+      for option in options:
+         print(f"\n{option}")
+      user_match_three = int(input("\nEnter the number 1 for true and 2 for false: "))
+      if user_match_three == 1:
+         print('Wow.... Correct')
+         correct_matches += 1
+      else:
+         print('.....Incorrect')
+      
+      print(correct_matches)
+
+
+
          
    def riddle(self):
       print("\nYou will be given three riddles to solve.")
@@ -193,4 +234,6 @@ class Puzzles:
             print(f"Sorry, you've used all your attempts. The correct word was '{wordle_answer}'.")
 puzzles = Puzzles()  
 # Main --------------------------------------------------------------------------------------------------------------
-puzzles.scramble()
+#print(f"{puzzles.char_des['Crown Prince']['nickname']}")
+
+puzzles.match_des()

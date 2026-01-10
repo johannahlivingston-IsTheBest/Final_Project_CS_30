@@ -19,7 +19,6 @@ Multiple endings.
 
 You are lost in thought when you step off the curb.
 You never saw the TRUCK.'''
-
 part_two = '''CHAPTER 1 - At the Hospital: “Congratulations! You’re Dying.”
 
 Darkness.
@@ -148,7 +147,7 @@ They wanted to watch someone fight for their life using love
 
 The word “LOVE” sparkles obnoxiously.
 '''
-part_six = '''
+part_seven = '''
 ━━━━━━━━━━━━━━━━━━━━━━
 SYSTEM MESSAGE:
 And then they found you.
@@ -194,95 +193,100 @@ Initializing Love Points…
 
 Good luck, Player.
 You’re going to need it.
-The world dissolves into light.
 ━━━━━━━━━━━━━━━━━━━━━━
 '''
 # Functions and Classes ------------------------------------------------------
 def starting_text():
-    print("\nTo get to the next dialouge click enter")
-    print("\nEach time you click enter, scroll to the top")
-    print("\nEnjoy!")
-    print("\nEXTRA CREDIT: SURVIVE")
-    print("Edition 1: You Should’ve Been Worth More Love Points")
+    # Instructions for the player
+    print("""
+    To get to the next dialogue, press Enter.
+    Each time you click enter, scroll to the top
 
-    skip_count = 0
-    skip = input("")
-    if skip == '' and skip_count == 0:
-        utils.clear()
-        print(part_one)
-    skip_count += 1
-    skip = input("")
-    if skip == '' and skip_count == 1:
-        utils.clear()
-        print(part_two)
-    skip_count += 1
-    skip = input("")
-    if skip_count == 2 and skip == '':
-        utils.clear()
-        print(part_three) 
-    skip_count += 1
-    skip = input("")
-    if skip_count == 3 and skip == '':
-        utils.clear()
-        print(part_four)
-    skip_count += 1
-    skip = input("")
-    if skip_count == 4 and skip == '':
-        utils.clear() 
-        print("How would you like to respond?")
-        for option in first_choices:
-            print(option)
-        while True:
-            user_option = input("Enter your choice(number): ")
-            if user_option == '1':
-                print('\nYou picked option 1')
-                print(f"\n{reaction_one}")
-                break
-            elif user_option == '2':    
-                print('\nYou picked option 2')
-                print(f"\n{reaction_two}")
-                break
-            else:
-                print("\nInvalid input. Please enter '1' or '2'.")
-    skip_count += 1
-    skip = input("")
-    if skip_count == 5 and skip == '':
-        utils.clear()
-        print(part_five)
-    skip_count += 1
-    skip = input("")
-    if skip_count == 6 and skip == '':
-        utils.clear()
-        print(part_six)
+    Note:
+    - Each action you take is permanent and cannot be undone.
+    - Once you advance the story, you cannot go back to reread 
+      previous sections.
+
+    Enjoy the game!
+
+    EXTRA CREDIT: SURVIVE
+    Edition 1: You Should’ve Been Worth More Love Points
+    """)
+    # Display the first part of the story
+    input("")
+    utils.clear()
+    print(part_one)
+    # Display the second part of the story
+    input("")
+    utils.clear()
+    print(part_two)
+    # Display the third part of the story
+    input("")
+    utils.clear()
+    print(part_three) 
+    # Display the fourth part of the story
+    input("")
+    utils.clear()
+    print(part_four)
+    # Present the first choice to the player
+    input("")
+    utils.clear() 
+    print("How would you like to respond?")
+    for option in first_choices:
+        print(option)
+    # Loop until the player enters a valid choice
+    while True:
+        user_option = input("Enter your choice(number): ")
+        if user_option == '1':
+            print('\nYou picked option 1')
+            print(f"\n{reaction_one}")
+            break
+        elif user_option == '2':    
+            print('\nYou picked option 2')
+            print(f"\n{reaction_two}")
+            break
+        else:
+            print("\nInvalid input. Please enter '1' or '2'.")
+    # Display the fifth part of the story
+    input("")
+    utils.clear()
+    print(part_five)
+    # Display the sixth part of the story
+    input("")
+    utils.clear()
+    print(part_six)
+    # Display the seventh part of the story
+    input("")
+    utils.clear()
+    print(part_seven)
 
 
-def tutorial_intro():
+def tutorial_intro(player):
+
+    input("")
     utils.clear()
     print(tut_one)
-    skip = input("")
-    if skip == '':
-        utils.clear()
-        print("For now pick your character identity/name")
-        for option in second_choices:
-            print(option)
-        while True:
-            user_option = input("Enter your choice(number): ")
-            if user_option == '1':
-                print('\nYou picked Felix')
-                name = "Felix"
-                break
-            elif user_option == '2':
-                print('\nYou picked Amelia')
-                name = "Amelia"
-                break
-            else:
-                print("\nInvalid input. Please enter '1' or '2'.")
-    skip = input("")
-    if skip == '':
-        utils.clear()
-        print(tut_two)
-    return name
+
+    input("")
+    utils.clear()
+    print("For now pick your character identity/name")
+
+    for option in second_choices:
+        print(option)
+    while True:
+        user_option = input("Enter your choice(number): ")
+        if user_option == '1':
+            print('\nYou picked Felix')
+            player.name = "Felix"
+            break
+        elif user_option == '2':
+            print('\nYou picked Amelia')
+            player.name = "Amelia"
+            break
+        else:
+            print("\nInvalid input. Please enter '1' or '2'.")
+    print(tut_two)
+    
 
 # Main -----------------------------------------------------------------------
-starting_text()
-tutorial_intro()
+

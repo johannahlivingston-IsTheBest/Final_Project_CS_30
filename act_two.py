@@ -49,9 +49,11 @@ Royal Academy of Magic, Nobility, and Emotional Suffering
 ━━━━━━━━━━━━━━━━━━━━━━
 
 “…You’re joking,” you mutter.
+
 “Wait, is this the otome game I was looking at 
 right before I got hit by a truck?!”
-“Am I in it?!!!”
+
+“Am I inside of the game?!!!”
 
 '''
 act2_reality_check1 = '''
@@ -63,7 +65,7 @@ You are correct!
 ━━━━━━━━━━━━━━━━━━━━━━
 
 “This is just a world in a game then, 
-this institution is probably not even real”
+this institution is probably not even real,” you say.
 
 ━━━━━━━━━━━━━━━━━━━━━━
 SYSTEM MESSAGE:
@@ -118,7 +120,7 @@ Yes, you are still the same person.
 Thirty years lived.
 Zero successful romances.
 Plenty of emotional baggage.
-However, in the body of a commoner whose name is Amelia/Felix
+However, in the body of a commoner {name}
 ━━━━━━━━━━━━━━━━━━━━━━
 '''
 act2_confirmation = '''
@@ -182,7 +184,7 @@ No permanent negative consequences will occur.
 ━━━━━━━━━━━━━━━━━━━━━━
 '''
 act2_player_notice = '''
-
+You glance around
 From the corner of your eye, 
 you notice three people who look… wrong.
 
@@ -234,7 +236,7 @@ Your mind races.
 “Are those—”
 You swallow.
 “—the future Crown Prince, the future Grand Duke, 
-and the Magic Tower Master heir?”
+and the Magic Tower Master heir? Wasn't he also an assassin?!”
 
 A familiar window pops into existence.
 '''
@@ -250,13 +252,13 @@ Primary Routes Confirmed.
  Alexander Aurelion 
 • Grand Duke Heir
 Serene Valemont 
-• Magic Tower Master/ Assasin
+• Magic Tower Master/ Assassin
 Theron Ravenhart 
 
 Affection values (love points) initialized.
 • Crown Heir: 5
 • Grand Duke Heir: 5
-• Magic Tower Master/ Assasin: 5
+• Magic Tower Master/ Assassin: 5
 ━━━━━━━━━━━━━━━━━━━━━━
 '''
 act2_instruction1 = '''
@@ -271,12 +273,14 @@ The Duke’s gaze sharpens.
 The distortion tilts its head—interested.
 
 Your response will affect how others perceive you.
-Including them. Your heart pounds. You take a breath.
+Including them. 
+Your heart pounds. 
+You take a breath.
 ━━━━━━━━━━━━━━━━━━━━━━
 '''
 act2_instruction2 = '''
 
-What do you do?
+How do you respond to the noble who shoved you? 
 
 1. Apologize calmly and step aside.
 2. Meet their gaze and respond firmly.
@@ -285,8 +289,13 @@ What do you do?
 
 
 # Functions and Classes ------------------------------------------------------
+def print_story(text, player):
+    print(text.format(name=player.name))
+    input("")
+    utils.clear()
 
-def act_two_tutorial():
+def act_two_tutorial(player):
+    input("")
     utils.clear()
     
     # Step through all story segments
@@ -303,26 +312,23 @@ def act_two_tutorial():
         act2_tutorial_intro1,
         act2_tutorial_intro2,
         act2_tutorial_intro3,
-        act2_player_notice,
+        act2_player_notice, 
         act2_characters1,
         act2_characters2,
         act2_assign_lp,
         act2_instruction1,
-        act2_instruction2
     ]
     for segment in story_segments:
-        print(segment)
-        input("")  # wait for user to press enter
-        utils.clear()
-    # Love points dictionary (for Player class later)
-    love_points = {
-        "Crown Heir": 5,
-        "Grand Duke Heir": 5,
-        "Magic Tower Master/ Assasin": 5
-    }
+        if '{name}' in segment:
+            print_story(segment, player)
+        else:
+            print(segment)
+            input("")  # wait for user to press enter
+            utils.clear()
+    print(act2_instruction2)
     # Player choice
     while True:
-        choice = input("Enter your choice (number): ")
+        choice = input("\nEnter your choice (number): ")
         utils.clear()
         if choice == '1':
             print('''
@@ -335,8 +341,8 @@ A quiet murmur ripples through the crowd.
 
 You sense approval. Not admiration—yet—but acknowledgment.
 ''')
-            love_points["Crown Heir"] += 1
-            love_points["Grand Duke Heir"] += 1
+            player.love_points["Crown Heir"] += 1
+            player.love_points["Grand Duke Heir"] += 1
             break
         elif choice == '2':
             print('''
@@ -348,8 +354,8 @@ The crowd goes silent.
 Someone laughs softly from above.
 Someone else narrows their eyes in interest.
 ''')
-            love_points["Crown Heir"] += 2
-            love_points["Magic Tower Master/ Assasin"] += 1
+            player.love_points["Crown Heir"] += 2
+            player.love_points["Magic Tower Master/ Assassin"] += 1
             break
         elif choice == '3':
             print('''
@@ -362,7 +368,7 @@ of acknowledgment than anything else.
                   
 The whispers return—different now.
 ''')
-            love_points["Grand Duke Heir"] += 2
+            player.love_points["Grand Duke Heir"] += 2
             break
         else:
             print("Invalid input. Please enter 1, 2, or 3.")
@@ -376,9 +382,9 @@ SYSTEM MESSAGE:
 Tutorial Complete.
 
 Current Affection Levels:
-• Crown Heir: {love_points["Crown Heir"]}
-• Grand Duke Heir: {love_points["Grand Duke"]}
-• Magic Tower Master/ Assasin: {love_points["Magic Tower Master/ Assasin"]}
+• Crown Heir: {player.love_points["Crown Heir"]}
+• Grand Duke Heir: {player.love_points["Grand Duke Heir"]}
+• Magic Tower Master/ Assassin: {player.love_points["Magic Tower Master/ Assassin"]}
 ━━━━━━━━━━━━━━━━━━━━━━
 
 You blink.
@@ -417,8 +423,7 @@ Try not to die.
 ━━━━━━━━━━━━━━━━━━━━━━
 ''')
 
-    return love_points
+    return player.love_points
 
 
 # Main -----------------------------------------------------------------------
-act_two_tutorial()

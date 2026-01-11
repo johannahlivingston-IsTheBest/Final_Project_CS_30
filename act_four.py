@@ -19,7 +19,7 @@ UPDATE: BEINGS OF HIGHER POWER COMMENTARY UNLOCKED!
 
 After surviving your first challenge, 
 the Beings of Higher Power suggest you lay 
-low and adjust to school life. 
+low and adjust to school life for a month. 
 Sadly this means the bullying continues.
 
 Also, they want to enjoy watching you struggle.
@@ -169,7 +169,7 @@ Your heart skips.
 SYSTEM MESSAGE:
 
 Affection Event Triggered.
-Excellent entrance, Player.
+Excellent entrance, {name}.
 
 The Beings of Higher Power are… 
 reluctantly impressed.
@@ -257,6 +257,40 @@ You will be missed. Briefly.
 GAME OVER.
 ━━━━━━━━━━━━━━━━━━━━━━
 '''
+act5_intro = ''' CHAPTER 5 - School Ball: The Crown Prince or the Duke Heir?
+
+━━━━━━━━━━━━━━━━━━━━━━
+SYSTEM MESSAGE:
+
+Oh dear.
+It appears your entrance was too… effective.
+━━━━━━━━━━━━━━━━━━━━━━
+'''
+act5_scene_setup = '''
+
+Both the Crown Prince and the Duke are visibly 
+affected by your appearance.
+Both feel compelled to approach you.
+Both request the honor of the first dance.
+
+They stop in front of you.
+
+Two hands extend.
+Two futures diverge.
+'''
+act5_system_message = '''
+
+━━━━━━━━━━━━━━━━━━━━━━
+SYSTEM MESSAGE:
+
+Choose wisely, {name}.
+
+These are powerful people.
+Offending the wrong one may result in…
+"death."
+━━━━━━━━━━━━━━━━━━━━━━
+'''
+
 
 # Functions and Classes ------------------------------------------------------
 
@@ -266,9 +300,214 @@ def print_story(text, player):
     utils.wait_for_continue(player)
     utils.clear()
 
-def act_four(player):
-    utils.wait_for_continue(player)
-    utils.clear()
+
+def act_four_part_two(player):
+
+    # Step through intro story segments before choice
+    story_segments = [
+        act5_intro,
+        act5_scene_setup,
+        act5_system_message
+    ]
+
+    for segment in story_segments:
+        utils.print_story(segment, player)
+
+    # Player choice
+    while True:
+        print("\nWho do you dance with?")
+        print("1. Dance with the Crown Prince")
+        print("2. Dance with the Duke")
+        print("3. Ignore both")
+        choice = input("\nEnter your choice (number): ")
+
+        if choice == "1":
+            # Dance with Crown Prince
+            utils.clear()
+            print('''
+You take the Crown Prince’s hand.
+A murmur ripples through the ballroom.
+The Duke stiffens. His expression tightens — just for a moment.
+You are led onto the dance floor.
+
+━━━━━━━━━━━━━━━━━━━━━━
+CROWN PRINCE:
+"I do have a name, you know."
+He smiles, softer now.
+"My friends call me Alex."
+"...You may, too."
+━━━━━━━━━━━━━━━━━━━━━━
+                  
+Your heart does something inconvenient.
+''')
+            # Update love points
+            player.love_points["Crown Heir"] += 2
+            player.love_points["Grand Duke Heir"] -= 3
+            player.love_points["Magic Tower Master/ Assassin"] += 1
+
+            utils.wait_for_continue(player)
+            utils.clear()
+            print(f'''
+━━━━━━━━━━━━━━━━━━━━━━
+SYSTEM MESSAGE:
+          
+Affection Update:
+• Crown Heir: +2
+• Grand Duke Heir: -3
+• Magic Tower Master/ Assassin: +1
+━━━━━━━━━━━━━━━━━━━━━━
+''')
+            utils.wait_for_continue(player)
+            utils.clear()
+            print(f'''
+━━━━━━━━━━━━━━━━━━━━━━
+SYSTEM MESSAGE:
+          
+Current Affection Levels:
+• Crown Heir: {player.love_points["Crown Heir"]}
+• Grand Duke Heir: {player.love_points["Grand Duke Heir"]}
+• Magic Tower Master/ Assassin: {player.love_points["Magic Tower Master/ Assassin"]}
+
+The Magician watches from the shadows.
+Interest detected.
+
+The Beings of Higher Power whisper:
+“Ah. A politically sound choice. How dull.”
+━━━━━━━━━━━━━━━━━━━━━━
+''')
+            utils.wait_for_continue(player)
+            utils.clear()
+            print('''
+The dance ends.
+You survive.
+Then you discover the buffet.
+And absolutely destroy it.
+
+━━━━━━━━━━━━━━━━━━━━━━
+SYSTEM MESSAGE:
+                  
+Observation:
+The Player is indulging excessively.
+                  
+The Beings of Higher Power comment that you resemble
+"a creature of considerable mass enjoying earthly pleasures."
+━━━━━━━━━━━━━━━━━━━━━━
+''')
+            break  # end choice loop
+
+        elif choice == "2":
+            # Dance with Duke — GAME OVER
+            utils.clear()
+            print('''
+You take the Duke’s hand.
+The ballroom goes quiet.
+Too quiet.
+You feel it immediately.
+
+━━━━━━━━━━━━━━━━━━━━━━
+SYSTEM MESSAGE:
+                  
+Critical Social Error Detected.
+Status Check:
+Crown Prince Authority > Duke Authority
+
+You have publicly humiliated the Crown Prince.
+━━━━━━━━━━━━━━━━━━━━━━
+''')
+            utils.wait_for_continue(player)
+            utils.clear()
+            print('''
+━━━━━━━━━━━━━━━━━━━━━━
+SYSTEM MESSAGE:
+                  
+The Crown Prince is displeased.
+And when royalty is displeased—
+People die.
+                  
+The Beings of Higher Power shake their heads.
+"So close. So stupid."
+
+GAME OVER.
+You die.
+━━━━━━━━━━━━━━━━━━━━━━
+''')
+            exit()
+
+        elif choice == "3":
+            # Ignore both
+            utils.clear()
+            print('''
+You smile politely.
+Then… walk past them.
+Straight to the refreshments.
+The Crown Prince blinks.
+The Duke exhales slowly.
+From the shadows, someone watches with interest.
+
+━━━━━━━━━━━━━━━━━━━━━━
+SYSTEM MESSAGE:
+                  
+Affection Update:
+• Crown Heir: +1
+• Duke: +1
+• Magician/Assassin: +2
+━━━━━━━━━━━━━━━━━━━━━━
+''')
+            # Update love points
+            player.love_points["Crown Heir"] += 1
+            player.love_points["Grand Duke Heir"] += 1
+            player.love_points["Magic Tower Master/ Assassin"] += 2
+
+            utils.wait_for_continue(player)
+            utils.clear()
+            print(f'''
+━━━━━━━━━━━━━━━━━━━━━━
+SYSTEM MESSAGE:
+                  
+Current Affection Levels:      
+• Crown Heir: {player.love_points["Crown Heir"]}
+• Grand Duke Heir: {player.love_points["Grand Duke Heir"]}
+• Magic Tower Master/ Assassin: {player.love_points["Magic Tower Master/ Assassin"]}
+
+The Magician watches from the shadows.
+Interest detected.
+
+The Beings of Higher Power giggle.
+“Oh. Bold. Socially reckless. We like this one.”
+━━━━━━━━━━━━━━━━━━━━━━
+''')
+            utils.wait_for_continue(player)
+            utils.clear()
+            print(f'''
+
+You eat.
+And eat.
+And eat some more.
+
+━━━━━━━━━━━━━━━━━━━━━━
+SYSTEM MESSAGE:
+                  
+The Player once again displays
+"a remarkable commitment to indulgence."
+━━━━━━━━━━━━━━━━━━━━━━
+
+PLAYER ({player.name}):
+"Nothing is going to stop me from having fun."
+The night ends.
+Alive.
+Fed.
+Judged.
+                  
+You leave, satisfied with the Buffet.
+''')
+            
+            break  # end choice loop
+
+        else:
+            print("Invalid input. Please enter 1, 2, or 3.")
+
+
+def act_four_part_one(player):
 
     # Step through all story segments
     story_segments = [
@@ -285,29 +524,32 @@ def act_four(player):
     for segment in story_segments:
         utils.print_story(segment, player)
 
-    while True:
-        wins = 2
-        if wins >= 1 : 
-            # success path
-            utils.clear()
-            story_segments_success = [
+    
+    wins = 2
+    if wins > 1 : 
+        # success path
+        utils.clear()
+        story_segments_success = [
             success_one,
             success_two,
             success_three,
             success_four
-            ]
-            for segment in story_segments_success:
-                utils.print_story(segment, player)
-        else:
-            # Failure path
-            utils.clear()
-            story_segments_fail = [
-                fail_one,
-                fail_two,
-                fail_three,
-                fail_four,
-                fail_five
-            ]
-            for segment in story_segments_fail:
-                utils.print_story(segment, player)
-            exit()
+        ]
+        for segment in story_segments_success:
+            utils.print_story(segment, player)
+        
+    else:
+        # Failure path
+        utils.clear()
+        story_segments_fail = [
+            fail_one,
+            fail_two,
+            fail_three,
+            fail_four,
+            fail_five
+        ]
+        for segment in story_segments_fail:
+            utils.print_story(segment, player)
+        exit()
+
+

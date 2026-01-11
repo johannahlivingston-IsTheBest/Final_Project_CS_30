@@ -329,7 +329,7 @@ def act_two_tutorial(player):
     # Player choice
     while True:
         choice = input("\nEnter your choice (number): ")
-        utils.clear()
+        #utils.clear()
         if choice == '1':
             print('''
 You lower your head slightly and step back.

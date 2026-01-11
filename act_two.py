@@ -291,11 +291,11 @@ How do you respond to the noble who shoved you?
 # Functions and Classes ------------------------------------------------------
 def print_story(text, player):
     print(text.format(name=player.name))
-    input("")
+    utils.wait_for_continue(player)
     utils.clear()
 
 def act_two_tutorial(player):
-    input("")
+    utils.wait_for_continue(player)
     utils.clear()
     
     # Step through all story segments
@@ -323,7 +323,7 @@ def act_two_tutorial(player):
             print_story(segment, player)
         else:
             print(segment)
-            input("")  # wait for user to press enter
+            utils.wait_for_continue(player)  
             utils.clear()
     print(act2_instruction2)
     # Player choice
@@ -373,7 +373,7 @@ The whispers return—different now.
         else:
             print("Invalid input. Please enter 1, 2, or 3.")
     # End of tutorial summary
-    input("")
+    utils.wait_for_continue(player)
     utils.clear()
     print(f'''
 ━━━━━━━━━━━━━━━━━━━━━━
@@ -392,14 +392,14 @@ You blink.
 
 ''')
 
-    input("")
+    utils.wait_for_continue(player)
     utils.clear()
     print('''
 ━━━━━━━━━━━━━━━━━━━━━━
 SYSTEM MESSAGE:
 
 Correct
-If you want to see these again type “Rules”
+If you want to see these again type “rules”
 
 Rules of the World:
 1. Love Points determine survival.
@@ -412,7 +412,7 @@ Rules of the World:
    and may occasionally help!
 ━━━━━━━━━━━━━━━━━━━━━━
 ''')
-    input("")
+    utils.wait_for_continue(player) 
     utils.clear()
     print('''
 ━━━━━━━━━━━━━━━━━━━━━━

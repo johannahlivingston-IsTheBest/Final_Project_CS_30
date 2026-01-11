@@ -196,11 +196,13 @@ You’re going to need it.
 ━━━━━━━━━━━━━━━━━━━━━━
 '''
 # Functions and Classes ------------------------------------------------------
-def starting_text():
+def starting_text(player):
     # Instructions for the player
     print("""
     To get to the next dialogue, press Enter.
     Each time you click enter, scroll to the top
+          
+    To see your current stats, type "stats" and click enter
 
     Note:
     - Each action you take is permanent and cannot be undone.
@@ -213,23 +215,23 @@ def starting_text():
     Edition 1: You Should’ve Been Worth More Love Points
     """)
     # Display the first part of the story
-    input("")
+    utils.wait_for_continue(player)
     utils.clear()
     print(part_one)
     # Display the second part of the story
-    input("")
+    utils.wait_for_continue(player)
     utils.clear()
     print(part_two)
     # Display the third part of the story
-    input("")
+    utils.wait_for_continue(player)
     utils.clear()
     print(part_three) 
     # Display the fourth part of the story
-    input("")
+    utils.wait_for_continue(player)
     utils.clear()
     print(part_four)
     # Present the first choice to the player
-    input("")
+    utils.wait_for_continue(player)
     utils.clear() 
     print("How would you like to respond?")
     for option in first_choices:
@@ -248,26 +250,26 @@ def starting_text():
         else:
             print("\nInvalid input. Please enter '1' or '2'.")
     # Display the fifth part of the story
-    input("")
+    utils.wait_for_continue(player)
     utils.clear()
     print(part_five)
     # Display the sixth part of the story
-    input("")
+    utils.wait_for_continue(player)
     utils.clear()
     print(part_six)
     # Display the seventh part of the story
-    input("")
+    utils.wait_for_continue(player)
     utils.clear()
     print(part_seven)
 
 
 def tutorial_intro(player):
 
-    input("")
+    utils.wait_for_continue(player)
     utils.clear()
     print(tut_one)
 
-    input("")
+    utils.wait_for_continue(player)
     utils.clear()
     print("For now pick your character identity/name")
 

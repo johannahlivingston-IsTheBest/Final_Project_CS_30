@@ -5,7 +5,8 @@
 """this contains all dialouge and options for act three"""
 ##############################################################################
 # Imports and Global Variables -----------------------------------------------
-import utils
+import utils,puzzles
+
 # put text varibles and list for options here
 
 
@@ -65,7 +66,7 @@ How do you handle the situation?
 2. Ask a passing student for help.
 3. Complain loudly to the system.
 '''
-
+puzzles = puzzles.Puzzles()
 
 
 
@@ -108,11 +109,12 @@ the crushing awareness that your life depends on this.
 
 You begin the challenge.
 
-[GAME PLACEHOLDER]
+
 ''')
+            puzzles.scramble_challenge()
             # TEMP RESULT
-            success = True  
-            if success:
+            riddle_answers_count = puzzles.scramble_challenge()
+            if riddle_answers_count >= 2:
                 utils.wait_for_continue(player)
                 utils.clear()
                 print('''
@@ -182,9 +184,8 @@ Now. Figure it out yourself.
 [GAME PLACEHOLDER]
 ''')
 
-            success = True  # placeholder
-
-            if success:
+            riddle_answers_count = puzzles.scramble_challenge()
+            if riddle_answers_count >= 2:
                 utils.wait_for_continue(player)
                 utils.clear()
                 print('''

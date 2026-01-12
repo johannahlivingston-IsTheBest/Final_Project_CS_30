@@ -74,9 +74,9 @@ def print_story(text, player):
 
 
 # Main -----------------------------------------------------------------------
-if __name__ == "__main__":
+#if __name__ == "__main__":
     # Testing
-    print("Hello")
-    name = input("Type your name: ")
-    clear()
-    print("Thank you")
+   # print("Hello")
+   # name = input("Type your name: ")
+   # clear()
+   # print("Thank you")

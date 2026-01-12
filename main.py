@@ -27,7 +27,7 @@ act_two.act_two_tutorial(player)
 #act_five.act_six(player)
 
 #ACT 6
-#act_six.act_seven(player)
+act_six.act_seven(player)
 
 #ACT 7
 #act_seven.act_eight(player)

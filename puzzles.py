@@ -68,7 +68,7 @@ class Puzzles:
                     wins += 1
                 else:
                     print("You lose! Better luck next time.")
-    
+            return wins
     print(f"You won {wins} out of 3 rounds.")
 
    def match_des(self):

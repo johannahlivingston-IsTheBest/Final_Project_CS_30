@@ -5,7 +5,7 @@
 """this contains all dialouge and options for act four"""
 ##############################################################################
 # Imports and Global Variables -----------------------------------------------
-import utils
+import utils,puzzles
 # put text varibles and list for options here
 
 # Act 4 story segments
@@ -291,7 +291,7 @@ Offending the wrong one may result in…
 ━━━━━━━━━━━━━━━━━━━━━━
 '''
 
-
+puzzles = puzzles.Puzzles()
 # Functions and Classes ------------------------------------------------------
 
 
@@ -524,8 +524,7 @@ def act_four_part_one(player):
     for segment in story_segments:
         utils.print_story(segment, player)
 
-    
-    wins = 2
+    wins = puzzles.rock_paper_scissors()
     if wins > 1 : 
         # success path
         utils.clear()

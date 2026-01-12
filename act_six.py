@@ -5,7 +5,7 @@
 """this contains all dialouge and options for act six"""
 ##############################################################################
 # Imports and Global Variables -----------------------------------------------
-import utils
+import utils,puzzles
 # put text varibles and list for options here
 act7_intro = '''CHAPTER 7 - An unfortunate encounter: The Duke and The Dragon
 
@@ -393,7 +393,7 @@ His expression softens—just a little.
 
 '''
 
-
+puzzles = puzzles.Puzzles()
 # Functions and Classes ------------------------------------------------------
 def act_seven(player):
     utils.wait_for_continue(player)
@@ -428,9 +428,8 @@ def act_seven(player):
         utils.print_story(segment, player)
 
     # RIDDLE PLACEHOLDER
-    success = False  # replace with real riddle logic later
-
-    if success:
+    correct_answers_count = puzzles.riddle()
+    if correct_answers_count >= 2:
         utils.clear()
         print(success_one)
         utils.clear()

@@ -10,11 +10,11 @@ from player_class import Player
 player = Player()
 
 # ACT 1
-#act_one.starting_text(player)
-#act_one.tutorial_intro(player)
+act_one.starting_text(player)
+act_one.tutorial_intro(player)
 
 # ACT 2
-#act_two.act_two_tutorial(player)
+act_two.act_two_tutorial(player)
 
 # ACT 3
 #act_three.act_three(player)
@@ -30,5 +30,5 @@ player = Player()
 #act_six.act_seven(player)
 
 #ACT 7
-act_seven.act_eight(player)
+#act_seven.act_eight(player)
 

@@ -111,9 +111,8 @@ You begin the challenge.
 
 
 ''')
-            puzzles.scramble_challenge()
             # TEMP RESULT
-            riddle_answers_count = puzzles.scramble_challenge()
+            riddle_answers_count = puzzles.scramble()
             if riddle_answers_count >= 2:
                 utils.wait_for_continue(player)
                 utils.clear()
@@ -181,10 +180,10 @@ Nice try, though.
 Now. Figure it out yourself.
 ━━━━━━━━━━━━━━━━━━━━━━
 
-[GAME PLACEHOLDER]
+
 ''')
 
-            riddle_answers_count = puzzles.scramble_challenge()
+            riddle_answers_count = puzzles.scramble()
             if riddle_answers_count >= 2:
                 utils.wait_for_continue(player)
                 utils.clear()

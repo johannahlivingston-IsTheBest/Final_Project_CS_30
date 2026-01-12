@@ -5,7 +5,7 @@
 """this contains all dialouge and options for act seven"""
 ##############################################################################
 # Imports and Global Variables -----------------------------------------------
-import utils
+import utils,puzzles
 # put text varibles and list for options here
 # ==============================
 # ACT 8 VARIABLES
@@ -500,7 +500,7 @@ Fade to black.
 '''
 
 
-
+puzzles = puzzles.Puzzles()
 
 # Functions and Classes ------------------------------------------------------
 def act_eight(player):

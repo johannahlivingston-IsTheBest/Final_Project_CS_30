@@ -5,7 +5,7 @@
 """this contains all dialouge and options for act five"""
 ##############################################################################
 # Imports and Global Variables -----------------------------------------------
-import utils
+import utils,puzzles
 # put text varibles and list for options here
 act6_intro = '''CHAPTER 6 - A Shadow's Invitation: Please don't kill me, Mr. Assassin
 
@@ -181,7 +181,6 @@ Failure results in…
 unfortunate conclusions.
 ━━━━━━━━━━━━━━━━━━━━━━
 
-[WORDLE PLACEHOLDER]
 '''
 act6_success = '''
 You think fast.
@@ -300,7 +299,7 @@ Recommendation:
 "Yea thanks for the great advice system," 
 you remark sarcastically
 '''
-
+puzzle = puzzles.Puzzles()
 
 
 # Functions and Classes ------------------------------------------------------
@@ -327,9 +326,10 @@ def act_six(player):
         utils.print_story(segment, player)
 
     # WORDLE PLACEHOLDER RESULT
-    success = False  # change later when game is added
-
-    if success:
+     # change later when game is added
+    win = puzzle.wordle()
+           
+    if win == True:
         # Story outcome
         utils.clear()
         print(act6_success)

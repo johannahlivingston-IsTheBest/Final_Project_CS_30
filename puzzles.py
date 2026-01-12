@@ -145,6 +145,7 @@ class Puzzles:
          self.rid_complete = False 
 
       print(f"\nYou got {correct_answers_count} out of 3 right ")
+      return correct_answers_count
 
    def scramble(self):
    # Exam Two
@@ -172,6 +173,7 @@ class Puzzles:
       elif riddle_answers_count == 0:
          print("\nYou failed" )     
       print(f"\nYou got {riddle_answers_count} out of 4 right ")
+      return riddle_answers_count
 
    def wordle(self):
       print("You have to guess the correct word in 6 tries.")
@@ -180,6 +182,7 @@ class Puzzles:
       wordle_answer = "water"
       attempts = 6
       hint_used = False
+      win = True
       # Create the result display
       letter1 = "_"
       letter2 = "_"
@@ -229,6 +232,7 @@ class Puzzles:
             print(f"\n {letter1} {letter2} {letter3} {letter4} {letter5}")
          if guess == wordle_answer:
             print("Congratulations! You've guessed the correct word!")
+            return win
             break
          if attempt == attempts - 1:
             print(f"Sorry, you've used all your attempts. The correct word was '{wordle_answer}'.")
@@ -236,4 +240,4 @@ puzzles = Puzzles()
 # Main --------------------------------------------------------------------------------------------------------------
 #print(f"{puzzles.char_des['Crown Prince']['nickname']}")
 
-puzzles.match_des()
+#puzzles.match_des()

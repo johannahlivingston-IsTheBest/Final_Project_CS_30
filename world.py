@@ -97,6 +97,7 @@ class World:
         Parameters:
             entity (Entity): the entity to add
         """
+        print("Checkpoint1")
         self.place(entity, entity.pos)
         self.entities.add(entity)
     
@@ -116,6 +117,7 @@ class World:
             entity (Entity): the entity to place
             target (list): the target location
         """
+        print("Checkpoint2")
         if type(entity) == WorldPlayer:
             direction = iu.menu("Move: ", DIRECTIONS.keys(), keymap="wasd")
             direction = DIRECTIONS[direction]
@@ -127,6 +129,7 @@ class World:
                 self.grid[x_old][y_old].remove(entity)
             entity.pos = target
             self.grid[target[0]][target[1]].insert(0, entity)
+            print("Checkpoint2")
         else:
             raise PlacementError(f"Space ({target[0]}, {target[1]}) is already occupied by {self.get(*target)[0]}.")
 
@@ -167,13 +170,6 @@ class Entity():
         self.name = name
         self.is_solid = is_solid
     
-    # def move(self, x, y):
-    #     move = np.array([x, y])
-    #     target = self.map.get(self.pos + move)
-    #     # Check collisions
-    #     if not (target or target.is_obstacle):
-    #         self.pos += move
-    
     def __str__(self):
         return self.symbol
     
@@ -185,40 +181,65 @@ class WorldPlayer(Entity):
     def __init__(self, pos, symbol, name):
         super().__init__(pos, symbol, name)
     
-    def move(self):
-        direction = iu.menu("Move: ", DIRECTIONS.keys(), keymap="wasd")
-        direction = DIRECTIONS[direction]
-        super().move(*direction)
+    def __repr__(self):
+        return f"WorldPlayer(pos={self.pos}, symbol={self.symbol}, name={self.name}, is_solid={self.is_solid})"
 
 
-def move_player():
+class Objective(Entity):
+    def __init__(self, pos, symbol, name):
+        super().__init__(pos, symbol, name, is_solid=False)
+    
+    def __str__(self):
+        return self.symbol
+    
+    def __repr__(self):
+        return f"Objective(pos={self.pos}, symbol={self.symbol}, name={self.name}, is_solid={self.is_solid})"
+
+
+def move_player(player, world):
     direction = iu.menu("Move: ", DIRECTIONS.keys(), keymap="wasd")
-    return DIRECTIONS[direction]
+    movement = DIRECTIONS[direction]
+    try:
+        world.move(player, movement)
+    except PlacementError:
+        print("\n--- INVALID MOVEMENT ---\nThat space is full!")
 
 
-def game_loop(world):
+def check_win(player, world, objective):
+    print(player.pos == objective.pos)
+    print(player.pos)
+    return player.pos == objective.pos
+
+
+def game_loop(objective):
+    game = World((10, 10))
+    print("AAAAAAA")
+    player1 = WorldPlayer(np.array([0, 0]), "P", "player")
+    print("WHY")
+    goal = Objective(objective, "X", "objective")
+    print("WHY")
+    game.add_entity(player1)
+    print("WHY")
+    # game.add_entity(goal)
+    print("WHY")
     while True:
-        direction = iu.menu("Move: ", DIRECTIONS.keys(), keymap="wasd")
-        movement = DIRECTIONS[direction]
-        try:
-            world.move(player, movement)
+        print("printing game")
+        game.show()
+        move_player(player1, game)
+        if check_win(player1, game, goal):
             break
-        except PlacementError:
-            print("\n--- INVALID MOVEMENT ---\nThat space is full!")
-    world.show()
 
 
 if __name__ == "__main__":
-    map_ = World((10, 10))
-    player = WorldPlayer(np.array([0, 0]), "P", "player1")
-    player2 = Entity(np.array([4, 1]), "X", "player2")
-    # print(map.get(2, 3))
-    map_.add_entity(player)
-    map_.add_entity(player2)
-    map_.show()
-    map_.place(player, [2, 3])
-    map_.show()
+    # map_ = World((10, 10))
+    # player = WorldPlayer(np.array([0, 0]), "P", "player1")
+    # player2 = Entity(np.array([4, 1]), "X", "player2")
+    # # print(map.get(2, 3))
+    # map_.add_entity(player)
+    # map_.add_entity(player2)
+    # map_.show()
+    # map_.place(player, [2, 3])
+    # map_.show()
     # map_.move(player, [2, -2])
     # map_.show()
-    while True:
-        game_loop(map_)
+    game_loop([4, 5])

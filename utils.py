@@ -7,7 +7,6 @@
 # Imports and Global Variables -----------------------------------------------
 import os
 import subprocess
-from exceptions import ClearError
 
 RULES_TEXT = ''' Loading Rules...
 
@@ -30,18 +29,23 @@ Rules of the World:
 
 
 # Functions and Classes ------------------------------------------------------
+class ClearError(Exception):
+    """Error when terminal fails to clear."""
+    def __init__(self, msg):
+        self.msg = msg
+
+
 def clear():
     """Clear the terminal."""
-    if os.name == "nt":
-        command = "cls"
-    else:
-        command = "clear"
+    command = "cls" if os.name == "nt" else "clear"  # Cross-platform
     # Handle exceptions
     try:
-        subprocess.run([command], shell=True)
-    except:
-        raise ClearError("Failed to clear terminal.")
-    
+        subprocess.run(command, shell=True, check=True)
+    except subprocess.CalledProcessError:
+        # raise ClearError("Failed to clear terminal.")
+        print("\n[Terminal failed to clear]\n")
+
+
 def wait_for_continue(player):
     while True:
         user_input = input("").lower().strip()
@@ -64,19 +68,17 @@ def wait_for_continue(player):
         else:
             print("Press Enter to continue, or type 'stats' to view player info.")
 
+
 def print_story(text, player):
     print(text.format(name=player.name))
     wait_for_continue(player)
     clear()
 
 
-
-
-
 # Main -----------------------------------------------------------------------
-#if __name__ == "__main__":
+if __name__ == "__main__":
     # Testing
-   # print("Hello")
-   # name = input("Type your name: ")
-   # clear()
-   # print("Thank you")
+    print("Hello")
+    name = input("Type your name: ")
+    clear()
+    print("Thank you")

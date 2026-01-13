@@ -6,7 +6,13 @@
 ##############################################################################
 import matplotlib.pyplot as plt
 import matplotlib.image as mpimg
-from exceptions import ImageError
+import pathlib
+
+
+class ImageError(Exception):
+    """Error when image fails to display."""
+    def __init__(self, msg):
+        self.msg = msg
 
 
 def display_image(image_name):
@@ -15,14 +21,15 @@ def display_image(image_name):
     Parameters:
         image_name (str): name of image without file path
     """
-    try:
-        img = mpimg.imread(f"images\\{image_name}")
-    except FileNotFoundError:
-        raise ImageError(f"Failed to generate image '{image_name}'")
-    else:
+    images_folder = pathlib.Path("Images")
+    image_path = images_folder / image_name
+    if image_path.exists():
+        img = mpimg.imread(image_path)
         plt.imshow(img)
         plt.axis("off")
         plt.show()
+    else:
+        raise ImageError(f"Failed to generate image '{image_name}'. Did you forget the file extension (.jpg, .png)?")
 
 
 if __name__ == "__main__":

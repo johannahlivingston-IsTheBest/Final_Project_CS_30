@@ -9,8 +9,8 @@ import numpy as np
 import input_utils as iu
 import utils
 
-# VOID = "🌳"
-VOID = "•"
+VOID = "🌳"
+# VOID = "⚪"
 DIRECTIONS = {"up": np.array([0, -1]),
               "left": np.array([-1, 0]),
               "down": np.array([0, 1]),
@@ -118,7 +118,7 @@ class World:
             entity (Entity): the entity to place
             target (list): the target location
         """
-        if target[0] not in range(0, self.rows+1) or target[1] not in range(0, self.cols+1):
+        if target[0] not in range(0, self.rows) or target[1] not in range(0, self.cols):
             raise PlacementError(f"Attempted to place entity {entity} out of bounds.")
         if self.is_open(*target):
             if entity in self.entities:
@@ -200,13 +200,15 @@ class Objective(Entity):
         return f"Objective(pos={self.pos}, symbol={self.symbol}, name={self.name}, is_solid={self.is_solid})"
 
 
-def move_player(player, world):
-    direction = iu.menu("Move: ", DIRECTIONS.keys(), keymap="wasd")
-    movement = DIRECTIONS[direction]
-    try:
-        world.move(player, movement)
-    except PlacementError:
-        print("\n--- INVALID MOVEMENT ---\nThat space is full or out of bounds!")
+def move_player(player, objective, world):
+    while True:
+        direction = iu.menu(f"Move to the {objective.name} ({objective.symbol}): ", DIRECTIONS.keys(), keymap="wasd")
+        movement = DIRECTIONS[direction]
+        try:
+            world.move(player, movement)
+            break
+        except PlacementError:
+            print("\n--- INVALID MOVEMENT ---\nThat space is full or out of bounds!")
 
 
 def check_win(player, world, objective):
@@ -214,15 +216,16 @@ def check_win(player, world, objective):
 
 
 def game_loop(objective):
-    game = World((10, 10))
-    player1 = WorldPlayer(np.array([0, 0]), "P", "player")
-    goal = Objective(objective, "X", "objective")
+    game = World((25, 25))
+    player1 = WorldPlayer(np.array([0, 0]), "🏃", "player")
+    # ⭕
+    goal = Objective(objective, "⭕", "objective")
     game.add_entity(player1)
     game.add_entity(goal)
     while True:
         utils.clear()
         game.show()
-        move_player(player1, game)
+        move_player(player1, goal, game)
         if check_win(player1, game, goal):
             utils.clear()
             break

@@ -9,8 +9,10 @@ import numpy as np
 import input_utils as iu
 import utils
 
-VOID = "🌳"
+# VOID = "🌳"
 # VOID = "⚪"
+VOID = "  "
+
 DIRECTIONS = {"up": np.array([0, -1]),
               "left": np.array([-1, 0]),
               "down": np.array([0, 1]),
@@ -215,20 +217,33 @@ def check_win(player, world, objective):
     return player.get_pos() == objective.get_pos()
 
 
+def build_wall(map_, start, end, orientation=None):
+    start = np.array(start)
+    end = np.array(end)
+    direction = (end - start) / np.linalg.norm(end - start)
+    print(direction)
+
+
+def build_map():
+    full_map = World((25, 25))
+
+    return full_map
+
 def game_loop(objective):
     game = World((25, 25))
+    build_wall(game, [12, 13], [17, 13])
     player1 = WorldPlayer(np.array([0, 0]), "🏃", "player")
-    # ⭕
+    # ⭕  ➖  🏃 ┃ 
     goal = Objective(objective, "⭕", "objective")
     game.add_entity(player1)
     game.add_entity(goal)
-    while True:
-        utils.clear()
-        game.show()
-        move_player(player1, goal, game)
-        if check_win(player1, game, goal):
-            utils.clear()
-            break
+    # while True:
+    #     utils.clear()
+    #     game.show()
+    #     move_player(player1, goal, game)
+    #     if check_win(player1, game, goal):
+    #         utils.clear()
+    #         break
 
 
 if __name__ == "__main__":

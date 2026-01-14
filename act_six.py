@@ -359,7 +359,7 @@ Success Reward:
 success_one = '''
 Your mind snaps into focus.
 You step forward.
-“It’s a [riddle game answer],” you say clearly.
+“It’s a sword, dragon, and a wizard,” you say clearly.
 Silence.
 
 Then—
@@ -430,13 +430,15 @@ def act_seven(player):
     # RIDDLE PLACEHOLDER
     correct_answers_count = puzzles.riddle()
     if correct_answers_count >= 2:
+        utils.wait_for_continue(player)
         utils.clear()
         print(success_one)
+        utils.wait_for_continue(player)
         utils.clear()
         print(success_two)
 
         player.love_points["Grand Duke Heir"] += 2
-
+        utils.wait_for_continue(player)
         utils.clear()
         print(f'''
 ━━━━━━━━━━━━━━━━━━━━━━
@@ -455,13 +457,14 @@ Survival Achieved.
         utils.wait_for_continue(player)
         utils.clear()
 
-        utils.print_story("""
+        print("""
 You leave the forest alive.
 Burned by tension.
 Not by fire.
 """)
 
     else:
+        utils.wait_for_continue(player)
         utils.clear()
         print('''
 The dragon’s eyes narrow.
@@ -474,6 +477,7 @@ But it’s useless.
               
 Flames consume the clearing.
 ''')
+        utils.wait_for_continue(player)
         utils.clear()
         print('''
 ━━━━━━━━━━━━━━━━━━━━━━

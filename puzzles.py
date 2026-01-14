@@ -15,9 +15,16 @@ unscramble scrambled word, and multiple choice/ termanology.
 # Imports and Global Variables------------------------------------------------- 
 import random 
 rid_list = [
-"""I'm sharp and shiny, held in a fight, A hero swings me with all their might. What am I?""", 
-""" I have wings but I do not fly like a bird,I breathe fire and guard gold unheard. What am I?""",
-"""I wear a robe and carry a staff,I cast spells but never laugh. Who am I?"""
+"""I'm sharp and shiny, 
+held in a fight, 
+A hero swings me with all their might. 
+What am I?""", 
+""" I have wings but I do not fly like a bird,
+I breathe fire and guard gold unheard. 
+What am I?""",
+"""I wear a robe and carry a staff,
+I cast spells but never laugh. 
+Who am I?"""
 ]
 desc_list = ["insert character one description here", 
              "insert character two description here", 

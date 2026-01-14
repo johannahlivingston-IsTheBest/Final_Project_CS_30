@@ -5,7 +5,9 @@
 """this contains all dialouge and options for act six"""
 ##############################################################################
 # Imports and Global Variables -----------------------------------------------
-import utils,puzzles
+import utils
+import puzzles
+from world import game_loop
 # put text varibles and list for options here
 act7_intro = '''CHAPTER 7 - An unfortunate encounter: The Duke and The Dragon
 
@@ -239,7 +241,6 @@ They are really looking forward to it.
 The academy fades behind you.
 One month of relative peace has done 
 nothing to prepare you for this.
-[ADD MAP HERE] 
 
 '''
 act7_duke_intro = '''
@@ -415,6 +416,7 @@ def act_seven(player):
         act7_navigation2,
         act7_navigation3,
         act7_navigation4,
+        (game_loop, "forest"),
         act7_duke_intro,
         act7_duke_intro2,
         act7_party_join,
@@ -425,7 +427,10 @@ def act_seven(player):
     ]
 
     for segment in story_segments:
-        utils.print_story(segment, player)
+        try:
+            segment[0](segment[1])
+        except TypeError:
+            utils.print_story(segment, player)
 
     # RIDDLE PLACEHOLDER
     correct_answers_count = puzzles.riddle()

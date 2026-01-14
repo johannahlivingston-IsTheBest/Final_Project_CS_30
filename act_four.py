@@ -5,7 +5,9 @@
 """this contains all dialouge and options for act four"""
 ##############################################################################
 # Imports and Global Variables -----------------------------------------------
-import utils,puzzles
+import utils
+import puzzles
+from world import game_loop
 # put text varibles and list for options here
 
 # Act 4 story segments
@@ -64,8 +66,6 @@ It may help you acquire a dress.
 
 A translucent map snaps open in front of you, floating cheerfully!
 Glowing lights mark your destination: The Forest.
-
-[MAP PLACEHOLDER]
 '''
 act4_forest_intro = '''
 
@@ -136,8 +136,6 @@ Head to the Ballroom.
 ━━━━━━━━━━━━━━━━━━━━━━
 
 A translucent map snaps open in front of you
-
-[MAP PLACEHOLDER] 
 '''
 success_three = '''
 You follow it and head to the ballroom.
@@ -199,9 +197,7 @@ Head to the Ballroom.
 ━━━━━━━━━━━━━━━━━━━━━━
 
 The map pops open anyway.
-No mercy. No rerolls.
-
-[MAP PLACEHOLDER]  
+No mercy. No rerolls.  
 '''
 fail_three = '''
 You magically change into the dress, 
@@ -311,7 +307,10 @@ def act_four_part_two(player):
     ]
 
     for segment in story_segments:
-        utils.print_story(segment, player)
+        try:
+            segment[0](segment[1])
+        except TypeError:
+            utils.print_story(segment, player)
 
     # Player choice
     while True:
@@ -515,6 +514,7 @@ def act_four_part_one(player):
         act4_month_summary,
         act4_hint,
         act4_hint2,
+        (game_loop, "forest"),
         act4_forest_intro,
         act4_divine_object,
         act4_rps_intro,
@@ -522,7 +522,10 @@ def act_four_part_one(player):
     ]
 
     for segment in story_segments:
-        utils.print_story(segment, player)
+        try:
+            segment[0](segment[1])
+        except TypeError:
+            utils.print_story(segment, player)
 
     wins = puzzles.rock_paper_scissors()
     if wins > 1 : 
@@ -532,11 +535,15 @@ def act_four_part_one(player):
         story_segments_success = [
             success_one,
             success_two,
+            (game_loop, "ballroom"),
             success_three,
             success_four
         ]
         for segment in story_segments_success:
-            utils.print_story(segment, player)
+            try:
+                segment[0](segment[1])
+            except TypeError:
+                utils.print_story(segment, player)
         
     else:
         # Failure path
@@ -545,12 +552,16 @@ def act_four_part_one(player):
         story_segments_fail = [
             fail_one,
             fail_two,
+            (game_loop, "ballroom"),
             fail_three,
             fail_four,
             fail_five
         ]
         for segment in story_segments_fail:
-            utils.print_story(segment, player)
+            try:
+                segment[0](segment[1])
+            except TypeError:
+                utils.print_story(segment, player)
         exit()
 
 

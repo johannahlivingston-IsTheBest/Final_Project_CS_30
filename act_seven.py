@@ -5,7 +5,9 @@
 """this contains all dialouge and options for act seven"""
 ##############################################################################
 # Imports and Global Variables -----------------------------------------------
-import utils, puzzles
+import utils
+import puzzles
+from world import game_loop
 # put text varibles and list for options here
 
 
@@ -152,7 +154,6 @@ for the exam!
 ━━━━━━━━━━━━━━━━━━━━━━
 
 You step forward.
-[ADD MAP HERE]
 '''
 # SCENE: FINAL EXAM HALL — “THE ENDING AWAITS”
 act8_final_exam_hall = '''
@@ -552,6 +553,7 @@ def act_eight(player):
     utils.print_story(act8_final_exam_intro, player)
     utils.print_story(act8_final_exam_intro2, player)
     utils.print_story(act8_final_exam_intro3, player)
+    game_loop("main building")
 
     # FINAL EXAM HALL
     utils.print_story(act8_final_exam_hall, player)

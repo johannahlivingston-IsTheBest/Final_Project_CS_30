@@ -28,8 +28,6 @@ First stop: Administration Office.
 Objective: Collect your textbooks.
 Side note: Someone scrambled them.
 Whoops.
-━━━━━━━━━━━━━━━━━━━━━━
-[MAP PLACEHOLDER]
 '''
 act3_scrambled_books = '''
 Inside the office, a stack of books waits for you on a desk.
@@ -82,7 +80,7 @@ def act_three(player):
     story_segments = [
         act3_intro,
         act3_intro2,
-        (game_loop, [4, 6]),
+        (game_loop, "administration office"),
         act3_scrambled_books,
         act3_scrambled_books2
     ]
@@ -91,12 +89,9 @@ def act_three(player):
         try:
             segment[0](segment[1])
         except TypeError:
-            print(segment)
-            utils.wait_for_continue(player)
-        utils.clear()
+            utils.print_story(segment, player)
 
     print(act3_choice_prompt)
-
 
     while True:
         choice = input("\nEnter your choice (number): ")
@@ -242,3 +237,7 @@ You die.
             print("Invalid input. Please enter 1, 2, or 3.")
 
 
+if __name__ == "__main__":
+    from player_class import Player
+    test_player = Player()
+    act_three(test_player)

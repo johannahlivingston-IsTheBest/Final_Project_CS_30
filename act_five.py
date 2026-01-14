@@ -5,7 +5,9 @@
 """this contains all dialouge and options for act five"""
 ##############################################################################
 # Imports and Global Variables -----------------------------------------------
-import utils,puzzles
+import utils
+import puzzles
+from world import game_loop
 # put text varibles and list for options here
 act6_intro = '''CHAPTER 6 - A Shadow's Invitation: Please don't kill me, Mr. Assassin
 
@@ -86,7 +88,6 @@ You sigh.
 translucent map snaps open.
 Then you go.
 (Of course you do.)
-[ADD MAP HERE] 
 '''
 act6_library_intro = '''
 
@@ -315,6 +316,7 @@ def act_six(player):
         act6_invitation2,
         act6_timeskip,
         act6_library_notice,
+        (game_loop, "library"),
         act6_library_intro,
         act6_test_intro,
         act6_test_intro2,
@@ -323,7 +325,10 @@ def act_six(player):
     ]
 
     for segment in story_segments:
-        utils.print_story(segment, player)
+        try:
+            segment[0](segment[1])
+        except TypeError:
+            utils.print_story(segment, player)
 
     # WORDLE PLACEHOLDER RESULT
      # change later when game is added

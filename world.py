@@ -330,11 +330,11 @@ def build_map():
     make_building(full_map, [22, 19], [19, 19], [19, 24], [22, 24], [22, 19])
     full_map.del_entity([6, 11], [6, 12], [16, 15], [18, 20], [18, 21],
                         [21, 20], [21, 21])
-    full_map.add_entity(Decor([3, 3], "️D"))
-    full_map.add_entity(Decor([14, 8], "️M"))
-    full_map.add_entity(Decor([2, 20], "️A"))
-    full_map.add_entity(Decor([21, 2], "️B"))
-    full_map.add_entity(Decor([19, 19], "️L"))
+    full_map.add_entity(Decor([3, 3], "️D "))
+    full_map.add_entity(Decor([14, 8], "️M "))
+    full_map.add_entity(Decor([2, 20], "️A "))
+    full_map.add_entity(Decor([21, 2], "️B "))
+    full_map.add_entity(Decor([19, 19], "️L "))
     make_building(full_map, [25, 1], [1, 1], [1, 25], [25, 25], custom_icon="⬛")
     # 🌳 🌲
     full_map.add_entity(Decor([23, 15], "🌳"), Decor([24, 23], "🌳"),
@@ -348,12 +348,21 @@ def build_map():
 
 def game_loop(objective):
     building_dict = {
-        ""
+        "main building": [13, 13],
+        "dorms": [4, 4],
+        "library": [20, 20],
+        "administration office": [4, 18],
+        "ballroom": [21, 5],
+        "forest": [23, 14],
     }
+    if objective.lower() in building_dict:
+        goal_pos = building_dict[objective]
+    else:
+        raise KeyError(f"'{objective}' is not a valid objective location.")
     game = build_map()
     player1 = WorldPlayer(np.array([1, 14]), "🏃", "player")
     # ⭕  ➖  🏃 ┃ 
-    goal = Objective(objective, "⭕", "objective")
+    goal = Objective(goal_pos, "⭕", objective)
     game.add_entity(player1)
     game.add_entity(goal)
     while True:
@@ -366,4 +375,4 @@ def game_loop(objective):
 
 
 if __name__ == "__main__":
-    game_loop([12, 12])
+    game_loop("forest")

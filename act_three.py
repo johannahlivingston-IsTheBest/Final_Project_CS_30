@@ -5,12 +5,11 @@
 """this contains all dialouge and options for act three"""
 ##############################################################################
 # Imports and Global Variables -----------------------------------------------
-import utils,puzzles
+import utils
+import puzzles
+from world import game_loop
 
 # put text varibles and list for options here
-
-
-
 act3_intro = '''CHAPTER 3 - Scrabble Challenge: “Who messed with my books?!"
 
 You step through the academy gates, 
@@ -18,7 +17,7 @@ marble floors gleaming beneath your boots.
 A translucent map snaps open in front of you, 
 floating cheerfully despite your growing dread.
 '''
-act3_intro2 ='''
+act3_intro2 = '''
 ━━━━━━━━━━━━━━━━━━━━━━
 SYSTEM MESSAGE:
 
@@ -69,8 +68,6 @@ How do you handle the situation?
 puzzles = puzzles.Puzzles()
 
 
-
-
 # Functions and Classes ------------------------------------------------------
 def print_story(text, player):
     print(text.format(name=player.name))
@@ -85,13 +82,17 @@ def act_three(player):
     story_segments = [
         act3_intro,
         act3_intro2,
+        (game_loop, [4, 6]),
         act3_scrambled_books,
         act3_scrambled_books2
     ]
 
     for segment in story_segments:
-        print(segment)
-        utils.wait_for_continue(player)
+        try:
+            segment[0](segment[1])
+        except TypeError:
+            print(segment)
+            utils.wait_for_continue(player)
         utils.clear()
 
     print(act3_choice_prompt)

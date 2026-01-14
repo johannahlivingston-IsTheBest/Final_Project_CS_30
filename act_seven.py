@@ -558,18 +558,19 @@ def act_eight(player):
     utils.print_story(act8_final_exam_hall2, player)
 
     # FINAL EXAM — MATCH GAME
-    #score = puzzles.match_des()
+    correct_matches = puzzles.match_des()
 
     # FAIL CONDITION
-    ##if score < 2:
-     #   utils.clear()
-     #   utils.print_story(act8_final_exam_fail, player)
-     #   exit()
+    if correct_matches <= 1:
+        utils.clear()
+        utils.print_story(act8_final_exam_fail, player)
+        exit()
 
     # PASS CONDITION
-    utils.clear()
-    utils.print_story(act8_final_exam_pass, player)
-    utils.print_story(act8_final_exam_pass2, player)
+    else:
+        utils.clear()
+        utils.print_story(act8_final_exam_pass, player)
+        utils.print_story(act8_final_exam_pass2, player)
 
     # SHOW CURRENT LOVE POINTS
     print(f'''━━━━━━━━━━━━━━━━━━━━━━

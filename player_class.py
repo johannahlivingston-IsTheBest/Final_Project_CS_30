@@ -11,7 +11,7 @@ class Player:
         self.love_points = {
             "Crown Heir": 5,
             "Grand Duke Heir": 5,
-            "Magic Tower Master/ Assassin": 5
+            "Magic Tower Master/ Assassin": 5     
         }
 
     def display_info(self):

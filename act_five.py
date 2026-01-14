@@ -457,3 +457,9 @@ The Beings of Higher Power whisper:
         print(act6_fail_followup5)
         utils.wait_for_continue(player)
         utils.clear()
+
+
+if __name__ == "__main__":
+    from player_class import Player
+    test_player = Player()
+    act_six(test_player)

@@ -501,3 +501,9 @@ You die.
 ━━━━━━━━━━━━━━━━━━━━━━
         ''')
         exit()
+
+
+if __name__ == "__main__":
+    from player_class import Player
+    test_player = Player()
+    act_seven(test_player)

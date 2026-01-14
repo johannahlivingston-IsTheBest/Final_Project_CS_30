@@ -633,4 +633,7 @@ Current Affection Levels:
     utils.print_story(act8_post_credits3, player)
 
 
-
+if __name__ == "__main__":
+    from player_class import Player
+    test_player = Player()
+    act_eight(test_player)

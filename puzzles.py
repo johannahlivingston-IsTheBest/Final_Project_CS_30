@@ -42,34 +42,35 @@ class Puzzles:
                                       'personality':'''Intelligent, intimidating, secretive.
                                        \nDeadly competence paired with quiet protectiveness.'''}}
    def rock_paper_scissors(self):
-    print('''Remeber: If you tie that's zero wins ''')
-    wins = 0
+      print('''Remember: If you tie that's zero wins ''')
+      wins = 0
+      hand_choices = ["rock", "paper", "scissors"]
+      for round_num in range(3):
+         vaild_choice = False 
+         while not vaild_choice:
+               user_choice = input("\nPlease type rock, paper, or scissors: ").lower()
+               if user_choice not in hand_choices:
+                  print("\nInvalid choice. Please choose rock, paper, or scissors.") 
+               else:
+                  vaild_choice = True
+                  orb_choice = random.choice(hand_choices)
+                  print(f"\nThe Divine Orb chose: {orb_choice}")
+                  if user_choice == orb_choice:
+                     print("It's a tie!")
+                  elif user_choice == 'rock' and orb_choice == 'scissors':
+                     print("You win! Rock crushes scissors.")
+                     wins += 1
+                  elif user_choice == 'paper' and orb_choice == 'rock':
+                     print("You win! Paper covers rock.")
+                     wins += 1
+                  elif user_choice == 'scissors' and orb_choice == 'paper':
+                     print("You win! Scissors cut paper.")
+                     wins += 1
+                  else:
+                     print("You lose! Better luck next time.")
+      print(f"\nYou won {wins} out of 3 rounds.")
+      return wins
     
-    for round in range(3):
-        in_vaild_choice = False 
-        while not in_vaild_choice:
-            user_choice = input("Please choose rock, paper, or scissors: ").lower()
-            if user_choice not in hand_choices:
-                print("Invalid choice. Please choose rock, paper, or scissors.") 
-            else:
-                in_vaild_choice = True
-                orb_choice = random.choice(hand_choices)
-                print(f"The Divine Orb chose: {orb_choice}")
-                if user_choice == orb_choice:
-                    print("It's a tie!")
-                elif user_choice == 'rock' and orb_choice == 'scissors':
-                    print("You win! Rock crushes scissors.")
-                    wins += 1
-                elif user_choice == 'paper' and orb_choice == 'rock':
-                    print("You win! Paper covers rock.")
-                    wins += 1
-                elif user_choice == 'scissors' and orb_choice == 'paper':
-                    print("You win! Scissors cut paper.")
-                    wins += 1
-                else:
-                    print("You lose! Better luck next time.")
-            return wins
-    print(f"You won {wins} out of 3 rounds.")
 
    def match_des(self):
       print("You will be given three character descriptions.")

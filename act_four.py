@@ -527,6 +527,7 @@ def act_four_part_one(player):
     wins = puzzles.rock_paper_scissors()
     if wins > 1 : 
         # success path
+        utils.wait_for_continue(player)
         utils.clear()
         story_segments_success = [
             success_one,
@@ -539,6 +540,7 @@ def act_four_part_one(player):
         
     else:
         # Failure path
+        utils.wait_for_continue(player)
         utils.clear()
         story_segments_fail = [
             fail_one,

@@ -13,8 +13,7 @@ import utils
 # VOID = "🌳"
 # VOID = "⚪"
 # VOID = "  "
-VOID = "· "
-
+VOID = "· "  # marker for blank spaces
 DIRECTIONS = {"up": np.array([0, -1]),
               "left": np.array([-1, 0]),
               "down": np.array([0, 1]),
@@ -22,18 +21,21 @@ DIRECTIONS = {"up": np.array([0, -1]),
 }
 
 
+# Functions and Classes ------------------------------------------------------
 class PlacementError(Exception):
     """Error for invalid object placement on map."""
     def __init__(self, msg):
         self.msg = msg
 
 
-# Functions and Classes ------------------------------------------------------
 class World:
     """Create a game world the player can move around in.
 
     Stores a grid of lists, where each list contains all the objects on that
     space on the grid.
+
+    The coordinates are in standard screen coordinates with x going left-to-
+    right and y going top-to-bottom.
 
     Example:
     | []  []  [] |
@@ -42,6 +44,12 @@ class World:
 
     Each cell is a list that contains all the objects that are on that space.
     The object in position 0 of the list is always solid, and takes priority.
+
+    Attributes:
+        rows (int): number of rows of map grid
+        cols (int): number of columns of map grid
+        grid (2x2xn array): array of lists containing entities at each tile
+        entities (set): entities present in this world
     """
     def __init__(self, size):
         self.rows = size[0]
@@ -49,66 +57,52 @@ class World:
         self.grid = [[[VOID] for y in range(size[1])] for x in range(size[0])]
         self.entities = set()
 
-    def get(self, x, y):
-        """Return the contents of space (x, y).
+    def get(self, target):
+        """Return the contents of a space.
 
         Parameters:
-            x (int): row of grid
-            y (int): column of grid
+            target (list): coordinates of target tile
 
             Returns:
             (list): contents of cell (x, y)
         """
-        return self.grid[x][y]
+        return self.grid[target[0]][target[1]]
 
-    def find(self, entity):
-        """Return the position of an entity.
-
-        Parameters:
-            entity (Entity): the entity
-
-        Returns:
-        (array) the entity's position
-        """
-        return entity.pos
-
-    def is_solid(self, x, y):
+    def is_solid(self, target):
         """Check if a space contains a solid object.
 
         Parameters:
-            x (int): row of grid
-            y (int): column of grid
+            target (list): coordinates of target tile
 
         Returns:
             (bool): is solid or not
         """
-        cell = self.grid[x][y][0]
+        cell = self.grid[target[0]][target[1]][0]
         return not (cell == VOID or not cell.is_solid)
 
-    def is_open(self, x, y):
+    def is_open(self, target):
         """Check if a space is open.
 
         Parameters:
-            x (int): row of grid
-            y (int): column of grid
+            target (list): coordinates of target tile
 
         Returns:
             (bool): is open or not
         """
-        return self.grid[x][y][0] == VOID or not self.is_solid(x, y)
+        return self.grid[target[0]][target[1]][0] == VOID or not self.is_solid(target)
 
     def add_entity(self, *entities):
-        """Add an entity to the world.
+        """Add one or more entities to the world.
 
         Parameters:
-            entity (Entity): the entity to add
+            entity (Entity/list): the entity to add
         """
         for entity in entities:
             self.place(entity, entity.pos)
             self.entities.add(entity)
 
     def del_entity(self, *ids):
-        """Delete an entity from the world.
+        """Delete one or more entities from the world.
 
         Parameters:
             entity (Entity/list): the entity to delete or its position
@@ -129,16 +123,16 @@ class World:
         """
         if target[0] not in range(0, self.rows) or target[1] not in range(0, self.cols):
             raise PlacementError(f"Attempted to place entity {entity} out of bounds.")
-        if self.is_open(*target):
+        if self.is_open(target):
             if entity in self.entities:
-                old_pos = self.find(entity)
+                old_pos = entity.get_pos()
                 x_old = old_pos[0]
                 y_old = old_pos[1]
                 self.grid[x_old][y_old].remove(entity)
             entity.set_pos(target)
             self.grid[target[0]][target[1]].insert(0, entity)
         else:
-            raise PlacementError(f"Space ({target[0]}, {target[1]}) is already occupied by {self.get(*target)[0]}.")
+            raise PlacementError(f"Space ({target[0]}, {target[1]}) is already occupied by {self.get(target)[0]}.")
 
     def move(self, entity, direction, count=1):
         """Move an entity in a direction for a specific amount of steps.
@@ -152,9 +146,6 @@ class World:
         target = entity.pos + step
         self.place(entity, target)
 
-    def player_movement(self):
-        pass
-
     def show(self):
         """Display the world to the user."""
         print("\n")
@@ -165,11 +156,13 @@ class World:
 
 
 class Entity():
-    """Map object.
+    """Create an entity that lives in a World class.
 
-    Should have attributes:
-    - pos
-    - obstacle (bool)
+    Attributes:
+        pos (ndarray): entity's position in its world
+        symbol (str): entity's map icon
+        name (str): name of entity
+        is_solid (bool): can be moved through or not
     """
     def __init__(self, pos, symbol, name, is_solid=True):
         self.pos = np.array(pos, dtype=int)
@@ -178,9 +171,15 @@ class Entity():
         self.is_solid = is_solid
 
     def get_pos(self):
+        """Return position of this entity."""
         return self.pos.tolist()
 
     def set_pos(self, new_pos):
+        """Set position of this entity.
+        
+        Parameters:
+            new_pos (list): new coordinates of this entity
+        """
         self.pos = np.array(new_pos)
 
     def __str__(self):
@@ -191,6 +190,7 @@ class Entity():
 
 
 class WorldPlayer(Entity):
+    """Create a player entity."""
     def __init__(self, pos, symbol, name):
         super().__init__(pos, symbol, name)
 
@@ -199,6 +199,10 @@ class WorldPlayer(Entity):
 
 
 class Objective(Entity):
+    """Create an objective entity.
+    
+    The player wins when they reach this tile.
+    """
     def __init__(self, pos, symbol, name):
         super().__init__(pos, symbol, name, is_solid=False)
 
@@ -207,6 +211,7 @@ class Objective(Entity):
 
 
 class Wall(Entity):
+    """Create a wall entity."""
     def __init__(self, pos, symbol):
         super().__init__(pos, symbol, name="Wall", is_solid=True)
 
@@ -215,6 +220,7 @@ class Wall(Entity):
 
 
 class Decor(Entity):
+    """Create a decor entity."""
     def __init__(self, pos, symbol, is_solid=False):
         super().__init__(pos, symbol, name="Decor", is_solid=is_solid)
 
@@ -223,6 +229,13 @@ class Decor(Entity):
 
 
 def move_player(player, objective, world):
+    """Get user input and move player.
+    
+    Parameters:
+        player (WorldPlayer): the player entity to move
+        objective (Objective): the objective the player needs to reach
+        world (World): the world the player is in
+    """
     while True:
         direction = iu.menu(f"Move to the {objective.name} ({objective.symbol}): ", DIRECTIONS.keys(), keymap="wasd")
         movement = DIRECTIONS[direction]
@@ -234,6 +247,15 @@ def move_player(player, objective, world):
 
 
 def make_wall(map_, start, end, orientation=None, custom_icon=None):
+    """Create a wall on the map.
+    
+    Parameters:
+        map_ (World): the map on which wall will be made
+        start (list): start point of wall
+        end (list): end point of wall
+        orientation (str): Which way wall is facing, L or R
+        custom_icon (str): use a custom icon for the wall
+    """
     start = np.array(start)
     end = np.array(end)
     try:
@@ -256,9 +278,6 @@ def make_wall(map_, start, end, orientation=None, custom_icon=None):
             icon = " ┃"
         else:
             raise ValueError("vertical walls require orientation 'L' or 'R'.")
-    # elif np.array_equal(direction, np.array([0.0, 0.0])):
-    #     # Single box
-    #     icon = "➖"
     else:
         raise ValueError("Failed to build wall due to invalid start and end (no diagonals).")
     num_tiles = int(norm(end - start)) + 1
@@ -269,19 +288,28 @@ def make_wall(map_, start, end, orientation=None, custom_icon=None):
 
 
 def make_building(map_, *corners, custom_icon=None):
-    """Pass corners in order of connection."""
+    """Make a series of connected walls.
+
+    Corners should be passed in order of connection.
+    
+    Parameters:
+        map_ (World): the world in which the building is made
+        corners (list(s)): each corner point of the building
+        custom_icon (str): use a custom wall icon
+    """
     corners = np.array(corners)
-    corners -= np.ones_like(corners)
-    last_direction = None
-    for i in range(len(corners)-1):
-        corner1 = corners[i]
-        corner2 = corners[i+1]
+    corners -= np.ones_like(corners)  # Offset by one so easier visual work
+    last_direction = None  # To determine if wall is left or right
+    for connection in range(len(corners)-1):
+        corner1 = corners[connection]
+        corner2 = corners[connection+1]
         c1_to_c2 = corner2 - corner1  # Get distance from corner1 to corner2
+        # Find unit vector (length 1) from c1 to c2
         c1_to_c2_unit = c1_to_c2 / norm(c1_to_c2)
-        if c1_to_c2_unit[0] != 0:
+        if c1_to_c2_unit[0] != 0:  # Horizontal wall
             make_wall(map_, corner1, corner2, custom_icon=custom_icon)
             last_direction = "R" if c1_to_c2_unit[0] > 0 else "L"
-        elif c1_to_c2_unit[1] != 0:
+        elif c1_to_c2_unit[1] != 0:  # Vertical wall
             orientation = last_direction
             make_wall(map_, corner1+c1_to_c2_unit, corner2-c1_to_c2_unit, orientation, custom_icon=custom_icon)
 
@@ -318,10 +346,12 @@ def make_building(map_, *corners, custom_icon=None):
 
 def build_map():
     full_map = World((25, 25))
+    # Admin building
     make_building(full_map, [8, 11], [7, 11], [7, 14], [8, 14], [8, 17],
                   [10, 17], [10, 15], [12, 15], [12, 18],[17, 18], [17, 14],
                   [19, 14], [19, 11], [17, 11], [17, 8], [14, 8], [14, 11],
                   [9, 11])
+    # COMMENT CONTINUE HERE
     make_building(full_map, [7, 3], [3, 3], [3, 6], [7, 6], [7, 4])
     make_building(full_map, [7, 21], [6, 21], [6, 18], [4, 18], [4, 20],
                   [2, 20], [2, 24], [7, 24], [7, 22])

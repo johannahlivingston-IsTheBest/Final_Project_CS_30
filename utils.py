@@ -68,7 +68,8 @@ def wait_for_continue(player):
             input("\nPress Enter twice to return to the story...")
             #clear()
         else:
-            print("Press Enter to continue, or type 'stats' to view player info.")
+            print("Press Enter to continue, or type 'stats' to view " +
+                  "player info.")
 
 
 def print_story(text, player):

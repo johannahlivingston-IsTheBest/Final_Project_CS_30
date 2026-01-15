@@ -89,7 +89,8 @@ class World:
         Returns:
             (bool): is open or not
         """
-        return self.grid[target[0]][target[1]][0] == VOID or not self.is_solid(target)
+        return self.grid[target[0]][target[1]][0] == VOID \
+                    or not self.is_solid(target)
 
     def add_entity(self, *entities):
         """Add one or more entities to the world.
@@ -121,8 +122,10 @@ class World:
             entity (Entity): the entity to place
             target (list): the target location
         """
-        if target[0] not in range(0, self.rows) or target[1] not in range(0, self.cols):
-            raise PlacementError(f"Attempted to place entity {entity} out of bounds.")
+        if target[0] not in range(0, self.rows) \
+                or target[1] not in range(0, self.cols):
+            raise PlacementError("Attempted to place entity " +
+                                 f"{entity} out of bounds.")
         if self.is_open(target):
             if entity in self.entities:
                 old_pos = entity.get_pos()
@@ -132,7 +135,9 @@ class World:
             entity.set_pos(target)
             self.grid[target[0]][target[1]].insert(0, entity)
         else:
-            raise PlacementError(f"Space ({target[0]}, {target[1]}) is already occupied by {self.get(target)[0]}.")
+            raise PlacementError(f"Space ({target[0]}, {target[1]}) " +
+                                 "is already occupied by " +
+                                 f"{self.get(target)[0]}.")
 
     def move(self, entity, direction, count=1):
         """Move an entity in a direction for a specific amount of steps.
@@ -186,7 +191,8 @@ class Entity():
         return self.symbol
 
     def __repr__(self):
-        return f"Entity(pos={self.pos}, symbol={self.symbol}, name={self.name}, is_solid={self.is_solid})"
+        return f"Entity(pos={self.pos}, symbol={self.symbol}, " + \
+                "name={self.name}, is_solid={self.is_solid})"
 
 
 class WorldPlayer(Entity):
@@ -195,7 +201,8 @@ class WorldPlayer(Entity):
         super().__init__(pos, symbol, name)
 
     def __repr__(self):
-        return f"WorldPlayer(pos={self.pos}, symbol={self.symbol}, name={self.name}, is_solid={self.is_solid})"
+        return f"WorldPlayer(pos={self.pos}, symbol={self.symbol}, " + \
+                "name={self.name}, is_solid={self.is_solid})"
 
 
 class Objective(Entity):
@@ -207,7 +214,8 @@ class Objective(Entity):
         super().__init__(pos, symbol, name, is_solid=False)
 
     def __repr__(self):
-        return f"Objective(pos={self.pos}, symbol={self.symbol}, name={self.name}, is_solid={self.is_solid})"
+        return f"Objective(pos={self.pos}, symbol={self.symbol}, " + \
+                "name={self.name}, is_solid={self.is_solid})"
 
 
 class Wall(Entity):
@@ -216,7 +224,8 @@ class Wall(Entity):
         super().__init__(pos, symbol, name="Wall", is_solid=True)
 
     def __repr__(self):
-        return f"Objective(pos={self.pos}, symbol={self.symbol}, name={self.name}, is_solid={self.is_solid})"
+        return f"Wall(pos={self.pos}, symbol={self.symbol}, " + \
+                "name={self.name}, is_solid={self.is_solid})"
 
 
 class Decor(Entity):
@@ -225,7 +234,8 @@ class Decor(Entity):
         super().__init__(pos, symbol, name="Decor", is_solid=is_solid)
 
     def __repr__(self):
-        return f"Objective(pos={self.pos}, symbol={self.symbol}, name={self.name}, is_solid={self.is_solid})"
+        return f"Decor(pos={self.pos}, symbol={self.symbol}, " + \
+                "name={self.name}, is_solid={self.is_solid})"
 
 
 def move_player(player, objective, world):
@@ -237,13 +247,17 @@ def move_player(player, objective, world):
         world (World): the world the player is in
     """
     while True:
-        direction = iu.menu(f"Move to the {objective.name} ({objective.symbol}): ", DIRECTIONS.keys(), keymap="wasd")
+        direction = iu.menu(f"Move to the {objective.name} " +
+                            "({objective.symbol}): ",
+                            DIRECTIONS.keys(),
+                            keymap="wasd")
         movement = DIRECTIONS[direction]
         try:
             world.move(player, movement)
             break
         except PlacementError:
-            print("\n--- INVALID MOVEMENT ---\nThat space is full or out of bounds!")
+            print("\n--- INVALID MOVEMENT ---\nThat space is full or " +
+                  "out of bounds!")
 
 
 def make_wall(map_, start, end, orientation=None, custom_icon=None):
@@ -270,7 +284,8 @@ def make_wall(map_, start, end, orientation=None, custom_icon=None):
     elif np.array_equal(np.abs(direction), np.array([1.0, 0.0])):
         # Horizontal wall
         icon = "➖"
-    elif np.array_equal(np.abs(direction), np.array([0.0, 1.0])) or np.array_equal(direction, np.array([0.0, 0.0])):
+    elif np.array_equal(np.abs(direction), np.array([0.0, 1.0])) \
+            or np.array_equal(direction, np.array([0.0, 0.0])):
         # Vertical wall
         if orientation == "L":
             icon = "┃ "
@@ -279,7 +294,8 @@ def make_wall(map_, start, end, orientation=None, custom_icon=None):
         else:
             raise ValueError("vertical walls require orientation 'L' or 'R'.")
     else:
-        raise ValueError("Failed to build wall due to invalid start and end (no diagonals).")
+        raise ValueError("Failed to build wall due to invalid start " +
+                         "and end (no diagonals).")
     num_tiles = int(norm(end - start)) + 1
     direction = direction.astype(int)
     for tile in range(num_tiles):
@@ -311,7 +327,8 @@ def make_building(map_, *corners, custom_icon=None):
             last_direction = "R" if c1_to_c2_unit[0] > 0 else "L"
         elif c1_to_c2_unit[1] != 0:  # Vertical wall
             orientation = last_direction
-            make_wall(map_, corner1+c1_to_c2_unit, corner2-c1_to_c2_unit, orientation, custom_icon=custom_icon)
+            make_wall(map_, corner1+c1_to_c2_unit, corner2-c1_to_c2_unit, 
+                      orientation, custom_icon=custom_icon)
 
 
 def build_map():

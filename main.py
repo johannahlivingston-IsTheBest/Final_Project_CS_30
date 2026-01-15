@@ -1,3 +1,19 @@
+###############################################################################
+# Title: Main code
+# Class: CS30
+# Assignment: Final project
+# Name:Johannah, Aditi, Atticus
+# Version: 5
+# Date: 01/14/2026
+###############################################################################
+'''
+This program has a bunch of different games inside a game class. They games
+include match character description, rock - paper - scissors, riddles, 
+unscramble scrambled word, and multiple choice/ termanology.
+'''
+###############################################################################
+# Imports and Global Variables------------------------------------------------- 
+
 import act_one
 import act_two
 import act_three
@@ -8,13 +24,14 @@ import act_seven
 from player_class import Player
 
 player = Player()
+# Main--------------------------------------------------------------------------
 
 # ACT 1
 act_one.starting_text(player)
 act_one.tutorial_intro(player)
 
 # ACT 2
-#act_two.act_two_tutorial(player)
+act_two.act_two_tutorial(player)
 
 # ACT 3
 act_three.act_three(player)

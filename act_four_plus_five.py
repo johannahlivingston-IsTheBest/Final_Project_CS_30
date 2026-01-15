@@ -108,7 +108,7 @@ act4_rps_intro2 = '''PLAYER ({name}):
 “You’ve got to be kidding me… Rock Paper Scissors?”
 “…Fine. Let’s get this over with.”
 
-[ADD ROCK PAPER SCISSORS MINI-GAME HERE]
+
 '''
 
 success_one = '''

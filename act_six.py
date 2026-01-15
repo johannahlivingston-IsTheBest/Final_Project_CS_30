@@ -355,14 +355,14 @@ def act_six(player):
         utils.clear()
 
         # Update love points
-        player.love_points["Magic Tower Master/ Assassin"] += 2
+        player.love_points["Magic Tower Master/ Assassin"] += 3
 
         print(f'''
 ━━━━━━━━━━━━━━━━━━━━━━
 SYSTEM MESSAGE:
 
 Affection Update:
-• Magic Tower Master / Assassin: +2
+• Magic Tower Master / Assassin: +3
 • Crown Heir: No Change
 • Grand Duke Heir: No Change
 ━━━━━━━━━━━━━━━━━━━━━━

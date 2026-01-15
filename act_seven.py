@@ -456,7 +456,7 @@ def act_seven(player):
         utils.clear()
         print(success_two)
 
-        player.love_points["Grand Duke Heir"] += 2
+        player.love_points["Grand Duke Heir"] += 4
         utils.wait_for_continue(player)
         utils.clear()
         print(f'''
@@ -464,7 +464,7 @@ def act_seven(player):
 SYSTEM MESSAGE:
               
  Affection Update:
- • Grand Duke Heir: +2
+ • Grand Duke Heir: +4
  • Crown Prince: No Change
  • Magician / Assassin: No Change
               

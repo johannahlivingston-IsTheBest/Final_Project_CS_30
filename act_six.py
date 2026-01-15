@@ -355,7 +355,7 @@ Success Reward:
 • Affection Gain: +2
 ━━━━━━━━━━━━━━━━━━━━━━
 
-[Add riddle game here]
+
 '''
 success_one = '''
 Your mind snaps into focus.

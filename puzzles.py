@@ -85,10 +85,12 @@ class Puzzles:
       correct_matches = 0
       print('\nWhich character has this personality: ')
       print(f"\n{self.char_des['Crown Prince']['personality']}")
-      # switch out the Characetr with the character names
-      
-      user_match = int(input("\nEnter the number of the character that matches the description: "))
-      if user_match == 1:
+      print("____________________________________________")
+      options = ['1. Crown Prince', '2. Grand Duke', '3. Tower Master']
+      for option in options:
+         print(f"\n{option}")
+      user_match = str(input("\nEnter the number of the character that matches the description: "))
+      if user_match == "1":
          correct_matches += 1
          print('Correct.')
       else:
@@ -98,25 +100,26 @@ class Puzzles:
          print(f"\n{option}")
       print('\nWhich character has this name: ')
       print(f"\n{self.char_des['Grand Duke']['name']}")
-      user_match_two = int(input("\nEnter the number of the character that matches the description: "))
-      if user_match_two == 3:
+      print("____________________________________________")
+      user_match_two = str(input("\nEnter the number of the character that matches the description: "))
+      if user_match_two == "2":
          correct_matches += 1
          print("Correct! One more to go!")
       else:
          print("Incrorrect")
       print('True of False?')
       print(f"{self.char_des['Tower Master']['name']} personality is {self.char_des['Tower Master']['personality']} ")
+      print("____________________________________________")
       options = ['1.True', '2.False']
       for option in options:
          print(f"\n{option}")
-      user_match_three = int(input("\nEnter the number 1 for true and 2 for false: "))
-      if user_match_three == 1:
+      user_match_three = str(input("\nEnter the number 1 for true and 2 for false: "))
+      if user_match_three == "1":
          print('Wow.... Correct')
          correct_matches += 1
       else:
          print('.....Incorrect')
-      
-      print(correct_matches)
+      return correct_matches
 
 
 
@@ -201,49 +204,49 @@ class Puzzles:
       for attempt in range(attempts):
          guess = input(f"\nAttempt {attempt + 1}: Enter your 5-letter guess: ").lower()
          attempt = 0
-      while attempt < attempts:
-         guess = input(f"\nAttempt {attempt + 1}: ").lower()
+         while attempt < attempts:
+            guess = input(f"\nAttempt {attempt + 1}: ").lower()
 
-         if guess == "help" and not hint_used:
-            hint_used = True
-            print("Hint: It's something that is blue and you can drink it")
-            continue
+            if guess == "help" and not hint_used:
+               hint_used = True
+               print("Hint: It's something that is blue and you can drink it")
+               continue
 
-         if len(guess) != 5:
-            print("Please enter a 5-letter word.")
-            continue
-         attempt += 1
-         for letter in guess:
-            if letter in wordle_answer:
-               print(f"The letter {letter} is in the word.")
-            else:
-               print(f"The letter {letter} is not in the word.")
-         if guess[0] == wordle_answer[0]:#f
-            print("\nThe first letter is correct.")
-            letter1 = guess[0].upper()
-            print(f"\n {letter1} ___ ___ ___ ___")
-         if guess[1] == wordle_answer[1]:#l
-            print("\nThe second letter is correct.")
-            letter2 = guess[1].upper()
-            print(f"\n {letter1} {letter2} ___ ___ ___")
-         if guess[2] == wordle_answer[2]:#a
-            print("\nThe third letter is correct.")
-            letter3 = guess[2].upper()
-            print(f"\n {letter1} {letter2} {letter3} ___ ___")
-         if guess[3] == wordle_answer[3]:#m
-            print("\nThe fourth letter is correct.")
-            letter4 = guess[3].upper()
-            print(f"\n {letter1} {letter2} {letter3} {letter4} ___")
-         if guess[4] == wordle_answer[4]:#e
-            print("\nThe fifth letter is correct.")
-            letter5 = guess[4].upper()
-            print(f"\n {letter1} {letter2} {letter3} {letter4} {letter5}")
-         if guess == wordle_answer:
-            print("Congratulations! You've guessed the correct word!")
-            return win
-            break
-         if attempt == attempts - 1:
-            print(f"Sorry, you've used all your attempts. The correct word was '{wordle_answer}'.")
+            if len(guess) != 5:
+               print("Please enter a 5-letter word.")
+               continue
+            attempt += 1
+            for letter in guess:
+               if letter in wordle_answer:
+                  print(f"The letter {letter} is in the word.")
+               else:
+                  print(f"The letter {letter} is not in the word.")
+            if guess[0] == wordle_answer[0]:#f
+               print("\nThe first letter is correct.")
+               letter1 = guess[0].upper()
+               print(f"\n {letter1} ___ ___ ___ ___")
+            if guess[1] == wordle_answer[1]:#l
+               print("\nThe second letter is correct.")
+               letter2 = guess[1].upper()
+               print(f"\n {letter1} {letter2} ___ ___ ___")
+            if guess[2] == wordle_answer[2]:#a
+               print("\nThe third letter is correct.")
+               letter3 = guess[2].upper()
+               print(f"\n {letter1} {letter2} {letter3} ___ ___")
+            if guess[3] == wordle_answer[3]:#m
+               print("\nThe fourth letter is correct.")
+               letter4 = guess[3].upper()
+               print(f"\n {letter1} {letter2} {letter3} {letter4} ___")
+            if guess[4] == wordle_answer[4]:#e
+               print("\nThe fifth letter is correct.")
+               letter5 = guess[4].upper()
+               print(f"\n {letter1} {letter2} {letter3} {letter4} {letter5}")
+            if guess == wordle_answer:
+               print("Congratulations! You've guessed the correct word!")
+               return win
+               break
+            if attempt == attempts - 1:
+               print(f"Sorry, you've used all your attempts. The correct word was '{wordle_answer}'.")
 puzzles = Puzzles()  
 # Main --------------------------------------------------------------------------------------------------------------
 #print(f"{puzzles.char_des['Crown Prince']['nickname']}")

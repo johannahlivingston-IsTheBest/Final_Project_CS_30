@@ -194,7 +194,6 @@ You swallow.
 “…No pressure.”
 The exam begins.
 
-[add exam game match des here]
 '''
 # FINAL EXAM FAIL
 act8_final_exam_fail = '''
@@ -494,26 +493,26 @@ Would you like to play again?
 ━━━━━━━━━━━━━━━━━━━━━━
 '''
 act8_post_credits2 = '''
-BEING #1:
+BEING #1(Aditi):
 “Well?”
 
-BEING #2:
+BEING #2(Atticus):
 “She survived.”
 
-BEING #3:
+BEING #3(Johannah):
 “…And flawlessly”
 
 A pause.
 
-BEING #1:
+BEING #1(Aditi):
 “Should we reset the world?”
 
 Silence.
 
-BEING #2:
+BEING #2(Atticus):
 “…No.”
 
-BEING #3:
+BEING #3(Johannah):
 “She was fun.”
 '''
 act8_post_credits3 = '''
@@ -560,18 +559,18 @@ def act_eight(player):
     utils.print_story(act8_final_exam_hall2, player)
 
     # FINAL EXAM — MATCH GAME
-    #score = puzzles.match_des()
+    correct_matches = puzzles.match_des()
 
     # FAIL CONDITION
-    ##if score < 2:
-     #   utils.clear()
-     #   utils.print_story(act8_final_exam_fail, player)
-     #   exit()
-
-    # PASS CONDITION
-    utils.clear()
-    utils.print_story(act8_final_exam_pass, player)
-    utils.print_story(act8_final_exam_pass2, player)
+    if correct_matches <= 2:
+       utils.clear()
+       utils.print_story(act8_final_exam_fail, player)
+       exit()
+    else:
+        # PASS CONDITION
+        utils.clear()
+        utils.print_story(act8_final_exam_pass, player)
+        utils.print_story(act8_final_exam_pass2, player)
 
     # SHOW CURRENT LOVE POINTS
     print(f'''━━━━━━━━━━━━━━━━━━━━━━

@@ -1,17 +1,15 @@
 ##############################################################################
-# Title: Act Four
+# Title: Act Four and Five
 # Date: 1/7/2026
 ##############################################################################
-"""this contains all dialouge and options for act four"""
+"""This contains all the dialogue and options for act four and five."""
 ##############################################################################
 # Imports and Global Variables -----------------------------------------------
 import utils
 import puzzles
 from world import game_loop
+
 # put text varibles and list for options here
-
-# Act 4 story segments
-
 act4_intro = '''CHAPTER 4 - Divine Object Quest: Rock, Paper, Scissors of Fate!
 
 ━━━━━━━━━━━━━━━━━━━━━━
@@ -29,14 +27,14 @@ Translation: Try not to die you puny human,
 and entertain us!
 ━━━━━━━━━━━━━━━━━━━━━━
 '''
-act4_month_summary = '''
 
-A month passes.
+act4_month_summary = '''A month passes.
 You’ve barely survived.
 Your backpack is missing one notebook.
 Someone snickered at your lunch.
 And yet… you’re alive.
 '''
+
 act4_hint = '''
 ━━━━━━━━━━━━━━━━━━━━━━
 SYSTEM MESSAGE:
@@ -50,6 +48,7 @@ You’ve heard whispers of it… the School Ball!
 
 "A school ball...how cliche," you remark.
 '''
+
 act4_hint2 = '''
 ━━━━━━━━━━━━━━━━━━━━━━
 SYSTEM MESSAGE:
@@ -67,9 +66,8 @@ It may help you acquire a dress.
 A translucent map snaps open in front of you, floating cheerfully!
 Glowing lights mark your destination: The Forest.
 '''
-act4_forest_intro = '''
 
-You follow the glowing lights from the map.
+act4_forest_intro = '''You follow the glowing lights from the map.
 Branches sway, leaves crunch underfoot.
 
 The forest is… slightly less scary than last week’s cafeteria, 
@@ -77,6 +75,7 @@ but only slightly. Suddenly, a glimmering object hovers in
 the clearing ahead. It sparkles almost smugly, 
 like it knows you’re about to make a fool of yourself.
 '''
+
 act4_divine_object = '''
 ━━━━━━━━━━━━━━━━━━━━━━
 SYSTEM MESSAGE:
@@ -86,8 +85,8 @@ The divine object.
 Touch it. Don’t overthink it.
 ━━━━━━━━━━━━━━━━━━━━━━
 '''
-act4_rps_intro = '''
-You reach out.
+
+act4_rps_intro = '''You reach out.
 The moment your fingers brush it, 
 a bubble of light expands around you, 
 and the system chimes again.
@@ -104,14 +103,14 @@ Win → You obtain a beautiful dress.
 Lose → You obtain an ugly dress.
 ━━━━━━━━━━━━━━━━━━━━━━
 '''
-act4_rps_intro2 = '''
 
-PLAYER ({name}):
+act4_rps_intro2 = '''PLAYER ({name}):
 “You’ve got to be kidding me… Rock Paper Scissors?”
 “…Fine. Let’s get this over with.”
 
 
 '''
+
 success_one = '''
 ━━━━━━━━━━━━━━━━━━━━━━
 SYSTEM MESSAGE:
@@ -127,6 +126,7 @@ How disappointing,” they say
 
 You snicker at the beings of higher power.
 '''
+
 success_two = '''
 ━━━━━━━━━━━━━━━━━━━━━━
 SYSTEM MESSAGE:
@@ -137,8 +137,8 @@ Head to the Ballroom.
 
 A translucent map snaps open in front of you
 '''
-success_three = '''
-You follow it and head to the ballroom.
+
+success_three = '''You follow it and head to the ballroom.
 The ballroom doors swing open.
 
 Conversation dies mid-sentence.
@@ -153,8 +153,8 @@ as if fate finally decided to be nice to you.
 
 Whispers ripple through the crowd.
 '''
-success_four = '''
-The Crown Prince pauses mid-conversation, 
+
+success_four = '''The Crown Prince pauses mid-conversation, 
 crimson eyes locked on you, visibly stunned.
 
 The Grand Duke Heir lowers his drink glass, 
@@ -173,6 +173,7 @@ The Beings of Higher Power are…
 reluctantly impressed.
 ━━━━━━━━━━━━━━━━━━━━━━
 '''
+
 fail_one = '''
 ━━━━━━━━━━━━━━━━━━━━━━
 SYSTEM MESSAGE:
@@ -182,11 +183,12 @@ The divine object sputters and shimmers…
 then becomes an ugly, awkward dress.
 
 The Beings of Higher Power snicker.
-“You will look like a clown,” they say
+“You will look like a clown,” they say.
 ━━━━━━━━━━━━━━━━━━━━━━
 
-You sigh
+You sigh.
 '''
+
 fail_two = '''
 ━━━━━━━━━━━━━━━━━━━━━━
 SYSTEM MESSAGE:
@@ -199,8 +201,8 @@ Head to the Ballroom.
 The map pops open anyway.
 No mercy. No rerolls.  
 '''
-fail_three = '''
-You magically change into the dress, 
+
+fail_three = '''You magically change into the dress, 
 once you reach the Ballroom.
 
 Your curly red hair is forced into a tragic, 
@@ -217,8 +219,8 @@ A few nobles choke on their drinks.
 Someone gasps.
 Someone else laughs.
 '''
-fail_four = '''
-At the corner of the room—
+
+fail_four = '''At the corner of the room—
 
 The Crown Prince freezes, eyes wide.
 The Grand Duke stares.
@@ -234,6 +236,7 @@ You look down.
 
 Then you collapse in a pool of blood.
 '''
+
 fail_five = '''
 ━━━━━━━━━━━━━━━━━━━━━━
 SYSTEM MESSAGE:
@@ -253,6 +256,7 @@ You will be missed. Briefly.
 GAME OVER.
 ━━━━━━━━━━━━━━━━━━━━━━
 '''
+
 act5_intro = ''' CHAPTER 5 - School Ball: The Crown Prince or the Duke Heir?
 
 ━━━━━━━━━━━━━━━━━━━━━━
@@ -262,9 +266,8 @@ Oh dear.
 It appears your entrance was too… effective.
 ━━━━━━━━━━━━━━━━━━━━━━
 '''
-act5_scene_setup = '''
 
-Both the Crown Prince and the Duke are visibly 
+act5_scene_setup = '''Both the Crown Prince and the Duke are visibly 
 affected by your appearance.
 Both feel compelled to approach you.
 Both request the honor of the first dance.
@@ -274,8 +277,8 @@ They stop in front of you.
 Two hands extend.
 Two futures diverge.
 '''
-act5_system_message = '''
 
+act5_system_message = '''
 ━━━━━━━━━━━━━━━━━━━━━━
 SYSTEM MESSAGE:
 
@@ -288,17 +291,78 @@ Offending the wrong one may result in…
 '''
 
 puzzles = puzzles.Puzzles()
+
+
 # Functions and Classes ------------------------------------------------------
+def act_four(player):
+    """Print act 4.
+
+    Parameters:
+        player (Player): the player object
+    """
+    # Step through all story segments
+    story_segments = [
+        act4_intro,
+        act4_month_summary,
+        act4_hint,
+        act4_hint2,
+        (game_loop, "forest"),
+        act4_forest_intro,
+        act4_divine_object,
+        act4_rps_intro,
+        act4_rps_intro2
+    ]
+
+    for segment in story_segments:
+        try:
+            segment[0](segment[1])
+        except TypeError:
+            utils.print_story(segment, player)
+
+    wins = puzzles.rock_paper_scissors()
+    if wins > 1:
+        # success path
+        utils.wait_for_continue(player)
+        utils.clear()
+        story_segments_success = [
+            success_one,
+            success_two,
+            (game_loop, "ballroom"),
+            success_three,
+            success_four
+        ]
+        for segment in story_segments_success:
+            try:
+                segment[0](segment[1])
+            except TypeError:
+                utils.print_story(segment, player)
+
+    else:
+        # Failure path
+        utils.wait_for_continue(player)
+        utils.clear()
+        story_segments_fail = [
+            fail_one,
+            fail_two,
+            (game_loop, "ballroom"),
+            fail_three,
+            fail_four,
+            fail_five
+        ]
+        for segment in story_segments_fail:
+            try:
+                segment[0](segment[1])
+            except TypeError:
+                utils.print_story(segment, player)
+        exit()
 
 
-def print_story(text, player):
-    print(text.format(name=player.name))
-    utils.wait_for_continue(player)
-    utils.clear()
+def act_five(player):
+    """Print act 5.
 
-
-def act_four_part_two(player):
-
+    Parameters:
+        player (Player): the player object
+    """
     # Step through intro story segments before choice
     story_segments = [
         act5_intro,
@@ -499,75 +563,15 @@ Judged.
                   
 You leave, satisfied with the Buffet.
 ''')
-            
+
             break  # end choice loop
 
         else:
             print("Invalid input. Please enter 1, 2, or 3.")
 
 
-def act_four_part_one(player):
-
-    # Step through all story segments
-    story_segments = [
-        act4_intro,
-        act4_month_summary,
-        act4_hint,
-        act4_hint2,
-        (game_loop, "forest"),
-        act4_forest_intro,
-        act4_divine_object,
-        act4_rps_intro,
-        act4_rps_intro2
-    ]
-
-    for segment in story_segments:
-        try:
-            segment[0](segment[1])
-        except TypeError:
-            utils.print_story(segment, player)
-
-    wins = puzzles.rock_paper_scissors()
-    if wins > 1 : 
-        # success path
-        utils.wait_for_continue(player)
-        utils.clear()
-        story_segments_success = [
-            success_one,
-            success_two,
-            (game_loop, "ballroom"),
-            success_three,
-            success_four
-        ]
-        for segment in story_segments_success:
-            try:
-                segment[0](segment[1])
-            except TypeError:
-                utils.print_story(segment, player)
-        
-    else:
-        # Failure path
-        utils.wait_for_continue(player)
-        utils.clear()
-        story_segments_fail = [
-            fail_one,
-            fail_two,
-            (game_loop, "ballroom"),
-            fail_three,
-            fail_four,
-            fail_five
-        ]
-        for segment in story_segments_fail:
-            try:
-                segment[0](segment[1])
-            except TypeError:
-                utils.print_story(segment, player)
-        exit()
-
-
 if __name__ == "__main__":
     from player_class import Player
     test_player = Player()
-    act_four_part_one(test_player)
-    act_four_part_two(test_player)
-
+    act_four(test_player)
+    act_five(test_player)

@@ -6,6 +6,7 @@
 ##############################################################################
 # Imports and Global Variables -----------------------------------------------
 
+
 # Functions and Classes ------------------------------------------------------
 def menu(text, actions, keymap="numeric"):
     """Show a general-purpose menu and let the user pick an option.
@@ -32,7 +33,8 @@ def menu(text, actions, keymap="numeric"):
     ordered_actions = list(actions)  # Convert to list in case dict keys
     # Set keymap. Auto-set if custom keymap dict is passed
     if keymap == "numeric":
-        keymap = {"0": "1", "1": "2", "2": "3", "3": "4", "4": "5", "5": "6", "6": "7", "7": "8", "8": "9"}
+        keymap = {"0": "1", "1": "2", "2": "3", "3": "4", "4": "5", "5": "6",
+                  "6": "7", "7": "8", "8": "9"}
     elif keymap == "wasd":
         keymap = {"0": "w", "1": "a", "2": "s", "3": "d"}
     keymap_reverse = {value: key for key, value in keymap.items()}
@@ -79,4 +81,5 @@ def force_input_dtype(msg, dtype):
 
 
 if __name__ == "__main__":
-    print(menu("PICK:", ["Option1", "Option2", "Option3", "Option4"], keymap="numeric"))
+    print(menu("PICK:", ["Option1", "Option2", "Option3", "Option4"],
+               keymap="numeric"))

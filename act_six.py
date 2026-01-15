@@ -2,428 +2,335 @@
 # Title: Act Six
 # Date: 1/7/2026
 ##############################################################################
-"""this contains all dialouge and options for act six"""
+"""This contains all the dialogue and options for act six."""
 ##############################################################################
 # Imports and Global Variables -----------------------------------------------
 import utils
 import puzzles
 from world import game_loop
-# put text varibles and list for options here
-act7_intro = '''CHAPTER 7 - An unfortunate encounter: The Duke and The Dragon
 
-You stand there for a moment longer than necessary…
-then release a very long, very dramatic sigh.
+# put text variables and list for options here
+act6_intro = '''
+CHAPTER 6 - A Shadow's Invitation: Please don't kill me, Mr. Assassin
 
-You’re alive.
-Still breathing.
-Unburned.
-Unstabbed.
-Uncursed.
+As you leave and head back to the dormitory from the ball, 
+you feel a presence behind you.
+You turn.
 
-A win, frankly.
+A tall figure stands half in shadow.
+Dark attire. Controlled posture.
+Eyes like cold steel observing a battlefield.
 
-The library feels quieter around you now.
-Not safer.
-Just… less interested in killing you.
-
-The academy, unfortunately, continues as normal.
-
-Classes resume.
-Assignments pile up.
-Footsteps slow when you pass.
-
-Whispers follow you.
-Some people stare.
-Some people very deliberately pretend you don’t exist.
-
-You suspect rumors are spreading.
+You feel he is dangerous somehow.
 '''
-act7_status_update = '''
+
+act6_route_detected = '''
 ━━━━━━━━━━━━━━━━━━━━━━
 SYSTEM MESSAGE:
 
-Status Update:
-Player has survived multiple 
-statistically fatal encounters.
+New route interest detected.
+Magic Tower / Assassin Guild Heir:
+Theron Ravenhart (Codename: Nyx)
 
-Social Response:
-• Awe
-• Fear
-• Jealousy
-• Mild resentment
-
-Recommendation:
-Lay low.
+Warning:
+Interest does not equal safety.
 ━━━━━━━━━━━━━━━━━━━━━━
 '''
-act7_silence = '''
-“Wow,” you mutter. 
-“That’s the first good advice you’ve given me.”
 
-The Beings of Higher Power do not respond.
-Which is deeply suspicious.
-'''
-act7_silence_warning = '''
+act6_invitation = '''
 ━━━━━━━━━━━━━━━━━━━━━━
-SYSTEM MESSAGE:
-
-Silence detected.
-Hence probability of impending chaos: High.
-Have a pleasant day!
+THERON RAVENHART:
+“…You’re quite interesting.”
 ━━━━━━━━━━━━━━━━━━━━━━
 
-"UGH"
-…You hate it here.
+His gaze flicks briefly to the Crown Prince.
+Then to the Grand Duke.
 '''
-act7_relationships = '''
-You choose to ignore the system for now, 
-enjoying the rare peace of not having 
-the Beings of Higher Power make snarky remarks. 
 
-To survive, you decide it’s best to remain invisible, 
-pulling back and quietly assessing the state of your relationships.
-'''
-act7_relationships2 = '''
-RELATIONSHIP STATUS 
-
-Crown Prince Alex
-  Openly smitten
-  Appears “casually” wherever you are
-  Finds excuses to talk to you about nothing
-  Is absolutely trying to win you over
-You are one compliment away from being proposed to.
-'''
-act7_relationships3 = '''
-RELATIONSHIP STATUS 
-
-Magician / Assassin Theron (Theo)
-  Disappeared
-  No messages
-  No sightings
-  No ominous lurking
-You are unsure whether you passed a test…
-Or are simply being watched from several rooftops away.
-'''
-act7_relationships4 = '''
-RELATIONSHIP STATUS 
-
-Grand Duke Heir — Serene Valemont 
-  Still holding a grudge over the dance
-  Makes your academic life inconvenient
-  Never crosses a line
-His sharp looks linger longer than necessary.
-And once—just once—you swear his gaze softened before he looked away.
-
-You do speak.
- Briefly.
- Tensely.
- Like two people pretending nothing is wrong when everything is.
-'''
-act7_tension_notice = '''
+act6_invitation2 = '''
 ━━━━━━━━━━━━━━━━━━━━━━
-SYSTEM MESSAGE:
+THERON:
+“Meet me in the library. 
+Three nights from now.”
 
-Romantic Tension Detected.
-
-Recommendation:
-Proceed carefully.
-Or dramatically.
-Both options are acceptable.
-━━━━━━━━━━━━━━━━━━━━━━
-'''
-act7_timeskip = '''
-You decide to lay low.
-Focus on classes.
- Keep your head down.
- Avoid royal drama.
- Ignore ominous systems.
-It almost works.
-
-TIME SKIP — ONE MONTH LATER
-'''
-act7_map_trigger = '''
-One month passes.
-You survive it.
-Mostly.
-
-Lectures blur together.
-Assignments pile up.
-
-No assassination attempts. 
-No cursed books. 
-No magical emergencies.
-
-You make the fatal mistake of thinking:
-Maybe it’s calming down.
-That’s when it happens.
-
-A familiar translucent map snaps open in front of your vision.
-It pulses.
-Red.
-Too red.
-'''
-act7_navigation = '''
-━━━━━━━━━━━━━━━━━━━━━━
-SYSTEM MESSAGE:
-
-Navigation Initialized.
-
-New Event Detected.
-Location: Forest
-Mandatory Participation: Yes
-Survival Probability: Unknown
-
-Side note:
-You really should have enjoyed the peace while it lasted.
-━━━━━━━━━━━━━━━━━━━━━━
-'''
-act7_navigation2 = '''
-Before you can complain, the air shifts.
-The silence breaks.
-Not with words—but with presence.
-
-You feel it.
-
-A familiar pressure settles over your thoughts, 
-heavy and intrusive, like an audience taking their seats.
-
-The Beings of Higher Power are back.
-
-Watching.
-Hovering.
-Far too pleased.
-
-You stiffen.
-
-“Where were you?” you mutter under your breath.
-“And what was with the silence?”
-
-The air hums faintly, amused.
-“…And why,” you add, eyeing the pulsing map, 
-“are you all suddenly so happy?”
-'''
-act7_navigation3 = '''
-For a moment, there is no response.
-Then—
-
-━━━━━━━━━━━━━━━━━━━━━━
-SYSTEM MESSAGE:
-
-Ah.
-You noticed.
-
-The previous silence was… intentional.
-Narrative buildup is important.
-
-As for our excitement—
-It is directly related to your next destination.
-━━━━━━━━━━━━━━━━━━━━━━
-
-Your stomach drops.
-“That’s not an answer,” you say flatly.
-'''
-act7_navigation4 = '''
-━━━━━━━━━━━━━━━━━━━━━━
-SYSTEM MESSAGE:
-
-Correct.
-It is a warning.
-━━━━━━━━━━━━━━━━━━━━━━
-
-The whispers return, buzzing with anticipation.
-
-Something is wrong.
-Very wrong.
-
-And whatever awaits you in the forest—
-They are really looking forward to it.
-
-The academy fades behind you.
-One month of relative peace has done 
-nothing to prepare you for this.
-
-'''
-act7_duke_intro = '''
-The forest air is thick.
-
-Too warm.
-Too still.
-
-Leaves crunch beneath your boots as you push 
-deeper between towering trees.
-
-Then—
-Steel flashes.
-A familiar figure steps into view, sword already drawn.
-Sir Serene Valemont (Duke Heir).
-'''
-act7_duke_intro2 = '''
-━━━━━━━━━━━━━━━━━━━━━━
-Serene Valemont:
-“…Of course it’s you.”
-
-He exhales sharply.
-
-“I was ordered to investigate unusual 
-magical readings.”
 A pause.
-“You shouldn’t be here.”
 
-His gaze flicks over you—sharp, a
-ssessing—then softens despite himself.
-
-“…But I suppose it’s too late for that.”
+“Don’t worry.
+I don’t bite… yet.”
 ━━━━━━━━━━━━━━━━━━━━━━
+
+Before you can respond, he’s gone.
+The night fades...
 '''
-act7_party_join = '''
+
+act6_timeskip = '''TIME SKIP — THREE DAYS LATER
+
+Academia Fortunae continues as if nothing happened.
+Classes. Whispers. Side glances.
+
+You feel watched.
+Always watched.
+
+On the third night, 
+an urgent system message pops up
+'''
+
+act6_library_notice = '''
 ━━━━━━━━━━━━━━━━━━━━━━
 SYSTEM MESSAGE:
 
- Party Member Joined:
- • Grand Duke Heir — Sir Serene Valemont
+Destination unlocked: Academy Library
+Attendance: Mandatory
 
-Affection level:
- • Neutral (grudging)
+Reason:
+You were invited by a highly dangerous individual.
+
+Refusal:
+Strongly discouraged (for survival reasons).
 ━━━━━━━━━━━━━━━━━━━━━━
+
+You sigh.
+
+translucent map snaps open.
+Then you go.
+(Of course you do.)
 '''
-act7_dragon_intro = '''
-Before you can respond—
-The ground trembles.
-Birds scatter.
 
-The trees scream as something 
-massive moves through them.
+act6_library_intro = '''The library is dark.
+Too dark.
 
-Heat slams into you like a wall.
-From between the trees, 
-scales gleam crimson and gold.
+Candles flicker along towering shelves.
+Shadows stretch where they shouldn’t.
 
-A DRAGON.
+Theron stands at the center.
+Back turned.
 '''
-act7_dragon_intro2 = '''
-Not sleeping.
-Not ancient and sluggish.
 
-Awake.
-Hungry.
+act6_library_intro2 = '''
+━━━━━━━━━━━━━━━━━━━━━━
+THERON:
+“You came.”
+━━━━━━━━━━━━━━━━━━━━━━
 
+He turns slowly.
+
+━━━━━━━━━━━━━━━━━━━━━━
+THERON:
+ “Good.”
+━━━━━━━━━━━━━━━━━━━━━━
+
+He raises a hand.
+The doors slam shut.
+Books shudder.
+Letters tear themselves from pages, 
+swirling violently through the air.
+'''
+
+act6_test_intro = '''
 ━━━━━━━━━━━━━━━━━━━━━━
 SYSTEM MESSAGE:
 
 WARNING.
-Boss Encounter Detected.
+Hostile magic detected.
 
-Enemy: Forest Dragon
-Combat Option:  Unavailable
-Reason: You will die instantly.
+This is not a lesson.
+This is a test.
+━━━━━━━━━━━━━━━━━━━━━━
+
+━━━━━━━━━━━━━━━━━━━━━━
+THERON:
+“You caught the attention of the Crown Prince.”
+“And the future Grand Duke.”
+His eyes narrow.
+“That makes you suspicious.”
 ━━━━━━━━━━━━━━━━━━━━━━
 '''
-act7_dragon_intro3 = '''
-Sir Valemont swears under his breath.
-He steps in front of you without thinking, 
-sword raised.
 
-“Stay behind me.”
-
-The dragon lowers its massive head, 
-molten eyes locking onto the two of you.
-Smoke curls from its nostrils.
-Then—it speaks.
+act6_test_intro2 = '''A pause.
 
 ━━━━━━━━━━━━━━━━━━━━━━
-DRAGON:
-“Those who enter my forest must prove wisdom…
-Or burn.”
-The fire in its throat glows brighter.
+ THERON:
+“…I needed to know if you’re merely 
+manipulative or used a trick to lure 
+the Crown Prince and the Future Duke.”
+
+“…Or genuinely interesting.”
+━━━━━━━━━━━━━━━━━━━━━━
+
+The magic surges—out of control.
+A spell misfires.
+The Fire spirals toward him.
+'''
+
+act6_wordle_prompt = '''
+━━━━━━━━━━━━━━━━━━━━━━
+ SYSTEM MESSAGE:
+
+ CRITICAL EVENT.
+
+ Theron Ravenhart is in danger from the fire.
+ Your response will be evaluated.
+━━━━━━━━━━━━━━━━━━━━━━
+
+ A glowing panel slams into your vision.
+'''
+
+act6_wordle_prompt2 = '''
+━━━━━━━━━━━━━━━━━━━━━━
+SYSTEM MESSAGE:
+Emergency Test Initiated: WORDLE
+
+Solve the word.
+Five letters.
+Theme: The spell destabilizing the room.
+
+Failure results in…
+unfortunate conclusions.
 ━━━━━━━━━━━━━━━━━━━━━━
 '''
-act7_riddle_prompt = '''
+
+act6_success = '''You think fast.
+Letters rearrange.
+They lock into place.
+
+“H2O.”
+
+The magic collapses inward.
+You run—
+
+You slam into Theron, 
+arms wrapping around him as the 
+fire extinguishes itself in a burst of light.
+
+Silence.
+Your breathing is the loudest sound in the room.
+'''
+
+act6_success_followup = '''Theron freezes.
+Then—slowly—his hand rests against your back.
+
+━━━━━━━━━━━━━━━━━━━━━━
+THERON (quietly):
+“…You didn’t hesitate.”
+
+“You ran into a fire to save me.”
+━━━━━━━━━━━━━━━━━━━━━━
+'''
+
+act6_fail = '''You hesitate.
+The letters refuse to settle.
+The magic stutters—then fractures.
+
+The flames collapse incorrectly.
+
+Theron moves instantly—
+a blur of motion, a flash of sigils—
+he lands several steps away, unharmed.
+
+You are thrown back by the backlash, hitting the floor hard.
+The fire dies out in a violent hiss.
+
+Silence.
+'''
+
+act6_fail_followup = '''Theron looks at you.
+Not angry.
+Not impressed.
+Disappointed.
+
+━━━━━━━━━━━━━━━━━━━━━━
+ THERON (cold):
+ “…I see.”
+━━━━━━━━━━━━━━━━━━━━━━
+'''
+
+act6_fail_followup2 = '''He studies you carefully now, 
+as if reassessing every moment since the ballroom.
+
+━━━━━━━━━━━━━━━━━━━━━━
+THERON:
+ “So you are not quick under pressure.”
+ “And yet…”
+ “…you drew the attention of the Crown Prince 
+ and the future Grand Duke.”
+━━━━━━━━━━━━━━━━━━━━━━
+'''
+
+act6_fail_followup3 = '''His eyes sharpen.
+
+━━━━━━━━━━━━━━━━━━━━━━
+THERON:
+ “That suggests manipulation.”
+ “Or luck.”
+ “Neither makes you safe.”
+ ━━━━━━━━━━━━━━━━━━━━━━
+'''
+
+act6_fail_followup4 = '''Theron turns away, shadows curling around him.
+
+━━━━━━━━━━━━━━━━━━━━━━
+ THERON:
+“I won’t kill you.”
+“Not yet.”
+━━━━━━━━━━━━━━━━━━━━━━
+
+A pause.
+
+━━━━━━━━━━━━━━━━━━━━━━
+THERON:
+“But if I discover you’ve endangered 
+ the kingdom through deceit…”
+
+“…I won’t hesitate next time.”
+━━━━━━━━━━━━━━━━━━━━━━
+'''
+
+act6_fail_followup5 = '''The doors unlock with a heavy thud.
+The library settles.
+The candles stop flickering.
+
 ━━━━━━━━━━━━━━━━━━━━━━
 SYSTEM MESSAGE:
 
-Non-Combat Resolution Detected.
-Initiating RIDDLE CHALLENGE.
+Event Complete.
+Player survived.
+Trust not earned.
+Suspicion increased.
 
-Failure Result:
-• Dragon incineration
-• Sir Valemont dies
-• You die shortly after
-
-Success Reward:
-• Dragon retreats
-• Duke survives
-• Affection Gain: +2
+Recommendation:
+ Be more interesting next time.
 ━━━━━━━━━━━━━━━━━━━━━━
 
-
-'''
-success_one = '''
-Your mind snaps into focus.
-You step forward.
-“It’s a sword, dragon, and a wizard,” you say clearly.
-Silence.
-
-Then—
-The fire dims.
-
-The dragon studies you for a long, heavy moment.
-Finally, it huffs, smoke curling upward.
-“Correct.”
-
-With a thunderous beat of its wings, 
-the creature retreats deeper into the forest, heat fading with it.
-The ground stills.
-
-You exhale shakily.
-Sir Valemont lowers his sword.
-Then looks at you.
-Really looks.
-'''
-success_two = '''
-━━━━━━━━━━━━━━━━━━━━━━
-SIR VALENMONT:
-
-“…You saved my life.”
-
-A pause.
-“…Thank you.”
-
-His expression softens—just a little.
-"And you can call me Ren <3 "
-━━━━━━━━━━━━━━━━━━━━━━
-
+"Yea thanks for the great advice system," 
+you remark sarcastically.
 '''
 
-puzzles = puzzles.Puzzles()
+puzzle = puzzles.Puzzles()
+
+
 # Functions and Classes ------------------------------------------------------
-def act_seven(player):
+def act_six(player):
+    """Print act six.
+
+    Parameters:
+        player (Player): the player object
+    """
     utils.wait_for_continue(player)
     utils.clear()
 
     story_segments = [
-        act7_intro,
-        act7_status_update,
-        act7_silence,
-        act7_silence_warning,
-        act7_relationships,
-        act7_relationships2,
-        act7_relationships3,
-        act7_relationships4,
-        act7_tension_notice,
-        act7_timeskip,
-        act7_map_trigger,
-        act7_navigation,
-        act7_navigation2,
-        act7_navigation3,
-        act7_navigation4,
-        (game_loop, "forest"),
-        act7_duke_intro,
-        act7_duke_intro2,
-        act7_party_join,
-        act7_dragon_intro,
-        act7_dragon_intro2,
-        act7_dragon_intro3,
-        act7_riddle_prompt
+        act6_intro,
+        act6_route_detected,
+        act6_invitation,
+        act6_invitation2,
+        act6_timeskip,
+        act6_library_notice,
+        (game_loop, "library"),
+        act6_library_intro,
+        act6_test_intro,
+        act6_test_intro2,
+        act6_wordle_prompt,
+        act6_wordle_prompt2
     ]
 
     for segment in story_segments:
@@ -432,78 +339,134 @@ def act_seven(player):
         except TypeError:
             utils.print_story(segment, player)
 
-    # RIDDLE PLACEHOLDER
-    correct_answers_count = puzzles.riddle()
-    if correct_answers_count >= 2:
-        utils.wait_for_continue(player)
-        utils.clear()
-        print(success_one)
-        utils.wait_for_continue(player)
-        utils.clear()
-        print(success_two)
+    # WORDLE PLACEHOLDER RESULT
+    # change later when game is added
+    win = puzzle.wordle()
 
-        player.love_points["Grand Duke Heir"] += 2
+    if win == True:
+        # Story outcome
+        utils.clear()
+        print(act6_success)
         utils.wait_for_continue(player)
         utils.clear()
+
+        print(act6_success_followup)
+        utils.wait_for_continue(player)
+        utils.clear()
+
+        # Update love points
+        player.love_points["Magic Tower Master/ Assassin"] += 2
+
         print(f'''
 ━━━━━━━━━━━━━━━━━━━━━━
 SYSTEM MESSAGE:
-              
- Affection Update:
- • Grand Duke Heir: +2
- • Crown Prince: No Change
- • Magician / Assassin: No Change
-              
-Threat Neutralized.
-Survival Achieved.
+
+Affection Update:
+• Magic Tower Master / Assassin: +2
+• Crown Heir: No Change
+• Grand Duke Heir: No Change
 ━━━━━━━━━━━━━━━━━━━━━━
         ''')
 
         utils.wait_for_continue(player)
         utils.clear()
 
-        print("""
-You leave the forest alive.
-Burned by tension.
-Not by fire.
-""")
-
-    else:
-        utils.wait_for_continue(player)
-        utils.clear()
-        print('''
-The dragon’s eyes narrow.
-“Wrong.”
-Fire erupts.
-              
-Sir Valemont shoves you backward instinctively, 
-blade flashing—
-But it’s useless.
-              
-Flames consume the clearing.
-''')
-        utils.wait_for_continue(player)
-        utils.clear()
-        print('''
+        print(f'''
 ━━━━━━━━━━━━━━━━━━━━━━
 SYSTEM MESSAGE:
-              
-Critical Failure.
-              
-Serene Valemont has fallen.
-You follow moments later.
-              
-The Beings of Higher Power sigh.
-“Such a promising run.”
-              
-GAME OVER.
-You die.
+
+Current Affection Levels:
+• Crown Heir: {player.love_points["Crown Heir"]}
+• Grand Duke Heir: {player.love_points["Grand Duke Heir"]}
+• Magic Tower Master / Assassin: {player.love_points["Magic Tower Master/ Assassin"]}
+
+Threat Assessment:
+{player.name} deemed interesting.
+Execution cancelled.
+
+The Beings of Higher Power mutter:
+“Well. That ruins the assassination.”
 ━━━━━━━━━━━━━━━━━━━━━━
         ''')
-        exit()
+        utils.wait_for_continue(player)
+        utils.clear()
+        print(f'''
+Theron steps back, gaze still guarded—but changed.
+
+━━━━━━━━━━━━━━━━━━━━━━             
+THERON:
+ “You live.”
+“…For now.”
+━━━━━━━━━━━━━━━━━━━━━━
+        ''')
+
+    else:
+        # Story outcome
+        utils.clear()
+        print(act6_fail)
+        utils.wait_for_continue(player)
+        utils.clear()
+
+        print(act6_fail_followup)
+        utils.wait_for_continue(player)
+        utils.clear()
+
+        print(act6_fail_followup2)
+        utils.wait_for_continue(player)
+        utils.clear()
+
+        print(act6_fail_followup3)
+        utils.wait_for_continue(player)
+        utils.clear()
+
+        # Update love points
+        player.love_points["Magic Tower Master/ Assassin"] -= 4
+
+        print(f'''
+━━━━━━━━━━━━━━━━━━━━━━
+SYSTEM MESSAGE:
+
+Affection Update:
+• Magic Tower Master / Assassin: -4
+• Crown Heir: No Change
+• Grand Duke Heir: No Change
+━━━━━━━━━━━━━━━━━━━━━━
+        ''')
+
+        utils.wait_for_continue(player)
+        utils.clear()
+
+        print(f'''
+━━━━━━━━━━━━━━━━━━━━━━
+SYSTEM MESSAGE:
+
+Current Affection Levels:
+• Crown Heir: {player.love_points["Crown Heir"]}
+• Grand Duke Heir: {player.love_points["Grand Duke Heir"]}
+• Magic Tower Master / Assassin: {player.love_points["Magic Tower Master/ Assassin"]}
+
+Threat Assessment:
+{player.name} deemed suspicious.
+Interest significantly reduced.
+
+The Beings of Higher Power whisper:
+“Oof. LOL"
+━━━━━━━━━━━━━━━━━━━━━━
+        ''')
+
+        utils.wait_for_continue(player)
+        utils.clear()
+
+        print(act6_fail_followup4)
+        utils.wait_for_continue(player)
+        utils.clear()
+
+        print(act6_fail_followup5)
+        utils.wait_for_continue(player)
+        utils.clear()
 
 
 if __name__ == "__main__":
     from player_class import Player
     test_player = Player()
-    act_seven(test_player)
+    act_six(test_player)

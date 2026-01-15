@@ -1,14 +1,29 @@
 ##############################################################################
-# Title: Act_one
+# Title: Act One
 # Date: 1/6/2026
 ##############################################################################
-"""This contains all the dialouge and options for ALL OF ACT one."""
+"""This contains all the dialogue and options for act one."""
 ##############################################################################
 # Imports and Global Variables -----------------------------------------------
-
 import utils
 
 # text for the intro
+intro = '''To get to the next dialogue, press Enter.
+Each time you click enter, scroll to the top
+      
+To see your current stats, type "stats" and click enter
+
+Note:
+- Each action you take is permanent and cannot be undone.
+- Once you advance the story, you cannot go back to reread 
+  previous sections.
+
+Enjoy the game!
+
+EXTRA CREDIT: SURVIVE
+Edition 1: You Should’ve Been Worth More Love Points
+'''
+
 part_one = '''You were reading an otome game synopsis on your phone.
 
 "Ooooh a new version of my favorite otome game!"
@@ -18,7 +33,9 @@ Love points.
 Multiple endings.
 
 You are lost in thought when you step off the curb.
-You never saw the TRUCK.'''
+You never saw the TRUCK.
+'''
+
 part_two = '''CHAPTER 1 - At the Hospital: “Congratulations! You’re Dying.”
 
 Darkness.
@@ -39,8 +56,8 @@ Your body does not agree.
 
 Before you can process anything, 
 a translucent window snaps open in front of your face.
-
 '''
+
 part_three = '''
 ━━━━━━━━━━━━━━━━━━━━━━
 SYSTEM MESSAGE:
@@ -57,8 +74,8 @@ You blink.
 
 “…Okay,” you say weakly. “This is either a dream or I’m concussed.”
 '''
-part_four = '''
-The window cheerfully updates.
+
+part_four = '''The window cheerfully updates.
 
 ━━━━━━━━━━━━━━━━━━━━━━
 SYSTEM MESSAGE:
@@ -71,9 +88,10 @@ Good news!
  You have been chosen by beings of higher power!
 ━━━━━━━━━━━━━━━━━━━━━━
 '''
+
 first_choices = ['1. What is happening right now?','\n2. “Beings of higher power…?”']
-reaction_one = '''
-The system pauses.
+
+reaction_one = '''The system pauses.
 As if thinking...
 ━━━━━━━━━━━━━━━━━━━━━━
 SYSTEM MESSAGE:
@@ -91,10 +109,9 @@ attention of some very bored entities called beings of higher power.
 They have decided that if you manage to survive a game, 
 you can survive the truck accident!
 ━━━━━━━━━━━━━━━━━━━━━━
-
 '''
-reaction_two = '''
-The system brightens, almost excited.
+
+reaction_two = '''The system brightens, almost excited.
 
 ━━━━━━━━━━━━━━━━━━━━━━
 SYSTEM MESSAGE:
@@ -113,8 +130,8 @@ Hence they have decided that if you manage to survive a game,
 you can survive the truck accident!
 ━━━━━━━━━━━━━━━━━━━━━━
 '''
-part_five = '''
-The window expands, filling more of your vision.
+
+part_five = '''The window expands, filling more of your vision.
 
 ━━━━━━━━━━━━━━━━━━━━━━
 SYSTEM MESSAGE:
@@ -132,9 +149,8 @@ So they made a game, the one you have been playing and the one
 that led you to be distracted and caused the accident with the truck.
 ━━━━━━━━━━━━━━━━━━━━━━
 '''
-part_six = '''
 
-You have a bad feeling about this.
+part_six = '''You have a bad feeling about this.
 
 ━━━━━━━━━━━━━━━━━━━━━━
 SYSTEM MESSAGE:
@@ -147,6 +163,7 @@ They wanted to watch someone fight for their life using love
 
 The word “LOVE” sparkles obnoxiously.
 '''
+
 part_seven = '''
 ━━━━━━━━━━━━━━━━━━━━━━
 SYSTEM MESSAGE:
@@ -162,6 +179,7 @@ A perfect candidate
 
 “…Candidate?” you whisper.
 '''
+
 # text for the tutorial
 tut_one = '''
 ━━━━━━━━━━━━━━━━━━━━━━
@@ -177,10 +195,10 @@ Including:
 • The stakes
 • And how you can survive
 ━━━━━━━━━━━━━━━━━━━━━━
-
-
 '''
+
 second_choices = ['1. Felix','2. Amelia']
+
 tut_two = '''
 ━━━━━━━━━━━━━━━━━━━━━━
 SYSTEM MESSAGE:
@@ -195,26 +213,17 @@ Good luck, Player.
 You’re going to need it.
 ━━━━━━━━━━━━━━━━━━━━━━
 '''
+
+
 # Functions and Classes ------------------------------------------------------
 def starting_text(player):
-    # Instructions for the player
-    print("""
-    To get to the next dialogue, press Enter.
-    Each time you click enter, scroll to the top
-          
-    To see your current stats, type "stats" and click enter
+    """Print the intro text before the game.
 
-    Note:
-    - Each action you take is permanent and cannot be undone.
-    - Once you advance the story, you cannot go back to reread 
-      previous sections.
-
-    Enjoy the game!
-
-    EXTRA CREDIT: SURVIVE
-    Edition 1: You Should’ve Been Worth More Love Points
-    """)
+    Parameters:
+        player (Player): the player object
+    """
     # Display the first part of the story
+    print(intro)
     utils.wait_for_continue(player)
     utils.clear()
     print(part_one)
@@ -264,7 +273,11 @@ def starting_text(player):
 
 
 def tutorial_intro(player):
+    """Print the tutorial.
 
+    Parameters:
+        player (Player): the player object
+    """
     utils.wait_for_continue(player)
     utils.clear()
     print(tut_one)
@@ -291,4 +304,8 @@ def tutorial_intro(player):
     
 
 # Main -----------------------------------------------------------------------
-
+if __name__ == "__main__":
+    from player_class import Player
+    test_player = Player()
+    starting_text(test_player)
+    tutorial_intro(test_player)

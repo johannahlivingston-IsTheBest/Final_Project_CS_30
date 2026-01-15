@@ -2,637 +2,522 @@
 # Title: Act Seven
 # Date: 1/7/2026
 ##############################################################################
-"""this contains all dialouge and options for act seven"""
+"""This contains all the dialogue and options for act seven."""
 ##############################################################################
 # Imports and Global Variables -----------------------------------------------
 import utils
 import puzzles
 from world import game_loop
+
 # put text varibles and list for options here
+act7_intro = '''CHAPTER 7 - An unfortunate encounter: The Duke and The Dragon
 
+You stand there for a moment longer than necessary…
+then release a very long, very dramatic sigh.
 
-# SCENE: AFTERMATH — “YOU FORGOT SOMETHING”
-act8_aftermath_intro = '''
-CHAPTER 8 - Final Challenge: Academia Fortunae 
-"The System Demands a Diploma"
+You’re alive.
+Still breathing.
+Unburned.
+Unstabbed.
+Uncursed.
 
-You return to the academy battered, singed, and very much alive.
+A win, frankly.
 
-The forest fades behind you.
-The dragon is gone.
-Sir Valemont is alive.
-You are—miraculously—not dragon food.
+The library feels quieter around you now.
+Not safer.
+Just… less interested in killing you.
 
-Students whisper louder now.
-Faculty watches you with concern.
-Someone actually bows.
+The academy, unfortunately, continues as normal.
 
-You limp into your dorm, 
-collapse onto your bed, 
-and let out a long breath.
+Classes resume.
+Assignments pile up.
+Footsteps slow when you pass.
 
-“…I survived,” you mumble.
-“Again.”
+Whispers follow you.
+Some people stare.
+Some people very deliberately pretend you don’t exist.
 
-For the first time in weeks, 
-nothing immediately tries to kill you.
-The silence feels… wrong.
-Then—
-A translucent window snaps open above your face.
+You suspect rumors are spreading.
 '''
-act8_aftermath_intro2 = '''
+
+act7_status_update = '''
 ━━━━━━━━━━━━━━━━━━━━━━
 SYSTEM MESSAGE:
 
-Oops.
+Status Update:
+Player has survived multiple 
+statistically fatal encounters.
+
+Social Response:
+• Awe
+• Fear
+• Jealousy
+• Mild resentment
+
+Recommendation:
+Lay low.
 ━━━━━━━━━━━━━━━━━━━━━━
+'''
 
-You squint at it.
-“…Oops?”
+act7_silence = '''“Wow,” you mutter. 
+“That’s the first good advice you’ve given me.”
 
+The Beings of Higher Power do not respond.
+Which is deeply suspicious.
+'''
+
+act7_silence_warning = '''
 ━━━━━━━━━━━━━━━━━━━━━━
 SYSTEM MESSAGE:
 
-We may have forgotten to 
-remind you of something.
-
-Very minor.
-Very small.
-Practically insignificant.
+Silence detected.
+Hence probability of impending chaos: High.
+Have a pleasant day!
 ━━━━━━━━━━━━━━━━━━━━━━
-'''
-act8_aftermath_intro3 = '''
-Your stomach drops.
-“What,” you ask slowly, “did you forget?”
 
+"UGH"
+…You hate it here.
+'''
+
+act7_relationships = '''You choose to ignore the system for now, 
+enjoying the rare peace of not having 
+the Beings of Higher Power make snarky remarks. 
+
+To survive, you decide it’s best to remain invisible, 
+pulling back and quietly assessing the state of your relationships.
+'''
+
+act7_relationships2 = '''RELATIONSHIP STATUS 
+
+Crown Prince Alex
+  Openly smitten
+  Appears “casually” wherever you are
+  Finds excuses to talk to you about nothing
+  Is absolutely trying to win you over
+You are one compliment away from being proposed to.
+'''
+
+act7_relationships3 = '''RELATIONSHIP STATUS 
+
+Magician / Assassin Theron (Theo)
+  Disappeared
+  No messages
+  No sightings
+  No ominous lurking
+You are unsure whether you passed a test…
+Or are simply being watched from several rooftops away.
+'''
+
+act7_relationships4 = '''RELATIONSHIP STATUS 
+
+Grand Duke Heir — Serene Valemont 
+  Still holding a grudge over the dance
+  Makes your academic life inconvenient
+  Never crosses a line
+His sharp looks linger longer than necessary.
+And once—just once—you swear his gaze softened before he looked away.
+
+You do speak.
+ Briefly.
+ Tensely.
+ Like two people pretending nothing is wrong when everything is.
+'''
+
+act7_tension_notice = '''
 ━━━━━━━━━━━━━━━━━━━━━━
 SYSTEM MESSAGE:
 
-Your final exam.
-━━━━━━━━━━━━━━━━━━━━━━
+Romantic Tension Detected.
 
-You sit straight up.
-“…My what.”
-
-━━━━━━━━━━━━━━━━━━━━━━
-SYSTEM MESSAGE:
-
-You are, technically, a student.
-At an academy.
-With a graduation requirement.
-Strange how nearly dying multiple times 
-makes one forget academic responsibilities.
+Recommendation:
+Proceed carefully.
+Or dramatically.
+Both options are acceptable.
 ━━━━━━━━━━━━━━━━━━━━━━
 '''
-act8_aftermath_intro4 = '''
-“You let me fight a dragon,” you hiss.
-“And NOW you remember school?!”
 
-━━━━━━━━━━━━━━━━━━━━━━
-SYSTEM MESSAGE:
+act7_timeskip = '''You decide to lay low.
+Focus on classes.
+Keep your head down.
+Avoid royal drama.
+Ignore ominous systems.
+It almost works.
 
-In our defense,
-You were very entertaining.
-━━━━━━━━━━━━━━━━━━━━━━
-
-A pause.
+TIME SKIP — ONE MONTH LATER
 '''
-act8_aftermath_intro5 = '''
-━━━━━━━━━━━━━━━━━━━━━━
-SYSTEM MESSAGE:
 
-Final Challenge Unlocked.
-Objective: Graduate from Academia Fortunae.
-Failure Consequence: Death.
-Naturally.
-━━━━━━━━━━━━━━━━━━━━━━
+act7_map_trigger = '''One month passes.
+You survive it.
+Mostly.
 
-You stare at the ceiling.
-“…Of course.”
+Lectures blur together.
+Assignments pile up.
+
+No assassination attempts. 
+No cursed books. 
+No magical emergencies.
+
+You make the fatal mistake of thinking:
+Maybe it’s calming down.
+That’s when it happens.
+
+A familiar translucent map snaps open in front of your vision.
+It pulses.
+Red.
+Too red.
 '''
-# TIME SKIP — ONE WEEK LATER
-act8_final_exam_intro = '''TIME SKIP — ONE WEEK LATER
 
-The week crawls by.
-Cramming.
-Whispers.
-Stolen glances.
-
-The Crown Prince finds excuses to sit near you.
-
-The Duke watches you carefully now, 
-pride wounded but respect earned.
-
-The Magician remains distant—present, 
-but unreadable.
-'''
-act8_final_exam_intro2 = '''
-The Beings of Higher Power hum with anticipation.
-On the seventh day—
-The map appears again along with a system message.
-
+act7_navigation = '''
 ━━━━━━━━━━━━━━━━━━━━━━
 SYSTEM MESSAGE:
 
 Navigation Initialized.
 
-Final Location: Final Exam Hall.
-Attendance: Mandatory.
-This is it, Player.
+New Event Detected.
+Location: Forest
+Mandatory Participation: Yes
+Survival Probability: Unknown
+
+Side note:
+You really should have enjoyed the peace while it lasted.
 ━━━━━━━━━━━━━━━━━━━━━━
 '''
-act8_final_exam_intro3 = '''
-Your chest tightens.
-“…This decides everything, doesn’t it?”
 
-━━━━━━━━━━━━━━━━━━━━━━
-SYSTEM MESSAGE:
+act7_navigation2 = '''Before you can complain, the air shifts.
+The silence breaks.
+Not with words—but with presence.
 
-Correct.
-Head to the Main Building
-for the exam!
-━━━━━━━━━━━━━━━━━━━━━━
+You feel it.
 
-You step forward.
+A familiar pressure settles over your thoughts, 
+heavy and intrusive, like an audience taking their seats.
+
+The Beings of Higher Power are back.
+
+Watching.
+Hovering.
+Far too pleased.
+
+You stiffen.
+
+“Where were you?” you mutter under your breath.
+“And what was with the silence?”
+
+The air hums faintly, amused.
+“…And why,” you add, eyeing the pulsing map, 
+“are you all suddenly so happy?”
 '''
-# SCENE: FINAL EXAM HALL — “THE ENDING AWAITS”
-act8_final_exam_hall = '''
-The hall is vast.
-Marble floors.
-Floating sigils.
-Ancient magic humming in the air.
-Students sit in rows.
 
-The faculty observes from above.
-And at the far edges of the room—
-
-The three men who changed everything.
-The Crown Prince.
-The Duke Heir.
-The Magic Tower Master/Assassin.
-
-They are watching you.
-'''
-act8_final_exam_hall2 = '''
-━━━━━━━━━━━━━━━━━━━━━━
-SYSTEM MESSAGE:
-
-Final Evaluation Commencing.
-
-Criteria:
- • Intelligence
- • Resolve
- • Emotional growth
- • Survival Instincts
- • Love Points Accumulated
-
-Pass to graduate.
-Fail to perish.
-━━━━━━━━━━━━━━━━━━━━━━
-
-You swallow.
-“…No pressure.”
-The exam begins.
-
-'''
-# FINAL EXAM FAIL
-act8_final_exam_fail = '''
-━━━━━━━━━━━━━━━━━━━━━━
-SYSTEM MESSAGE:
-
-Final Evaluation Complete.
-
-Result: FAILED.
-
-Knowledge: Insufficient.
-Emotional Awareness: Questionable.
-Survival Probability: Unacceptable.
-━━━━━━━━━━━━━━━━━━━━━━
-
-The sigils above you flicker—then shatter.
-
-The room goes cold.
-Students vanish.
-Faculty turns away.
-
-━━━━━━━━━━━━━━━━━━━━━━
-SYSTEM MESSAGE:
-
-You were entertaining.
-But not enough.
-
-Thank you for playing.
-━━━━━━━━━━━━━━━━━━━━━━
-'''
-# FINAL EXAM PASS
-act8_final_exam_pass = '''
-— YOU PASS —
-
-The sigils flare.
-Then fade.
-Silence.
+act7_navigation3 = '''For a moment, there is no response.
 Then—
 
 ━━━━━━━━━━━━━━━━━━━━━━
 SYSTEM MESSAGE:
 
-Congratulations, Player.
-You have passed the final exam.
-Academia Fortunae Graduate Status: CONFIRMED.
-━━━━━━━━━━━━━━━━━━━━━━
-'''
-act8_final_exam_pass2 = '''
-Applause erupts.
-Faculty nods in approval.
-The Beings of Higher Power cheer shamelessly.
+Ah.
+You noticed.
 
+The previous silence was… intentional.
+Narrative buildup is important.
+
+As for our excitement—
+It is directly related to your next destination.
+━━━━━━━━━━━━━━━━━━━━━━
+
+Your stomach drops.
+“That’s not an answer,” you say flatly.
+'''
+
+act7_navigation4 = '''
 ━━━━━━━━━━━━━━━━━━━━━━
 SYSTEM MESSAGE:
 
-Current Love Points Summary:
-(Highest Affection Will Determine Ending)
-━━━━━━━━━━━━━━━━━━━━━━
-'''
-act8_final_exam_pass3 = '''
-The system pauses.
-
-━━━━━━━━━━━━━━━━━━━━━━
-SYSTEM MESSAGE:
-
-However—
-As a special reward, 
-you may choose.
-━━━━━━━━━━━━━━━━━━━━━━
-'''
-act8_endings = '''
-FINAL PLAYER CHOICE
-1. Accept your highest Love Point ending.
-2. Accept the Elixir of Life and return to your original world.
-'''
-# ALL LOVE-POINT ENDINGS
-act8_end_crown_prince = '''
-CROWN PRINCE ENDING
-“QUEEN OF THE REALM”
-
-The exam hall dissolves into light.
-When your vision clears, 
-you’re standing on a balcony
-overlooking the capital—golden spires, 
-banners fluttering, 
-the sound of the city breathing beneath you.
-
-A familiar presence stands beside you.
-Alexander Aurelion.
-He turns, crimson eyes soft instead of calculating.
-'''
-act8_end_crown_prince2 = '''
-━━━━━━━━━━━━━━━━━━━━━━
-ALEX:
-“So… you really did it.”
+Correct.
+It is a warning.
 ━━━━━━━━━━━━━━━━━━━━━━
 
-You laugh weakly.
-“I think I blacked out halfway through.”
-He steps closer, removing his gloves.
+The whispers return, buzzing with anticipation.
+
+Something is wrong.
+Very wrong.
+
+And whatever awaits you in the forest—
+They are really looking forward to it.
+
+The academy fades behind you.
+One month of relative peace has done 
+nothing to prepare you for this.
+
 '''
-act8_end_crown_prince3 = '''
+
+act7_duke_intro = '''The forest air is thick.
+
+Too warm.
+Too still.
+
+Leaves crunch beneath your boots as you push 
+deeper between towering trees.
+
+Then—
+Steel flashes.
+A familiar figure steps into view, sword already drawn.
+Sir Serene Valemont (Duke Heir).
+'''
+
+act7_duke_intro2 = '''
 ━━━━━━━━━━━━━━━━━━━━━━
-ALEX:
-“You faced assassins, dragons, 
-and divine nonsense.”
+Serene Valemont:
+“…Of course it’s you.”
+
+He exhales sharply.
+
+“I was ordered to investigate unusual 
+magical readings.”
 A pause.
-“…An exam was never going to stop you.”
-━━━━━━━━━━━━━━━━━━━━━━
+“You shouldn’t be here.”
 
-He hesitates—then kneels.
-The world stops.
+His gaze flicks over you—sharp, a
+ssessing—then softens despite himself.
+
+“…But I suppose it’s too late for that.”
+━━━━━━━━━━━━━━━━━━━━━━
 '''
-act8_end_crown_prince4 = '''
+
+act7_party_join = '''
 ━━━━━━━━━━━━━━━━━━━━━━
-ALEX:
-“I was born into duty.”
+SYSTEM MESSAGE:
 
-“I was taught love was a weakness.”
-His gaze lifts to yours.
+ Party Member Joined:
+ • Grand Duke Heir — Sir Serene Valemont
 
-“And then you survived everything 
-I couldn’t protect you from.”
+Affection level:
+ • Neutral (grudging)
 ━━━━━━━━━━━━━━━━━━━━━━
-
-A small smile.
 '''
-act8_end_crown_prince5 = '''
-━━━━━━━━━━━━━━━━━━━━━━
-ALEX:
-“Rule with me.”
-━━━━━━━━━━━━━━━━━━━━━━
 
-Your answer doesn’t need words.
-When he kisses you, it’s not royal.
-It’s real.
+act7_dragon_intro = '''Before you can respond—
+The ground trembles.
+Birds scatter.
+
+The trees scream as something 
+massive moves through them.
+
+Heat slams into you like a wall.
+From between the trees, 
+scales gleam crimson and gold.
+
+A DRAGON.
+'''
+
+act7_dragon_intro2 = '''Not sleeping.
+Not ancient and sluggish.
+
+Awake.
+Hungry.
 
 ━━━━━━━━━━━━━━━━━━━━━━
 SYSTEM MESSAGE:
 
-Ending Unlocked: Queen of the Realm
-Status: Married
-Survival: Permanent
+WARNING.
+Boss Encounter Detected.
+
+Enemy: Forest Dragon
+Combat Option:  Unavailable
+Reason: You will die instantly.
 ━━━━━━━━━━━━━━━━━━━━━━
 '''
-act8_end_Duke = '''
-DUKE ENDING
-“DUCHESS OF STEEL”
 
-The exam hall empties.
-Rain falls outside the academy walls.
+act7_dragon_intro3 = '''Sir Valemont swears under his breath.
+He steps in front of you without thinking, 
+sword raised.
 
-You find him waiting beneath an 
-old oak—armor half-removed, posture stiff.
+“Stay behind me.”
 
-Sir Valemont or as you have come to call him,
-Ren.
+The dragon lowers its massive head, 
+molten eyes locking onto the two of you.
+Smoke curls from its nostrils.
+Then—it speaks.
 
-He doesn’t look at you at first.
+━━━━━━━━━━━━━━━━━━━━━━
+DRAGON:
+“Those who enter my forest must prove wisdom…
+Or burn.”
+The fire in its throat glows brighter.
+━━━━━━━━━━━━━━━━━━━━━━
 '''
-act8_end_Duke2 = '''
-━━━━━━━━━━━━━━━━━━━━━━
-DUKE:
-“…I was wrong about you.”
-━━━━━━━━━━━━━━━━━━━━━━
 
-You raise a brow.
-“That’s your big confession?”
-A huff of laughter escapes him—short, surprised.
-'''
-act8_end_Duke3 = '''
-━━━━━━━━━━━━━━━━━━━━━━
-DUKE:
-“I thought you were a threat.”
-“Then you became a liability.”
-He finally meets your eyes.
-“…Then you saved my life.”
-━━━━━━━━━━━━━━━━━━━━━━
-
-He steps closer.
-'''
-act8_end_Duke4 = '''
-━━━━━━━━━━━━━━━━━━━━━━
-DUKE:
-“I don’t know how to be gentle.”
-“But I will be loyal. To the end.”
-━━━━━━━━━━━━━━━━━━━━━━
-
-You reach out first.
-The kiss is fierce. Certain. Earned.
-
+act7_riddle_prompt = '''
 ━━━━━━━━━━━━━━━━━━━━━━
 SYSTEM MESSAGE:
 
-Ending Unlocked: Duchess of Steel
-Status: Married
-Survival: Permanent
+Non-Combat Resolution Detected.
+Initiating RIDDLE CHALLENGE.
+
+Failure Result:
+• Dragon incineration
+• Sir Valemont dies
+• You die shortly after
+
+Success Reward:
+• Dragon retreats
+• Duke survives
+• Affection Gain: +2
 ━━━━━━━━━━━━━━━━━━━━━━
 '''
-act8_end_tower_master = '''
-MAGIC TOWER MASTER/ ASSASSIN ENDING
-“SHADOW AND FLAME”
 
-No throne.
-No audience.
-
-Just the two of you standing at the edge of 
-the Magic Tower as dawn breaks.
-Theron doesn’t face you.
-'''
-act8_end_tower_master2 = '''
-━━━━━━━━━━━━━━━━━━━━━━
-THERON:
-“You could have chosen safety.”
-━━━━━━━━━━━━━━━━━━━━━━
-
-You shrug.
-“I got bored.”
-A quiet breath—almost a laugh.
-
-━━━━━━━━━━━━━━━━━━━━━━
-THERON:
-“I have killed for less interesting reasons.”
-━━━━━━━━━━━━━━━━━━━━━━
-
-He turns.
-For once, his eyes aren’t guarded.
-'''
-act8_end_tower_master3 = '''
-━━━━━━━━━━━━━━━━━━━━━━
-THERON:
-“I don’t know how to live quietly.”
-“…But I want to try. With you.”
-━━━━━━━━━━━━━━━━━━━━━━
-
-You pull him into a kiss before he can retreat.
-He freezes—
-Then melts.
-
-━━━━━━━━━━━━━━━━━━━━━━
-SYSTEM MESSAGE:
-
-Ending Unlocked: Shadow and Flame
-Status: Married/ Partners
-Lifestyle: Dangerously Profitable
-━━━━━━━━━━━━━━━━━━━━━━
-'''
-# REAL WORLD ENDING
-act8_end_return_real_world = '''
-RETURN ENDING
-“AWAKE”
-
-Light floods everything.
-
-Pain.
-Then warmth.
-
-You wake to sobbing.
-Your mother’s hand grips yours 
-like she’s afraid you’ll vanish.
-
-Your father’s voice cracks.
-Your sister laughs through tears.
-'''
-act8_end_return_real_world2 = '''
-━━━━━━━━━━━━━━━━━━━━━━
-MOTHER:
-“She’s awake—she’s awake—”
-━━━━━━━━━━━━━━━━━━━━━━
-
-The machines beep steadily.
-
-No system.
-No map.
-No love points.
-
-Just life.
-
-As your eyes close again—safe this time.
-However, you swear you hear distant voices arguing.
-'''
-# POST-CREDITS SCENE
-act8_post_credits = '''
-POST-CREDITS SCENE
-“THE BEINGS DEBRIEF”
-
-A dark void.
-Three glowing entities sit around a table.
-
-━━━━━━━━━━━━━━━━━━━━━━
-SYSTEM MESSAGE:
-
-EXTRA CREDIT: SURVIVE
-Edition 1: You Should’ve Been Worth More Love Points
-Status: Complete
-Would you like to play again?
-━━━━━━━━━━━━━━━━━━━━━━
-'''
-act8_post_credits2 = '''
-BEING #1(Aditi):
-“Well?”
-
-BEING #2(Atticus):
-“She survived.”
-
-BEING #3(Johannah):
-“…And flawlessly”
-
-A pause.
-
-BEING #1(Aditi):
-“Should we reset the world?”
-
+success_one = '''Your mind snaps into focus.
+You step forward.
+“It’s a sword, dragon, and a wizard,” you say clearly.
 Silence.
 
-BEING #2(Atticus):
-“…No.”
+Then—
+The fire dims.
 
-BEING #3(Johannah):
-“She was fun.”
-'''
-act8_post_credits3 = '''
-A new screen flickers to life.
-The Beings smile.
+The dragon studies you for a long, heavy moment.
+Finally, it huffs, smoke curling upward.
+“Correct.”
 
-━━━━━━━━━━━━━━━━━━━━━━
-SYSTEM MESSAGE:
+With a thunderous beat of its wings, 
+the creature retreats deeper into the forest, heat fading with it.
+The ground stills.
 
-EXTRA CREDIT: SURVIVE
-Edition 2: ???
-Status: ???
-━━━━━━━━━━━━━━━━━━━━━━
-
-Everything Fades to Black.
+You exhale shakily.
+Sir Valemont lowers his sword.
+Then looks at you.
+Really looks.
 '''
 
+success_two = '''
+━━━━━━━━━━━━━━━━━━━━━━
+SIR VALENMONT:
+
+“…You saved my life.”
+
+A pause.
+“…Thank you.”
+
+His expression softens—just a little.
+"And you can call me Ren <3 "
+━━━━━━━━━━━━━━━━━━━━━━
+'''
 
 puzzles = puzzles.Puzzles()
 
+
 # Functions and Classes ------------------------------------------------------
-def get_highest_love_interest(player):
-    return max(player.love_points, key=player.love_points.get)
+def act_seven(player):
+    """Print act seven.
 
-#winner = get_highest_love_interest(player)
-
-def act_eight(player):
-
-    # AFTERMATH SEQUENCE
-    utils.print_story(act8_aftermath_intro, player)
-    utils.print_story(act8_aftermath_intro2, player)
-    utils.print_story(act8_aftermath_intro3, player)
-    utils.print_story(act8_aftermath_intro4, player)
-    utils.print_story(act8_aftermath_intro5, player)
-
-    # TIME SKIP
-    utils.print_story(act8_final_exam_intro, player)
-    utils.print_story(act8_final_exam_intro2, player)
-    utils.print_story(act8_final_exam_intro3, player)
-    game_loop("main building")
-
-    # FINAL EXAM HALL
-    utils.print_story(act8_final_exam_hall, player)
-    utils.print_story(act8_final_exam_hall2, player)
-
-    # FINAL EXAM — MATCH GAME
-    correct_matches = puzzles.match_des()
-
-    # FAIL CONDITION
-    if correct_matches <= 2:
-       utils.clear()
-       utils.print_story(act8_final_exam_fail, player)
-       exit()
-    else:
-        # PASS CONDITION
-        utils.clear()
-        utils.print_story(act8_final_exam_pass, player)
-        utils.print_story(act8_final_exam_pass2, player)
-
-    # SHOW CURRENT LOVE POINTS
-    print(f'''━━━━━━━━━━━━━━━━━━━━━━
-SYSTEM MESSAGE:
-          
-Tutorial Complete.
-
-Current Affection Levels:
-• Crown Heir: {player.love_points["Crown Heir"]}
-• Grand Duke Heir: {player.love_points["Grand Duke Heir"]}
-• Magic Tower Master/ Assassin: {player.love_points["Magic Tower Master/ Assassin"]}
-━━━━━━━━━━━━━━━━━━━━━━''')
-
-    utils.print_story(act8_final_exam_pass3, player)
-    utils.print_story(act8_endings, player)
-
-    # PLAYER CHOICE
-    choice = input("\nChoose 1 or 2: ")
-
-    # RETURN TO REAL WORLD
-    if choice == '2':
-        utils.clear()
-        utils.print_story(act8_end_return_real_world, player)
-        utils.print_story(act8_end_return_real_world2, player)
-        utils.print_story(act8_post_credits, player)
-        utils.print_story(act8_post_credits2, player)
-        exit()
-
-    # LOVE POINT ENDING
-    winner = get_highest_love_interest(player)
-    player.stats['partner'] = winner
-
-    utils.clear()
-
-    if winner == "Crown Heir":
-        utils.print_story(act8_end_crown_prince, player)
-        utils.print_story(act8_end_crown_prince2, player)
-        utils.print_story(act8_end_crown_prince3, player)
-        utils.print_story(act8_end_crown_prince4, player)
-        utils.print_story(act8_end_crown_prince5, player)
-
-    elif winner == "Grand Duke Heir":
-        utils.print_story(act8_end_Duke, player)
-        utils.print_story(act8_end_Duke2, player)
-        utils.print_story(act8_end_Duke3, player)
-        utils.print_story(act8_end_Duke4, player)
-
-    else:
-        utils.print_story(act8_end_tower_master, player)
-        utils.print_story(act8_end_tower_master2, player)
-        utils.print_story(act8_end_tower_master3, player)
-
+    Parameters:
+        player (Player): the player object
+    """
     utils.wait_for_continue(player)
     utils.clear()
 
-    # POST-CREDITS
-    utils.print_story(act8_post_credits, player)
-    utils.print_story(act8_post_credits2, player)
-    utils.print_story(act8_post_credits3, player)
+    story_segments = [
+        act7_intro,
+        act7_status_update,
+        act7_silence,
+        act7_silence_warning,
+        act7_relationships,
+        act7_relationships2,
+        act7_relationships3,
+        act7_relationships4,
+        act7_tension_notice,
+        act7_timeskip,
+        act7_map_trigger,
+        act7_navigation,
+        act7_navigation2,
+        act7_navigation3,
+        act7_navigation4,
+        (game_loop, "forest"),
+        act7_duke_intro,
+        act7_duke_intro2,
+        act7_party_join,
+        act7_dragon_intro,
+        act7_dragon_intro2,
+        act7_dragon_intro3,
+        act7_riddle_prompt
+    ]
+
+    for segment in story_segments:
+        try:
+            segment[0](segment[1])
+        except TypeError:
+            utils.print_story(segment, player)
+
+    # RIDDLE
+    correct_answers_count = puzzles.riddle()
+    if correct_answers_count >= 2:
+        utils.wait_for_continue(player)
+        utils.clear()
+        print(success_one)
+        utils.wait_for_continue(player)
+        utils.clear()
+        print(success_two)
+
+        player.love_points["Grand Duke Heir"] += 2
+        utils.wait_for_continue(player)
+        utils.clear()
+        print(f'''
+━━━━━━━━━━━━━━━━━━━━━━
+SYSTEM MESSAGE:
+              
+ Affection Update:
+ • Grand Duke Heir: +2
+ • Crown Prince: No Change
+ • Magician / Assassin: No Change
+              
+Threat Neutralized.
+Survival Achieved.
+━━━━━━━━━━━━━━━━━━━━━━
+        ''')
+
+        utils.wait_for_continue(player)
+        utils.clear()
+
+        print("""
+You leave the forest alive.
+Burned by tension.
+Not by fire.
+""")
+
+    else:
+        utils.wait_for_continue(player)
+        utils.clear()
+        print('''
+The dragon’s eyes narrow.
+“Wrong.”
+Fire erupts.
+              
+Sir Valemont shoves you backward instinctively, 
+blade flashing—
+But it’s useless.
+              
+Flames consume the clearing.
+''')
+        utils.wait_for_continue(player)
+        utils.clear()
+        print('''
+━━━━━━━━━━━━━━━━━━━━━━
+SYSTEM MESSAGE:
+              
+Critical Failure.
+              
+Serene Valemont has fallen.
+You follow moments later.
+              
+The Beings of Higher Power sigh.
+“Such a promising run.”
+              
+GAME OVER.
+You die.
+━━━━━━━━━━━━━━━━━━━━━━
+        ''')
+        exit()
 
 
 if __name__ == "__main__":
     from player_class import Player
     test_player = Player()
-    act_eight(test_player)
+    act_seven(test_player)

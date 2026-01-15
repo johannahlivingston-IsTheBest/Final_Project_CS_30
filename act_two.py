@@ -1,13 +1,13 @@
-
 ##############################################################################
-# Title: Act_two
+# Title: Act Two
 # Date: 1/7/2026
 ##############################################################################
-"""This code contains all the dialouge and choices for act two of our game."""
+"""This contains all the dialogue and choices for act two."""
 ##############################################################################
 # Imports and Global Variables -----------------------------------------------
 import utils
 import photos
+
 # Get all text varibles here
 act2_intro = '''CHAPTER 2 - Tutorial: “A COMMONER?!”
 
@@ -26,8 +26,8 @@ built from pale marble and gold, its spires piercing drifting clouds.
 A translucent window snaps into existence in front of you, 
 far too cheerful for the situation.
 '''
-act2_transfer = '''
 
+act2_transfer = '''
 ━━━━━━━━━━━━━━━━━━━━━━
 SYSTEM MESSAGE:
 
@@ -37,10 +37,9 @@ Welcome to your new reality, Player.
 
 You stare at the screen.
 “…What?”
-
 '''
-act2_enrollment = '''
 
+act2_enrollment = '''
 ━━━━━━━━━━━━━━━━━━━━━━
 SYSTEM MESSAGE:
 
@@ -55,10 +54,9 @@ Royal Academy of Magic, Nobility, and Emotional Suffering
 right before I got hit by a truck?!”
 
 “Am I inside of the game?!!!”
-
 '''
-act2_reality_check1 = '''
 
+act2_reality_check1 = '''
 ━━━━━━━━━━━━━━━━━━━━━━
 SYSTEM MESSAGE:
 
@@ -77,9 +75,8 @@ You are here on a scholarship.
 Not to mention your life depends on it
 ━━━━━━━━━━━━━━━━━━━━━━
 '''
-act2_reality_check2 = '''
 
-Another window slides open before you can protest.
+act2_reality_check2 = '''Another window slides open before you can protest.
 
 ━━━━━━━━━━━━━━━━━━━━━━
 SYSTEM MESSAGE:
@@ -91,16 +88,15 @@ Magic Type: Healing (Recently Awakened)
 Social Standing: Questionable
 ━━━━━━━━━━━━━━━━━━━━━━
 '''
-act2_reflection1 = '''
 
-You glance down at your hands.
+act2_reflection1 = '''You glance down at your hands.
 
 They look normal.
 Too normal, considering you were supposed to be dying moments ago.
 Your reflection catches in the polished stone nearby.
 '''
-act2_reflection2 = '''
 
+act2_reflection2 = '''
 Curly red hair, slightly wild, like it refuses to behave no matter 
 how much effort you put in. Forest-green eyes—alert, sharp, 
 and very aware of how out of place you are. Your uniform fits properly, 
@@ -111,8 +107,8 @@ You look… ordinary.
 
 And yet, people glance at you anyway.
 '''
-act2_identity_reminder = '''
 
+act2_identity_reminder = '''
 ━━━━━━━━━━━━━━━━━━━━━━
 SYSTEM MESSAGE:
 
@@ -124,9 +120,8 @@ Plenty of emotional baggage.
 However, in the body of a commoner {name}
 ━━━━━━━━━━━━━━━━━━━━━━
 '''
-act2_confirmation = '''
 
-Your chest tightens.
+act2_confirmation = '''Your chest tightens.
 “So this really is my life now,” you whisper.
 
 ━━━━━━━━━━━━━━━━━━━━━━
@@ -137,9 +132,8 @@ And whether it continues—
 depends entirely on you.
 ━━━━━━━━━━━━━━━━━━━━━━
 '''
-act2_tutorial_intro1 = '''
 
-Before you can demand answers, the gates creak open.
+act2_tutorial_intro1 = '''Before you can demand answers, the gates creak open.
 Students stream past you.
 
 Nobles.
@@ -152,11 +146,9 @@ Whispers trail behind you as you step forward.
 “A commoner?”
 “They let someone like that in?”
 “How embarrassing…”
-
 '''
-act2_tutorial_intro2 = '''
 
-Your grip tightens at your side.
+act2_tutorial_intro2 = '''Your grip tightens at your side.
 Someone slams into your shoulder.
 Hard.
 You stumble back, barely keeping your footing.
@@ -170,10 +162,9 @@ The surrounding students slow,
 pretending not to stare while very clearly staring.
 
 A faint shimmer appears at the edge of your vision.
-
 '''
-act2_tutorial_intro3 = '''
 
+act2_tutorial_intro3 = '''
 ━━━━━━━━━━━━━━━━━━━━━━
 SYSTEM MESSAGE:
 
@@ -184,8 +175,8 @@ No permanent negative consequences will occur.
 (This time.)
 ━━━━━━━━━━━━━━━━━━━━━━
 '''
-act2_player_notice = '''
-You glance around
+
+act2_player_notice = '''You glance around
 From the corner of your eye, 
 you notice three people who look… wrong.
 
@@ -203,14 +194,14 @@ why fictional men had better communication skills than real ones.
 You remember them from the otome game you saw in the real world—
 the one that flashed through your mind right before the truck hit.
 '''
-act2_characters1 = '''
 
+act2_characters1 = '''
 — A young man stands on the academy steps in royal colors, 
 gold embroidery catching the light and a crest pinned to his chest. 
 His silver-blond hair is tied back loosely, and his crimson eyes sparkle 
 with amusement, as if he already knows exactly what you’re going to do.
-
 '''
+
 act2_characters2 = '''
 — Another figure leans casually against a marble pillar, arms crossed. 
 His dark obsidian hair is neatly styled, framing icy blue eyes that 
@@ -218,10 +209,9 @@ assess you with unsettling precision. Everything about him speaks of
 restraint: a perfectly tailored noble uniform, immaculate posture, 
 and an expression that reveals nothing beyond quiet judgment. 
 He isn’t watching out of curiosity—he’s measuring your worth.
-
 '''
-act2_characters3 = '''
 
+act2_characters3 = '''
 — And then there’s the third.
 At first, you can’t see him at all.
 The air ripples. Light bends where it shouldn’t.
@@ -230,10 +220,9 @@ draped in dark fabrics that seem to absorb illumination.
 When his gray gaze briefly finds you, a chill runs down your spine, 
 followed by the unsettling realization that he finds this entire situation… 
 ENTERTAINING
-
 '''
-act2_characters4 = '''
-Your heart slams against your ribs.
+
+act2_characters4 = '''Your heart slams against your ribs.
 
 “…Oh my god,” you whisper.
 
@@ -245,10 +234,9 @@ You swallow.
 and the Magic Tower Master heir? Wasn't he also an assassin?!”
 
 A familiar window pops into existence.
-
 '''
-act2_assign_lp = '''
 
+act2_assign_lp = '''
 ━━━━━━━━━━━━━━━━━━━━━━
 SYSTEM MESSAGE:
 
@@ -268,8 +256,8 @@ Affection values (love points) initialized.
 • Magic Tower Master/ Assassin: 5
 ━━━━━━━━━━━━━━━━━━━━━━
 '''
-act2_instruction1 = '''
 
+act2_instruction1 = '''
 ━━━━━━━━━━━━━━━━━━━━━━
 SYSTEM MESSAGE:
 They are now aware of you.
@@ -285,9 +273,8 @@ Your heart pounds.
 You take a breath.
 ━━━━━━━━━━━━━━━━━━━━━━
 '''
-act2_instruction2 = '''
 
-How do you respond to the noble who shoved you? 
+act2_instruction2 = '''How do you respond to the noble who shoved you?
 
 1. Apologize calmly and step aside.
 2. Meet their gaze and respond firmly.
@@ -297,9 +284,13 @@ How do you respond to the noble who shoved you?
 
 # Functions and Classes ------------------------------------------------------
 def act_two_tutorial(player):
+    """Print the tutorial for act two.
+
+    Parameters:
+        player (Player): the player object
+    """
     utils.wait_for_continue(player)
     utils.clear()
-    
     # Step through all story segments
     story_segments = [
         act2_intro,
@@ -340,13 +331,13 @@ def act_two_tutorial(player):
         # utils.clear()
         if choice == '1':
             print('''
-You lower your head slightly and step back.
-"I’m sorry," you say evenly. "That was my fault."
-
+You lower your head slightly and step back. 
+I’m sorry," you say evenly. "That was my fault."
+            
 The noble blinks, clearly expecting anger—or tears.
 "Tch," they mutter, turning away.
 A quiet murmur ripples through the crowd.
-
+            
 You sense approval. Not admiration—yet—but acknowledgment.
 ''')
             player.love_points["Crown Heir"] += 1
@@ -356,7 +347,7 @@ You sense approval. Not admiration—yet—but acknowledgment.
             print('''
 You straighten your posture and meet their gaze head-on.
 "I was walking where I was allowed," you say. "Just like you."
-
+            
 The noble stiffens, face flushing.
 The crowd goes silent.
 Someone laughs softly from above.
@@ -397,7 +388,6 @@ Current Affection Levels:
 
 You blink.
 “…Those changed because of what I just did?”
-
 ''')
 
     utils.wait_for_continue(player)

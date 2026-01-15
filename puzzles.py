@@ -35,16 +35,20 @@ desc_list = [
 ]
 
 hand_choices = ["rock", "paper", "scissors"]
+
+
 # Classes----------------------------------------------------------------------
 class Puzzles:
     '''
       This class contains various puzzle games including match character
-      description, rock-paper-scissors, riddles, and unscramble scrambled words.
-      for each puzzle type, there are methods to execute the game logic and
-      return the results. This code is then used in different acts of the main game.
+      description, rock-paper-scissors, riddles, and unscramble scrambled
+      words. For each puzzle type, there are methods to execute the game logic
+      and return the results. This code is then used in different acts of the
+      main game.
     '''
+
     def __init__(self):
-        #i dint use this ever
+        # i dint use this ever
         self.puzzle_types = [
             "match_des",
             "rock_paper_scissors",
@@ -132,7 +136,8 @@ class Puzzles:
     def match_des(self):
         '''
         presents the player with three character descriptions to
-        match to the correct character. It returns the number of correctly answered matches.
+        match to the correct character. It returns the number of correctly
+        answered matches.
         correct_matches: int - The number of correctly matched descriptions.
         user_match: str - The player's match for the first description.
         user_match_two: str - The player's match for the second description.
@@ -262,10 +267,14 @@ class Puzzles:
         This method presents the player with four scrambled words to
         unscramble.returns the number of correctly unscrambled words.
 
-        riddle_answer_one: str - The player's answer to the first scrambled word.
-        riddle_answer_two: str - The player's answer to the second scrambled word.
-         riddle_answer_three: str - The player's answer to the third scrambled word.
-         riddle_answer_four: str - The player's answer to the fourth scrambled word.
+        riddle_answer_one: str - The player's answer to the first scrambled
+                                word.
+        riddle_answer_two: str - The player's answer to the second scrambled
+                                word.
+         riddle_answer_three: str - The player's answer to the third scrambled
+                                word.
+         riddle_answer_four: str - The player's answer to the fourth scrambled
+                                word.
          riddle_answers_count: int - The count of correctly unscrambled words.
         '''
         riddle_answer_one = input(
@@ -307,79 +316,81 @@ class Puzzles:
             f"\nYou got {riddle_answers_count} out of 4 right "
         )
         return riddle_answers_count
-    def wordle(self): 
-      print("You have to guess the correct word in 6 tries.")
-      print("The word is a five letter word.")
-      print("If you need help, type 'help' to get a hint. "
-         "You can only use the hint once."
-      )
 
-      wordle_answer = "water"
-      attempts = 6
-      hint_used = False
-      win = True
+    def wordle(self):
+        print("You have to guess the correct word in 6 tries.")
+        print("The word is a five letter word.")
+        print("If you need help, type 'help' to get a hint. "
+              "You can only use the hint once."
+              )
 
-      # Create the result display
-      letter1 = "_"
-      letter2 = "_"
-      letter3 = "_"
-      letter4 = "_"
-      letter5 = "_"
+        wordle_answer = "water"
+        attempts = 6
+        hint_used = False
+        win = True
 
-      print("\n ___ ___ ___ ___ ___")
+        # Create the result display
+        letter1 = "_"
+        letter2 = "_"
+        letter3 = "_"
+        letter4 = "_"
+        letter5 = "_"
 
-      attempt = 0
-      while attempt < attempts:
-         guess = input(
-               f"\nAttempt {attempt + 1}: Enter your 5-letter guess: "
-         ).lower()
+        print("\n ___ ___ ___ ___ ___")
 
-         if guess == "help" and not hint_used:
-               hint_used = True
-               print(
-                  "Hint: It's something that is blue "
-                  "and you can drink it"
-               )
-               continue
+        attempt = 0
+        while attempt < attempts:
+            guess = input(
+                f"\nAttempt {attempt + 1}: Enter your 5-letter guess: "
+            ).lower()
 
-         if len(guess) != 5:
-               print("Please enter a 5-letter word.")
-               continue
+            if guess == "help" and not hint_used:
+                hint_used = True
+                print(
+                    "Hint: It's something that is blue "
+                    "and you can drink it"
+                )
+                continue
 
-         attempt += 1
+            if len(guess) != 5:
+                print("Please enter a 5-letter word.")
+                continue
 
-         for letter in guess:
-               if letter in wordle_answer:
-                  print(f"The letter {letter} is in the word.")
-               else:
-                  print(f"The letter {letter} is not in the word.")
+            attempt += 1
 
-         if guess[0] == wordle_answer[0]:
-               letter1 = guess[0].upper()
-         if guess[1] == wordle_answer[1]:
-               letter2 = guess[1].upper()
-         if guess[2] == wordle_answer[2]:
-               letter3 = guess[2].upper()
-         if guess[3] == wordle_answer[3]:
-               letter4 = guess[3].upper()
-         if guess[4] == wordle_answer[4]:
-               letter5 = guess[4].upper()
+            for letter in guess:
+                if letter in wordle_answer:
+                    print(f"The letter {letter} is in the word.")
+                else:
+                    print(f"The letter {letter} is not in the word.")
 
-         print(f"\n {letter1} {letter2} {letter3} {letter4} {letter5}")
+            if guess[0] == wordle_answer[0]:
+                letter1 = guess[0].upper()
+            if guess[1] == wordle_answer[1]:
+                letter2 = guess[1].upper()
+            if guess[2] == wordle_answer[2]:
+                letter3 = guess[2].upper()
+            if guess[3] == wordle_answer[3]:
+                letter4 = guess[3].upper()
+            if guess[4] == wordle_answer[4]:
+                letter5 = guess[4].upper()
 
-         if guess == wordle_answer:
-               print("Congratulations! You've guessed the correct word!")
-               return win
+            print(f"\n {letter1} {letter2} {letter3} {letter4} {letter5}")
 
-      print(
-         "Sorry, you've used all your attempts. "
-         f"The correct word was '{wordle_answer}'."
-      )
-      return False
+            if guess == wordle_answer:
+                print("Congratulations! You've guessed the correct word!")
+                return win
 
+        print(
+            "Sorry, you've used all your attempts. "
+            f"The correct word was '{wordle_answer}'."
+        )
+        return False
 
 
 puzzles = Puzzles()
+
+
 # Main-------------------------------------------------------------------------
 
 # puzzles.match_des()

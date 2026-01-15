@@ -89,9 +89,10 @@ Good news!
 ━━━━━━━━━━━━━━━━━━━━━━
 '''
 
-first_choices = ['1. What is happening right now?','\n2. “Beings of higher power…?”']
+first_choices = ['1. What is happening right now?','\n2. “Beings of higher '
+                 '"power…?”']
 
-reaction_one = '''The system pauses.
+reaction_one = '''The system pauses."
 As if thinking...
 ━━━━━━━━━━━━━━━━━━━━━━
 SYSTEM MESSAGE:

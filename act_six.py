@@ -378,7 +378,7 @@ SYSTEM MESSAGE:
 Current Affection Levels:
 • Crown Heir: {player.love_points["Crown Heir"]}
 • Grand Duke Heir: {player.love_points["Grand Duke Heir"]}
-• Magic Tower Master / Assassin: {player.love_points["Magic Tower Master/ Assassin"]}
+• Tower Master/Assassin: {player.love_points["Magic Tower Master/ Assassin"]}
 
 Threat Assessment:
 {player.name} deemed interesting.
@@ -443,7 +443,7 @@ SYSTEM MESSAGE:
 Current Affection Levels:
 • Crown Heir: {player.love_points["Crown Heir"]}
 • Grand Duke Heir: {player.love_points["Grand Duke Heir"]}
-• Magic Tower Master / Assassin: {player.love_points["Magic Tower Master/ Assassin"]}
+• Tower Master/Assassin: {player.love_points["Magic Tower Master/ Assassin"]}
 
 Threat Assessment:
 {player.name} deemed suspicious.

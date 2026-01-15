@@ -10,7 +10,8 @@ import puzzles
 from world import game_loop
 
 # put text varibles and list for options here
-act4_intro = '''CHAPTER 4 - Divine Object Quest: Rock, Paper, Scissors of Fate!
+act4_intro = '''
+CHAPTER 4 - Divine Object Quest: Rock, Paper, Scissors of Fate!
 
 ━━━━━━━━━━━━━━━━━━━━━━
 SYSTEM MESSAGE:
@@ -429,7 +430,7 @@ SYSTEM MESSAGE:
 Current Affection Levels:
 • Crown Heir: {player.love_points["Crown Heir"]}
 • Grand Duke Heir: {player.love_points["Grand Duke Heir"]}
-• Magic Tower Master/ Assassin: {player.love_points["Magic Tower Master/ Assassin"]}
+• Tower Master/Assassin: {player.love_points["Magic Tower Master/ Assassin"]}
 
 The Magician watches from the shadows.
 Interest detected.
@@ -530,7 +531,7 @@ SYSTEM MESSAGE:
 Current Affection Levels:      
 • Crown Heir: {player.love_points["Crown Heir"]}
 • Grand Duke Heir: {player.love_points["Grand Duke Heir"]}
-• Magic Tower Master/ Assassin: {player.love_points["Magic Tower Master/ Assassin"]}
+• Tower Master/Assassin: {player.love_points["Magic Tower Master/ Assassin"]}
 
 The Magician watches from the shadows.
 Interest detected.

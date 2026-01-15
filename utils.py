@@ -8,6 +8,7 @@
 import os
 import subprocess
 
+
 RULES_TEXT = ''' Loading Rules...
 
 ━━━━━━━━━━━━━━━━━━━━━━

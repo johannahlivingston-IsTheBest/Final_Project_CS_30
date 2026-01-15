@@ -7,6 +7,7 @@
 ##############################################################################
 # Imports and Global Variables -----------------------------------------------
 import utils
+import photos
 # Get all text varibles here
 act2_intro = '''CHAPTER 2 - Tutorial: “A COMMONER?!”
 
@@ -209,6 +210,8 @@ gold embroidery catching the light and a crest pinned to his chest.
 His silver-blond hair is tied back loosely, and his crimson eyes sparkle 
 with amusement, as if he already knows exactly what you’re going to do.
 
+'''
+act2_characters2 = '''
 — Another figure leans casually against a marble pillar, arms crossed. 
 His dark obsidian hair is neatly styled, framing icy blue eyes that 
 assess you with unsettling precision. Everything about him speaks of 
@@ -217,7 +220,7 @@ and an expression that reveals nothing beyond quiet judgment.
 He isn’t watching out of curiosity—he’s measuring your worth.
 
 '''
-act2_characters2 = '''
+act2_characters3 = '''
 
 — And then there’s the third.
 At first, you can’t see him at all.
@@ -227,6 +230,9 @@ draped in dark fabrics that seem to absorb illumination.
 When his gray gaze briefly finds you, a chill runs down your spine, 
 followed by the unsettling realization that he finds this entire situation… 
 ENTERTAINING
+
+'''
+act2_characters4 = '''
 Your heart slams against your ribs.
 
 “…Oh my god,” you whisper.
@@ -239,6 +245,7 @@ You swallow.
 and the Magic Tower Master heir? Wasn't he also an assassin?!”
 
 A familiar window pops into existence.
+
 '''
 act2_assign_lp = '''
 
@@ -289,11 +296,6 @@ How do you respond to the noble who shoved you?
 
 
 # Functions and Classes ------------------------------------------------------
-def print_story(text, player):
-    print(text.format(name=player.name))
-    utils.wait_for_continue(player)
-    utils.clear()
-
 def act_two_tutorial(player):
     utils.wait_for_continue(player)
     utils.clear()
@@ -312,24 +314,30 @@ def act_two_tutorial(player):
         act2_tutorial_intro1,
         act2_tutorial_intro2,
         act2_tutorial_intro3,
-        act2_player_notice, 
+        act2_player_notice,
         act2_characters1,
+        (photos.display_image, "crown-prince.jpg"),
+        (utils.wait_for_continue, player),
         act2_characters2,
+        (photos.display_image, "magic-tower-master.jpg"),
+        (utils.wait_for_continue, player),
+        act2_characters3,
+        (photos.display_image, "duke.jpg"),
+        (utils.wait_for_continue, player),
+        act2_characters4,
         act2_assign_lp,
         act2_instruction1,
     ]
     for segment in story_segments:
-        if '{name}' in segment:
-            print_story(segment, player)
-        else:
-            print(segment)
-            utils.wait_for_continue(player)  
-            utils.clear()
+        try:
+            segment[0](segment[1])
+        except TypeError:
+            utils.print_story(segment, player)
     print(act2_instruction2)
     # Player choice
     while True:
         choice = input("\nEnter your choice (number): ")
-        #utils.clear()
+        # utils.clear()
         if choice == '1':
             print('''
 You lower your head slightly and step back.
@@ -427,3 +435,7 @@ Try not to die.
 
 
 # Main -----------------------------------------------------------------------
+if __name__ == "__main__":
+    from player_class import Player
+    test_player = Player()
+    act_two_tutorial(test_player)

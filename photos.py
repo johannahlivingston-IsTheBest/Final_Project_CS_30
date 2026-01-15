@@ -4,11 +4,14 @@
 ##############################################################################
 """Image-handling module that displays photos to the user."""
 ##############################################################################
+# Imports and Global Variables -----------------------------------------------
 import matplotlib.pyplot as plt
 import matplotlib.image as mpimg
 import pathlib
+import utils
 
 
+# Functions and Classes ------------------------------------------------------
 class ImageError(Exception):
     """Error when image fails to display."""
     def __init__(self, msg):
@@ -19,7 +22,7 @@ def display_image(image_name):
     """Display an image on the screen.
     
     Parameters:
-        image_name (str): name of image without file path
+        image_name (str): name of image with file extension included
     """
     images_folder = pathlib.Path("Images")
     image_path = images_folder / image_name
@@ -29,8 +32,10 @@ def display_image(image_name):
         plt.axis("off")
         plt.show()
     else:
-        raise ImageError(f"Failed to generate image '{image_name}'. Did you forget the file extension (.jpg, .png)?")
+        raise ImageError(f"Failed to generate image '{image_name}'. "
+                         f"Did you forget the file extension (.jpg, .png)?")
 
 
+# Main -----------------------------------------------------------------------
 if __name__ == "__main__":
-    display_image("silly-cat-photo.jpg")
+    display_image("silly-cat-photo-test.jpg")

@@ -578,7 +578,7 @@ def act_eight(player):
     utils.print_story(act8_final_exam_intro, player)
     utils.print_story(act8_final_exam_intro2, player)
     utils.print_story(act8_final_exam_intro3, player)
-    game_loop("dorm", "main building")
+    game_loop("dorms", "main building")
 
     # FINAL EXAM HALL
     utils.print_story(act8_final_exam_hall, player)

@@ -2,7 +2,7 @@
 # Title: clear
 # Date: 12/17/2025
 ##############################################################################
-"""Module for utilities"""
+"""Module for utilities."""
 ##############################################################################
 # Imports and Global Variables -----------------------------------------------
 import os
@@ -48,29 +48,36 @@ def clear():
 
 
 def wait_for_continue(player):
+    """Waits for the player to continue the story or displays menu options.
+    
+    Parameters:
+        player (Player): the player object
+    """
     while True:
         user_input = input("").lower().strip()
-
         if user_input == "":
             return  # continue story
-
         elif user_input == "stats":
             clear()
             player.display_info()
             input("\nPress Enter twice to return to the story...")
             #clear()
-
         elif user_input == "rules":
             clear()
             print(RULES_TEXT)
             input("\nPress Enter twice to return to the story...")
             #clear()
-
         else:
             print("Press Enter to continue, or type 'stats' to view player info.")
 
 
 def print_story(text, player):
+    """Print a segment of the story.
+    
+    Parameters:
+        text (str): story text to show
+        player (Player): the current player object
+    """
     print(text.format(name=player.name))
     wait_for_continue(player)
     clear()

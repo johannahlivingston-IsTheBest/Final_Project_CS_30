@@ -430,7 +430,7 @@ def act_seven(player):
         act7_navigation2,
         act7_navigation3,
         act7_navigation4,
-        (game_loop, "forest"),
+        (game_loop, ("main building", "forest")),
         act7_duke_intro,
         act7_duke_intro2,
         act7_party_join,
@@ -442,7 +442,7 @@ def act_seven(player):
 
     for segment in story_segments:
         try:
-            segment[0](segment[1])
+            segment[0](*segment[1])
         except TypeError:
             utils.print_story(segment, player)
 

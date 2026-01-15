@@ -357,13 +357,14 @@ def build_map():
     return full_map
 
 
-def game_loop(objective):
+def game_loop(start, objective):
     """Start a map segment minigame.
 
     Parameters:
         objective (str): where the player needs to move to
     """
-    building_dict = {
+    location_dict = {
+        "gate": [2, 12],
         "main building": [13, 13],
         "dorms": [4, 4],
         "library": [20, 20],
@@ -371,14 +372,18 @@ def game_loop(objective):
         "ballroom": [21, 5],
         "forest": [23, 14],
     }
-    # Find goal position
-    if objective.lower() in building_dict:
-        goal_pos = building_dict[objective]
+    # Find start position and goal position
+    if start.lower() in location_dict:
+        start_pos = location_dict[start]
+    else:
+        raise KeyError(f"'{start}' is not a valid start location.")
+    if objective.lower() in location_dict:
+        goal_pos = location_dict[objective]
     else:
         raise KeyError(f"'{objective}' is not a valid objective location.")
     # Initialize world objects
     game = build_map()
-    player1 = WorldPlayer(np.array([1, 14]), "🏃", "player")
+    player1 = WorldPlayer(np.array(start_pos), "🏃", "player")
     # ⭕  ➖  🏃 ┃ 
     goal = Objective(goal_pos, "⭕", objective)
     game.add_entity(player1)
@@ -393,4 +398,4 @@ def game_loop(objective):
 
 
 if __name__ == "__main__":
-    game_loop("forest")
+    game_loop("main building", "forest")

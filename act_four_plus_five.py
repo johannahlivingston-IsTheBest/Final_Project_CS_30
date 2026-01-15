@@ -306,7 +306,7 @@ def act_four(player):
         act4_month_summary,
         act4_hint,
         act4_hint2,
-        (game_loop, "forest"),
+        (game_loop, ("main building", "forest")),
         act4_forest_intro,
         act4_divine_object,
         act4_rps_intro,
@@ -315,7 +315,7 @@ def act_four(player):
 
     for segment in story_segments:
         try:
-            segment[0](segment[1])
+            segment[0](*segment[1])
         except TypeError:
             utils.print_story(segment, player)
 
@@ -327,13 +327,13 @@ def act_four(player):
         story_segments_success = [
             success_one,
             success_two,
-            (game_loop, "ballroom"),
+            (game_loop, ("forest", "ballroom")),
             success_three,
             success_four
         ]
         for segment in story_segments_success:
             try:
-                segment[0](segment[1])
+                segment[0](*segment[1])
             except TypeError:
                 utils.print_story(segment, player)
 
@@ -344,14 +344,14 @@ def act_four(player):
         story_segments_fail = [
             fail_one,
             fail_two,
-            (game_loop, "ballroom"),
+            (game_loop, ("forest", "ballroom")),
             fail_three,
             fail_four,
             fail_five
         ]
         for segment in story_segments_fail:
             try:
-                segment[0](segment[1])
+                segment[0](*segment[1])
             except TypeError:
                 utils.print_story(segment, player)
         exit()

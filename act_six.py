@@ -91,7 +91,7 @@ Strongly discouraged (for survival reasons).
 
 You sigh.
 
-translucent map snaps open.
+A translucent map snaps open.
 Then you go.
 (Of course you do.)
 '''
@@ -325,7 +325,7 @@ def act_six(player):
         act6_invitation2,
         act6_timeskip,
         act6_library_notice,
-        (game_loop, "library"),
+        (game_loop, ("dorms", "library")),
         act6_library_intro,
         act6_test_intro,
         act6_test_intro2,
@@ -335,7 +335,7 @@ def act_six(player):
 
     for segment in story_segments:
         try:
-            segment[0](segment[1])
+            segment[0](*segment[1])
         except TypeError:
             utils.print_story(segment, player)
 

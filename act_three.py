@@ -84,7 +84,7 @@ def act_three(player):
     story_segments = [
         act3_intro,
         act3_intro2,
-        (game_loop, "administration office"),
+        (game_loop, ("gate", "administration office")),
         act3_scrambled_books,
         act3_scrambled_books2
     ]
@@ -92,7 +92,7 @@ def act_three(player):
     # print each segment
     for segment in story_segments:
         try:
-            segment[0](segment[1])
+            segment[0](*segment[1])
         except TypeError:
             utils.print_story(segment, player)
 

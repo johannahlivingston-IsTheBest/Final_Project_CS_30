@@ -378,6 +378,7 @@ def game_loop(start, objective):
     """Start a map segment minigame.
 
     Parameters:
+        start (str): where the player starts
         objective (str): where the player needs to move to
     """
     location_dict = {

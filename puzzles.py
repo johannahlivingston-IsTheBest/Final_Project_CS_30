@@ -56,7 +56,10 @@ class Puzzles:
             "scramble",
             "multi_choice"
         ]
+        #if the riddle puzzle is complete
         self.rid_complete = False
+        
+        #character descriptions for match_des 
         self.char_des = {
             "Crown Prince": {
                 "name": "Alexander Aurelion",
@@ -97,25 +100,25 @@ class Puzzles:
         '''
         print("Remember: If you tie that's zero wins ")
         wins = 0
-        hand_choices = ["rock", "paper", "scissors"]
+        hand_choices = ["rock", "paper", "scissors"]# what choices are available for player and orb
 
-        for round_num in range(3):
+        for round_num in range(3):# play three rounds
             vaild_choice = False
             while not vaild_choice:
                 user_choice = input(
                     "\nPlease type rock, paper, or scissors: "
                 ).lower()
 
-                if user_choice not in hand_choices:
+                if user_choice not in hand_choices:# check for valid input loops until valid
                     print(
                         "\nInvalid choice. Please choose rock, paper, "
                         "or scissors."
                     )
                 else:
                     vaild_choice = True
-                    orb_choice = random.choice(hand_choices)
-                    print(f"\nThe Divine Orb chose: {orb_choice}")
-
+                    orb_choice = random.choice(hand_choices)# orb makes a random choice
+                    print(f"\nThe Divine Orb chose: {orb_choice}")#print orb choice
+                    #check who wins, and update wins if player wins
                     if user_choice == orb_choice:
                         print("It's a tie!")
                     elif user_choice == "rock" and orb_choice == "scissors":
@@ -130,8 +133,8 @@ class Puzzles:
                     else:
                         print("You lose! Better luck next time.")
 
-        print(f"\nYou won {wins} out of 3 rounds.")
-        return wins
+        print(f"\nYou won {wins} out of 3 rounds.")# print total wins
+        return wins # return number of wins
 
     def match_des(self):
         '''
@@ -146,7 +149,7 @@ class Puzzles:
         print("You will be given three character descriptions.")
         print("Your task is to match each description to the correct character.")
         correct_matches = 0
-
+        #ask the player to match descriptions to characters
         print("\nWhich character has this personality: ")
         print(f"\n{self.char_des['Crown Prince']['personality']}")
         print("____________________________________________")
@@ -159,7 +162,7 @@ class Puzzles:
             "\nEnter the number of the character that matches "
             "the description: "
         )
-
+        #check if the match is correct
         if user_match == "1":
             correct_matches += 1
             print("Correct.")
@@ -205,7 +208,7 @@ class Puzzles:
         else:
             print(".....Incorrect")
 
-        return correct_matches
+        return correct_matches# return number of correct matches
 
     def riddle(self):
         '''presents the player with three riddles to solve.
@@ -217,7 +220,7 @@ class Puzzles:
         correct_answers_count: int - The count of correctly answered riddles.
         rid_complete: bool - Indicates if the player completed the riddle puzzle.'''
         print("\nYou will be given three riddles to solve.")
-
+    # present the riddles and get player's answers
         num = 0
         for i in range(3):
             print("\n")
@@ -233,7 +236,7 @@ class Puzzles:
             "\nWhat is the answer to the third riddle? "
         ).lower()
 
-        correct_answers_count = 0
+        correct_answers_count = 0 # count correct answers
 
         if answer_one == "sword":
             correct_answers_count += 1
@@ -260,62 +263,59 @@ class Puzzles:
         print(
             f"\nYou got {correct_answers_count} out of 3 right "
         )
-        return correct_answers_count
+        return correct_answers_count # return number of correct answers
 
     def scramble(self):
         '''
         This method presents the player with four scrambled words to
         unscramble.returns the number of correctly unscrambled words.
 
-        riddle_answer_one: str - The player's answer to the first scrambled
-                                word.
-        riddle_answer_two: str - The player's answer to the second scrambled
-                                word.
-         riddle_answer_three: str - The player's answer to the third scrambled
-                                word.
-         riddle_answer_four: str - The player's answer to the fourth scrambled
-                                word.
-         riddle_answers_count: int - The count of correctly unscrambled words.
+        riddle_answer_one: str - The player's answer to the first scrambled word.
+        riddle_answer_two: str - The player's answer to the second scrambled word.
+        riddle_answer_three: str - The player's answer to the third scrambled word.
+        riddle_answer_four: str - The player's answer to the fourth scrambled word.
+        riddle_answers_count: int - The count of correctly unscrambled words.
         '''
-        riddle_answer_one = input(
+        # present the scrambled words and get player's answers
+        scramble_answer_one = input(
             "\n 1. Unscramble this word DHISEL: "
         ).lower()
-        riddle_answer_two = input(
+        scramble_answer_two = input(
             "\n 2. Unscramble this word BRO: "
         ).lower()
-        riddle_answer_three = input(
+        scramble_answer_three = input(
             "\n 3. Unscramble this word FTASF: "
         ).lower()
-        riddle_answer_four = input(
+        scramble_answer_four = input(
             "\n 4. Unscramble this word LAEMR: "
         ).lower()
 
-        riddle_answers_count = 0
-
-        if riddle_answer_one == "shield":
-            riddle_answers_count += 1
-        if riddle_answer_two == "orb":
-            riddle_answers_count += 1
-        if riddle_answer_three == "staff":
-            riddle_answers_count += 1
-        if riddle_answer_four == "realm":
-            riddle_answers_count += 1
-
-        if riddle_answers_count == 4:
+        scramble_answers_count = 0
+        #check answers and count correct ones
+        if scramble_answer_one == "shield":
+            scramble_answers_count += 1
+        if scramble_answer_two == "orb":
+            scramble_answers_count += 1
+        if scramble_answer_three == "staff":
+            scramble_answers_count += 1
+        if scramble_answer_four == "realm":
+            scramble_answers_count += 1
+        #tells u how well u did
+        if scramble_answers_count == 4:
             print("\nYou got 100%")
-        elif riddle_answers_count == 3:
+        elif scramble_answers_count == 3:
             print("\nYou got 75%")
-        elif riddle_answers_count == 2:
+        elif scramble_answers_count == 2:
             print("\nYou got 50%")
-        elif riddle_answers_count == 1:
+        elif scramble_answers_count == 1:
             print("\nYou got 25%")
-        elif riddle_answers_count == 0:
+        elif scramble_answers_count == 0:
             print("\nYou failed")
 
         print(
-            f"\nYou got {riddle_answers_count} out of 4 right "
+            f"\nYou got {scramble_answers_count} out of 4 right "
         )
-        return riddle_answers_count
+        return scramble_answers_count # return number of correct answers
 
     def wordle(self):
         print("You have to guess the correct word in 6 tries.")
@@ -323,47 +323,46 @@ class Puzzles:
         print("If you need help, type 'help' to get a hint. "
               "You can only use the hint once."
               )
-
+        # variables
         wordle_answer = "water"
         attempts = 6
         hint_used = False
         win = True
 
-        # Create the result display
+        # Create the display
         letter1 = "_"
         letter2 = "_"
         letter3 = "_"
         letter4 = "_"
-        letter5 = "_"
-
+        letter5 = "_" 
         print("\n ___ ___ ___ ___ ___")
 
         attempt = 0
-        while attempt < attempts:
+        while attempt < attempts: # allow up to 6 attempts
             guess = input(
                 f"\nAttempt {attempt + 1}: Enter your 5-letter guess: "
-            ).lower()
+            ).lower() # get guess
 
-            if guess == "help" and not hint_used:
-                hint_used = True
+            if guess == "help" and not hint_used: # provide hint if typed
+                hint_used = True # mark hint as used
                 print(
                     "Hint: It's something that is blue "
                     "and you can drink it"
                 )
                 continue
 
-            if len(guess) != 5:
+            if len(guess) != 5: # check for valid input/5 letter word
                 print("Please enter a 5-letter word.")
                 continue
 
-            attempt += 1
+            attempt += 1 # increment attempt count
 
-            for letter in guess:
+            for letter in guess: #check each letter in guess and tell if in answer
                 if letter in wordle_answer:
                     print(f"The letter {letter} is in the word.")
                 else:
                     print(f"The letter {letter} is not in the word.")
-
+            #update with correct letters in correct positions
             if guess[0] == wordle_answer[0]:
                 letter1 = guess[0].upper()
             if guess[1] == wordle_answer[1]:
@@ -374,17 +373,14 @@ class Puzzles:
                 letter4 = guess[3].upper()
             if guess[4] == wordle_answer[4]:
                 letter5 = guess[4].upper()
-
+            # display current progress on word
             print(f"\n {letter1} {letter2} {letter3} {letter4} {letter5}")
 
-            if guess == wordle_answer:
+            if guess == wordle_answer:# if guessed correctly
                 print("Congratulations! You've guessed the correct word!")
-                return win
-
-        print(
-            "Sorry, you've used all your attempts. "
-            f"The correct word was '{wordle_answer}'."
-        )
+                return win # return True if won
+        # if all attempts used without correct guess say the answer
+        print(f"Sorry, you've used all your attempts. The correct word was '{wordle_answer}'.")
         return False
 
 

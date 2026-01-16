@@ -6,10 +6,9 @@
 # Version: 5
 # Date: 01/14/2026
 ###############################################################################
-'''
-This program has a bunch of different games inside a game class. They games
-include match character description, rock - paper - scissors, riddles, 
-unscramble scrambled word, and multiple choice / terminology.
+'''This is the main code that runs the entire game by importing and executing
+the different acts in sequence. It's also were you would just press run to start
+the game.
 '''
 ###############################################################################
 # Imports and Global Variables-------------------------------------------------

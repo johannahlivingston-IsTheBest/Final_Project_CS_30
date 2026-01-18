@@ -248,7 +248,7 @@ def move_player(player, objective, world):
     """
     while True:
         direction = iu.menu(f"Move to the {objective.name} " +
-                            "({objective.symbol}): ",
+                            f"({objective.symbol}): ",
                             DIRECTIONS.keys(),
                             keymap="wasd")
         movement = DIRECTIONS[direction]
@@ -406,6 +406,7 @@ def game_loop(start, objective):
     goal = Objective(goal_pos, "⭕", objective)
     game.add_entity(player1)
     game.add_entity(goal)
+    # Game loop
     while True:
         utils.clear()
         game.show()

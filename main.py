@@ -12,13 +12,8 @@ the game.
 '''
 ###############################################################################
 # Imports and Global Variables-------------------------------------------------
-import act_one
-import act_two
-import act_three
-import act_four_plus_five
-import act_six
-import act_seven
-import act_eight
+from Acts import act_one, act_two, act_three, act_four_plus_five, act_six, \
+                 act_seven, act_eight
 from player_class import Player
 
 player = Player()

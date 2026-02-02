@@ -608,7 +608,7 @@ Current Affection Levels:
 • Crown Heir: {player.love_points["Crown Heir"]}
 • Grand Duke Heir: {player.love_points["Grand Duke Heir"]}
 • Magic Tower Master/ Assassin: \
-{player.love_points["Magic Tower Master / Assassin"]}
+{player.love_points["Magic Tower Master/ Assassin"]}
 ━━━━━━━━━━━━━━━━━━━━━━
 ''')
     utils.print_story(act8_final_exam_pass3, player)
